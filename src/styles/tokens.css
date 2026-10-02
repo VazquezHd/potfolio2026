@@ -1,0 +1,33 @@
+:root {
+  --color-background: #0b101b;
+  --color-surface: #101a2b;
+  --color-surface-raised: #101c30;
+  --color-accent: #80b7ff;
+  --color-accent-hover: #b3d3ff;
+  --color-on-accent: #0b1525;
+  --color-text-primary: #eceff5;
+  --color-text-secondary: #c2cad8;
+  --color-text-muted: #9ba7bc;
+  --color-text-subtle: #78859d;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-border: color-mix(in srgb, var(--color-white) 9.4%, transparent);
+  --color-glass: color-mix(in srgb, var(--color-surface) 48%, transparent);
+  --color-glass-highlight: color-mix(in srgb, var(--color-white) 7%, transparent);
+  --color-glass-border: color-mix(in srgb, var(--color-white) 16%, transparent);
+  --color-glass-panel: color-mix(in srgb, var(--color-surface) 42%, transparent);
+  --color-glass-node: color-mix(in srgb, var(--color-surface-raised) 64%, transparent);
+  --glass-blur: 32px;
+  --glass-node-blur: 20px;
+  --glass-section-blur: 24px;
+  --glass-nav-blur: 36px;
+  --color-nav-backdrop: color-mix(in srgb, var(--color-background) 62%, transparent);
+  --color-glass-shadow: color-mix(in srgb, var(--color-black) 24%, transparent);
+  --color-project-purple: #252031;
+  --color-project-blue: #19262b;
+  --color-project-teal: #24332b;
+  --color-particle-hero: #60a5fa;
+  --color-particle-point: #3b82f6;
+  --color-particle-signal: #ffffff;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
