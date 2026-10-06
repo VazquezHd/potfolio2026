@@ -124,10 +124,20 @@ const otherProjects = computed(() =>
           <ProjectCarousel :projects="shown" />
         </section>
         <section id="sobre-mi" class="about-section page-width section-space">
-          <div class="about-art" aria-hidden="true">
-            <span class="about-initials">{{ $t('JI') }}<span>✳</span></span>
-            <div class="about-art-label">{{ $t('Diseño e ingeniería, un mismo lenguaje.') }}</div>
-          </div>
+          <figure class="about-art about-portrait">
+            <img
+              :src="profile.photo"
+              :alt="profile.photoAlt"
+              width="1792"
+              height="2400"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="portrait-caption">
+              <strong>{{ profile.shortName }}</strong>
+              <span>{{ $t('Diseño e ingeniería, un mismo lenguaje.') }}</span>
+            </figcaption>
+          </figure>
           <div class="about-copy">
             <span class="eyebrow muted">{{ $t('Sobre mí') }}</span>
             <h2>

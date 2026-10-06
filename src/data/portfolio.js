@@ -9,6 +9,8 @@ export const profile = {
   shortName: 'Jorge Iván',
   surname: 'Vázquez Hernández',
   role: 'Product Designer',
+  photo: '/assets/images/profile/ivan-vazq.jpeg',
+  photoAlt: 'Retrato de Jorge Iván Vázquez Hernández',
   introduction:
     'Diseño la experiencia desde la arquitectura de información hasta los componentes, estados e interfaces en Figma. Trabajo con ingeniería desde el inicio y puedo implementar las vistas en Vue.js, Nuxt 3 y Tailwind CSS.',
   about:
@@ -43,6 +45,8 @@ export const profile = {
     {
       company: 'BUNTL',
       role: 'Product Designer',
+      photo: '/assets/images/profile/ivan-vazq.jpeg',
+      photoAlt: 'Retrato de Jorge Iván Vázquez Hernández',
       period: 'Febrero 2024 — Mayo 2025',
       summary:
         'Diseñé productos SaaS, B2B y B2C para clientes internacionales, desde requerimientos y recorridos hasta prototipos y documentación para desarrollo.',
