@@ -101,7 +101,7 @@ export const domainProject = {
       { label: 'Asignar responsable', detail: 'Definir quién continúa' },
       { label: 'Continuar proceso', detail: 'Consultar antecedentes y avanzar' },
     ],
-    challenge: 'El expediente cambia de fase. Su contexto debe continuar.',
+    challenge: 'Cambiar de fase sin perder la información del bien.',
     scenario:
       'La preparación reúne información del bien; el proceso necesita consultarla, actuar sobre ella y mantener visibles sus pendientes.',
     hypothesis:

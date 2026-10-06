@@ -4397,3 +4397,588 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
     display: none;
   }
 }
+
+/* A concise career overview complements the product cases. */
+.career-summary {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 32px 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--color-glass-border);
+  min-width: 0;
+}
+.career-summary h3 {
+  margin: 0 0 24px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.career-list,
+.education-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.career-list {
+  display: grid;
+  gap: 24px;
+}
+.career-list > li {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.6fr) minmax(0, 2fr);
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+.career-list > li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.career-period {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+.career-summary h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-text-primary);
+}
+.career-company {
+  display: block;
+  color: var(--color-accent);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.career-summary p {
+  margin: 8px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.education-list {
+  display: grid;
+  gap: 24px;
+}
+.education-list h4 {
+  margin-top: 6px;
+}
+.education-list p {
+  margin-top: 4px;
+  font-size: 13px;
+}
+.career-education {
+  padding-left: 32px;
+  border-left: 1px solid var(--color-border);
+}
+.career-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+.career-footer p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+@media (max-width: 900px) {
+  .career-list > li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .career-summary {
+    gap: 28px;
+  }
+  .career-education {
+    padding-left: 24px;
+  }
+}
+@media (max-width: 700px) {
+  .career-summary {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 28px;
+    gap: 32px;
+  }
+  .career-summary h3 {
+    margin-bottom: 20px;
+  }
+  .career-education {
+    padding: 28px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .career-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .career-cv {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 40px;
+    min-height: 52px;
+    width: 100%;
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    background: var(--color-glass);
+  }
+  .career-cv > svg {
+    position: absolute;
+    right: 16px;
+  }
+}
+
+/* Muted mineral surfaces soften the light theme without changing product artwork. */
+[data-theme='light'] body {
+  background:
+    radial-gradient(ellipse at 8% 0%, var(--color-light-ambient), transparent 48%),
+    radial-gradient(ellipse at 95% 20%, var(--color-light-cool), transparent 45%),
+    var(--color-background);
+  background-attachment: fixed;
+}
+[data-theme='light'] .design-object {
+  background: var(--color-surface);
+}
+[data-theme='light'] .scene-back-sheet {
+  background: var(--color-surface-raised);
+}
+[data-theme='light'] .floating-header .preference-button:hover {
+  background: var(--color-surface-raised);
+}
+
+/* Theme switch: a fixed track, sliding thumb and crossfading icons. */
+.header-preferences .theme-switch {
+  padding: 0;
+  width: 64px;
+  min-width: 64px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+}
+.theme-switch-track {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--color-glass-border);
+  background: var(--color-switch-track);
+  box-shadow: inset 0 2px 5px var(--color-glass-shadow);
+  color: var(--color-text-muted);
+  transition: background 320ms ease;
+}
+.switch-sun,
+.switch-moon {
+  position: absolute;
+  top: 8px;
+}
+.switch-sun {
+  left: 8px;
+}
+.switch-moon {
+  right: 8px;
+}
+.theme-switch-thumb {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-switch-thumb);
+  color: var(--color-on-accent);
+  box-shadow: 0 2px 6px var(--color-glass-shadow);
+  transform: translateX(0) rotate(0deg);
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 240ms ease;
+}
+.theme-switch[aria-checked='true'] .theme-switch-thumb {
+  transform: translateX(30px) rotate(180deg);
+}
+.theme-switch-thumb svg {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  transition: opacity 180ms ease;
+}
+.thumb-moon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+.thumb-sun {
+  opacity: 1;
+}
+.theme-switch[aria-checked='true'] .thumb-moon {
+  opacity: 1;
+}
+.theme-switch[aria-checked='true'] .thumb-sun {
+  opacity: 0;
+}
+.theme-switch:hover .theme-switch-track {
+  border-color: var(--color-accent);
+}
+@media (max-width: 360px) {
+  .header-preferences .language-button {
+    width: 44px;
+    min-width: 44px;
+    padding-inline: 4px;
+  }
+  .language-button > svg {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-switch-track,
+  .theme-switch-thumb,
+  .theme-switch-thumb svg {
+    transition: none;
+  }
+}
+
+/* Shared action surfaces: clear hierarchy, one-shot light sweep and tactile feedback. */
+:is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 14px 22px;
+  min-height: 50px;
+  border: 1px solid color-mix(in srgb, var(--color-action-end) 75%, transparent);
+  border-radius: 14px;
+  color: var(--color-action-ink);
+  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  box-shadow:
+    0 7px 22px var(--color-action-glow),
+    inset 0 1px 0 var(--color-action-sheen);
+  font-weight: 650;
+  text-decoration: none;
+  transform: none;
+  transition:
+    translate 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 180ms ease,
+    box-shadow 300ms ease;
+}
+:is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link)::after {
+  content: '';
+  position: absolute;
+  inset: -65% -45%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 42%,
+    var(--color-action-sheen) 50%,
+    transparent 58%
+  );
+  transform: translateX(-85%);
+}
+:is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link):is(
+  :hover,
+  :focus-visible
+) {
+  color: var(--color-action-ink);
+  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  transform: none;
+  translate: 0 -3px;
+  box-shadow:
+    0 12px 30px var(--color-action-glow),
+    inset 0 1px 0 var(--color-action-sheen);
+}
+:is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link):is(
+    :hover,
+    :focus-visible
+  )::after {
+  animation: action-light-sweep 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes action-light-sweep {
+  from {
+    transform: translateX(-85%);
+  }
+  to {
+    transform: translateX(85%);
+  }
+}
+:is(
+  .hero-conversation,
+  .header-contact,
+  .contact-details > a,
+  .gallery-expand,
+  .gallery-inline-zoom
+) {
+  padding: 12px 16px;
+  border: 1px solid color-mix(in srgb, var(--color-action-start) 48%, var(--color-border));
+  border-radius: 12px;
+  color: var(--color-accent);
+  background: var(--color-action-soft);
+  transition:
+    translate 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 180ms ease,
+    box-shadow 300ms ease,
+    border-color 220ms ease;
+}
+:is(
+  .hero-conversation,
+  .header-contact,
+  .contact-details > a,
+  .gallery-expand,
+  .gallery-inline-zoom
+):is(:hover, :focus-visible) {
+  translate: 0 -2px;
+  border-color: var(--color-action-start);
+  box-shadow: 0 8px 24px var(--color-action-glow);
+}
+:is(
+  .button-primary,
+  .carousel-case-link,
+  .career-cv,
+  .case-takeaway > .text-link,
+  .hero-conversation,
+  .header-contact,
+  .contact-details > a,
+  .gallery-expand,
+  .gallery-inline-zoom
+):focus-visible {
+  outline: 2px solid var(--color-action-start);
+  outline-offset: 4px;
+}
+:is(
+  .button-primary,
+  .carousel-case-link,
+  .career-cv,
+  .case-takeaway > .text-link,
+  .hero-conversation,
+  .header-contact,
+  .contact-details > a,
+  .gallery-expand,
+  .gallery-inline-zoom
+):active {
+  translate: 0 0;
+  scale: 0.97;
+}
+:is(
+    .button-primary,
+    .carousel-case-link,
+    .career-cv,
+    .hero-conversation,
+    .header-contact,
+    .contact-details > a
+  )
+  > svg {
+  transition: translate 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+:is(
+    .button-primary,
+    .carousel-case-link,
+    .career-cv,
+    .hero-conversation,
+    .header-contact,
+    .contact-details > a
+  ):is(:hover, :focus-visible)
+  > svg {
+  translate: 2px -2px;
+}
+.button-primary:is(:hover, :focus-visible) > .lucide-arrow-down {
+  translate: 0 3px;
+}
+:is(.carousel-arrows button, .gallery-feature-arrows button, .scene-navigation button) {
+  transition:
+    translate 240ms ease,
+    scale 180ms ease,
+    box-shadow 240ms ease;
+}
+:is(.carousel-arrows button, .gallery-feature-arrows button, .scene-navigation button):is(
+  :hover,
+  :focus-visible
+) {
+  translate: 0 -2px;
+  box-shadow: 0 5px 16px var(--color-action-glow);
+}
+@media (max-width: 700px) {
+  :is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link) {
+    min-height: 52px;
+    padding-inline: 44px;
+  }
+  .hero-personal-actions .hero-conversation,
+  .contact-details > a {
+    padding-inline: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(
+    .button-primary,
+    .carousel-case-link,
+    .career-cv,
+    .case-takeaway > .text-link,
+    .hero-conversation,
+    .header-contact,
+    .contact-details > a,
+    .gallery-expand,
+    .gallery-inline-zoom,
+    .carousel-arrows button,
+    .gallery-feature-arrows button,
+    .scene-navigation button
+  ),
+  :is(
+      .button-primary,
+      .carousel-case-link,
+      .career-cv,
+      .hero-conversation,
+      .header-contact,
+      .contact-details > a
+    )
+    > svg {
+    transition: none;
+    translate: none;
+    scale: 1;
+  }
+  :is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link)::after {
+    animation: none;
+    display: none;
+  }
+}
+
+:is(.scene-phase-picker, .carousel-pagination) button {
+  transition:
+    background 240ms ease,
+    color 240ms ease,
+    box-shadow 240ms ease,
+    scale 180ms ease;
+}
+:is(.scene-phase-picker, .carousel-pagination) button[aria-pressed='true'] {
+  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  color: var(--color-action-ink);
+  border-color: var(--color-action-start);
+  box-shadow: 0 4px 14px var(--color-action-glow);
+}
+.gallery-thumbnails button[aria-pressed='true'] {
+  border-color: var(--color-action-start);
+  box-shadow: 0 0 0 1px var(--color-action-start);
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.scene-phase-picker, .carousel-pagination) button {
+    transition: none;
+  }
+}
+
+/* Motion references: diagonal fill and the CV label-to-icon handoff. */
+:is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+:is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom)::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  transform: translateX(-115%) skewX(-18deg);
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+:is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom):is(
+  :hover,
+  :focus-visible
+) {
+  color: var(--color-action-ink);
+  transition:
+    translate 300ms ease,
+    scale 180ms ease,
+    box-shadow 300ms ease,
+    color 180ms ease 100ms;
+}
+:is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom):is(
+    :hover,
+    :focus-visible
+  )::before {
+  transform: translateX(0) skewX(0);
+}
+.carousel-pagination button[aria-current='true'] {
+  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  color: var(--color-action-ink);
+  border-color: var(--color-action-start);
+  box-shadow: 0 4px 14px var(--color-action-glow);
+}
+@media (min-width: 701px) and (hover: hover) and (pointer: fine) {
+  .floating-header .header-contact {
+    position: relative;
+    overflow: hidden;
+    padding-right: 44px;
+    isolation: isolate;
+  }
+  .floating-header .header-contact > span {
+    transition:
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 240ms ease;
+  }
+  .floating-header .header-contact > svg {
+    position: absolute;
+    right: 16px;
+    translate: none;
+    transition:
+      right 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      rotate 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-header .header-contact:hover:not(:focus-visible) > span {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  .floating-header .header-contact:hover:not(:focus-visible) > svg {
+    right: calc(50% - 8.5px);
+    rotate: -6deg;
+  }
+}
+@media (hover: none) {
+  :is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom):not(
+      :focus-visible
+    ):hover {
+    color: var(--color-accent);
+  }
+  :is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom):not(
+      :focus-visible
+    ):hover::before {
+    transform: translateX(-115%) skewX(-18deg);
+  }
+  :is(
+      .hero-conversation,
+      .contact-details > a,
+      .gallery-expand,
+      .gallery-inline-zoom
+    ):active::before {
+    transform: translateX(0) skewX(0);
+  }
+  :is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom):active {
+    color: var(--color-action-ink);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.hero-conversation, .contact-details > a, .gallery-expand, .gallery-inline-zoom)::before,
+  .floating-header .header-contact > span,
+  .floating-header .header-contact > svg {
+    transition: none;
+  }
+  .floating-header .header-contact:hover:not(:focus-visible) > span {
+    transform: none;
+    opacity: 1;
+  }
+  .floating-header .header-contact:hover:not(:focus-visible) > svg {
+    right: 16px;
+    rotate: none;
+  }
+}

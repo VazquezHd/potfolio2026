@@ -106,7 +106,7 @@ export const detentionProject = {
       { label: 'Registrar movimiento', detail: 'Conservar responsable y estado' },
       { label: 'Consultar historial', detail: 'Reconstruir el recorrido' },
     ],
-    challenge: 'La trazabilidad se pierde cuando el contexto se fragmenta.',
+    challenge: 'Cada movimiento necesita responsable, estado y contexto.',
     scenario:
       'Personas, pertenencias, movimientos y mensajes necesitan conservar su relación durante todo el seguimiento.',
     hypothesis:

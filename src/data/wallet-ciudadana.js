@@ -110,7 +110,7 @@ export const walletProject = {
     ),
   ],
   caseStudy: {
-    challenge: 'Un documento olvidado puede detener todo el trámite.',
+    challenge: 'Preparar un trámite sin buscar documentos en varios lugares.',
     scenario:
       'Buscar archivos entre correos, fotos y carpetas vuelve difícil saber qué documento está disponible y actualizado.',
     hypothesis:

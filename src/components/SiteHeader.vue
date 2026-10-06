@@ -89,14 +89,21 @@ onUnmounted(() => {
       </button>
       <button
         type="button"
-        class="preference-button theme-button"
-        :aria-label="t(theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro')"
+        class="preference-button theme-switch"
+        role="switch"
+        :aria-checked="theme === 'dark'"
+        :aria-label="t('Modo oscuro')"
         :title="t(theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro')"
         @click="toggleTheme"
       >
-        <Sun v-if="theme === 'dark'" :size="17" aria-hidden="true" />
-        <Moon v-else :size="17" aria-hidden="true" />
-        <span class="preference-theme-label">{{ t(theme === 'dark' ? 'Claro' : 'Oscuro') }}</span>
+        <span class="theme-switch-track" aria-hidden="true">
+          <Sun class="switch-sun" :size="13" />
+          <Moon class="switch-moon" :size="13" />
+          <span class="theme-switch-thumb">
+            <Sun :size="14" class="thumb-sun" />
+            <Moon :size="14" class="thumb-moon" />
+          </span>
+        </span>
       </button>
     </div>
     <div class="nav-progress" aria-hidden="true">

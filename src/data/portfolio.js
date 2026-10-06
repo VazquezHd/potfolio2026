@@ -12,7 +12,7 @@ export const profile = {
   introduction:
     'Diseño la experiencia desde la arquitectura de información hasta los componentes, estados e interfaces en Figma. Trabajo con ingeniería desde el inicio y puedo implementar las vistas en Vue.js, Nuxt 3 y Tailwind CSS.',
   about:
-    'Soy Product Designer y actualmente trabajo como Lead UX/UI Designer. Levanto necesidades y requerimientos, entiendo la operación y traduzco sus reglas en un alcance de producto y flujos de usuario claros.',
+    'Soy Product Designer y Lead UX/UI Designer. Conecto necesidades de usuario, reglas de negocio y viabilidad técnica para definir el producto.',
   email: '',
   linkedin: 'https://www.linkedin.com/in/vazquezhd/',
   github: 'https://github.com/VazquezHd',
@@ -32,21 +32,58 @@ export const profile = {
     'Desarrollo frontend',
     'Liderazgo de producto',
   ],
-  credentials: [
+  experience: [
     {
-      title: 'Oracle Next Education · Front-end',
+      company: 'GRUPO NORTE 70',
+      role: 'Líder Senior de Diseño de Producto',
+      period: 'Mayo 2025 — Actualidad',
+      summary:
+        'Lidero plataformas multirol: traduzco necesidades y reglas de negocio en flujos, sistemas de diseño y decisiones alineadas con ingeniería.',
+    },
+    {
+      company: 'BUNTL',
+      role: 'Product Designer',
+      period: 'Febrero 2024 — Mayo 2025',
+      summary:
+        'Diseñé productos SaaS, B2B y B2C para clientes internacionales, desde requerimientos y recorridos hasta prototipos y documentación para desarrollo.',
+    },
+    {
+      company: 'Universidad Autónoma del Estado de Hidalgo',
+      role: 'Diseñador UX/UI · Frontend Developer Jr.',
+      period: 'Junio 2021 — Febrero 2024',
+      summary:
+        'Diseñé e implementé plataformas académicas, conectando flujos de estudiantes, docentes y administradores con interfaces funcionales.',
+    },
+  ],
+  education: [
+    {
+      title: 'Licenciatura en Diseño Gráfico',
+      institution: 'Universidad Autónoma del Estado de Hidalgo',
+      period: '2015 — 2019',
+      kind: 'Formación académica',
+    },
+    {
+      title: 'Oracle Next Education · Frontend',
       institution: 'Alura Latam',
-      year: '2023',
+      period: '2023 — 2024',
+      kind: 'Formación complementaria',
     },
     {
       title: 'Fundamentos y aplicaciones de IA',
       institution: 'Netzun',
-      year: '2024–2025',
+      period: '2024 — 2025',
+      kind: 'Formación complementaria',
+    },
+    {
+      title: 'Inglés · B1',
+      institution: 'English Everywhere',
+      period: '2024 — 2025',
+      kind: 'Idiomas',
     },
   ],
-  hero: 'Levanto necesidades y requerimientos. Los convierto en flujos claros e interfaces que resuelven tareas concretas.',
+  hero: 'Levanto necesidades, defino flujos y diseño interfaces que simplifican operaciones complejas.',
   value:
-    'Acelero el time to market porque diseño y desarrollo comparten la misma lógica: componentes, estados y reglas claras. Puedo implementar las vistas en frontend, resolver dudas técnicas y reducir la distancia entre el prototipo y el producto.',
+    'Acelero la entrega al conectar diseño y desarrollo: documento reglas y estados, construyo componentes en Figma y puedo implementar las vistas en Vue, Nuxt y Tailwind.',
   background: 'Mi formación en diseño evolucionó hacia la arquitectura de producto y el código.',
   independent:
     'También lidero proyectos independientes de software: defino el MVP, estructuro la propuesta web y la identidad del producto, y coordino la ejecución con ingenieros de software.',

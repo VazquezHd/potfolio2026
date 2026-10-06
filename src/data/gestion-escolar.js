@@ -13,7 +13,7 @@ export const schoolCase = {
   paletteImage: '/assets/images/projects/gestion-escolar/paleta.png',
   fontName: 'DM Sans',
   fontToken: '--font-sans',
-  challenge: 'Menos registros dispersos. Más contexto para decidir.',
+  challenge: 'Revisar un pago sin cruzar registros dispersos.',
   scenario: 'Cruzar hojas de cálculo y mensajes para revisar un pago retrasa la operación escolar.',
   hypothesis: 'La propuesta conecta personas, pagos y permisos en una misma plataforma.',
   opportunities: [

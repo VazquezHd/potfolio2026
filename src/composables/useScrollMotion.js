@@ -29,7 +29,7 @@ export function useScrollMotion(route) {
     ['.related-product-preview', 0.12, 32, '--image-shift'],
   ]
   const reveals =
-    '.hero-copy, .hero-art, .hero-bottom, .section-heading, .project-carousel, .about-art, .about-copy, .expertise-grid, .independent-work, .process-compact, .contact-copy, .contact-actions, .case-intro-grid, .case-chapter > h2, .case-three-grid, .case-flow-panel, .case-system-grid, .gallery-showcase, .related-products-grid'
+    '.hero-copy, .hero-art, .hero-bottom, .section-heading, .project-carousel, .about-art, .about-copy, .career-summary, .expertise-grid, .independent-work, .process-compact, .contact-copy, .contact-actions, .case-intro-grid, .case-chapter > h2, .case-three-grid, .case-flow-panel, .case-system-grid, .gallery-showcase, .related-products-grid'
   function reset() {
     for (const entry of entries) entry.element.style.removeProperty(entry.property)
     for (const element of revealElements) element.classList.remove('motion-waiting')

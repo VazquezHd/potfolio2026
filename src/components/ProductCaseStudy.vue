@@ -28,8 +28,8 @@ const study = computed(() => props.project.caseStudy)
             <dd>{{ $t(project.status) }}</dd>
           </div>
           <div>
-            <dt>{{ $t('Enfoque del caso') }}</dt>
-            <dd>{{ $t('Necesidades · Flujos · UX/UI') }}</dd>
+            <dt>{{ $t('Mi aportación') }}</dt>
+            <dd>{{ $t('Definición de flujos · UX/UI') }}</dd>
           </div>
           <div>
             <dt>{{ $t('Herramienta de diseño') }}</dt>
@@ -106,7 +106,7 @@ const study = computed(() => props.project.caseStudy)
         <h2>
           <span class="motion-heading-mask"
             ><span class="motion-heading-ink">{{
-              $t('Así se traduce el problema en una solución.')
+              $t('Cómo resolví las tareas clave.')
             }}</span></span
           >
         </h2>
@@ -168,7 +168,7 @@ const study = computed(() => props.project.caseStudy)
         <h2>
           <span class="motion-heading-mask"
             ><span class="motion-heading-ink">{{
-              $t('Un lenguaje que se mantiene entre módulos.')
+              $t('Componentes para una experiencia consistente.')
             }}</span></span
           >
         </h2>

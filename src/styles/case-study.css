@@ -246,35 +246,6 @@
   font-size: 12px;
   line-height: 1.5;
 }
-.case-flow {
-  margin-top: 28px;
-  padding: 24px;
-  background: var(--color-surface);
-  border-radius: 12px;
-}
-.case-flow ol {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  list-style: none;
-  padding: 0;
-  gap: 16px;
-  margin: 20px 0;
-}
-.case-flow li {
-  font-size: 15px;
-  line-height: 1.5;
-}
-.case-flow li span {
-  display: block;
-  color: var(--color-accent);
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-.case-flow p {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  margin: 0;
-}
 .product-case .project-gallery {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 32px 24px;
@@ -917,7 +888,7 @@
 }
 .case-flow-panel {
   margin-top: 32px;
-  padding: 28px;
+  padding: var(--space-case-panel);
   border: 1px solid var(--color-glass-border);
   border-radius: 16px;
   background: var(--color-glass);
@@ -928,7 +899,9 @@
   gap: 24px;
   list-style: none;
   padding: 0;
-  margin: 24px 0 0;
+  margin: 28px 0 0;
+  background: transparent;
+  border-radius: 0;
 }
 .case-flow li {
   min-width: 0;
@@ -1444,5 +1417,82 @@
   }
   [data-product='wallet-ciudadana'] .gallery-phone-frame img {
     max-height: 480px;
+  }
+}
+
+/* Let the page background flow through the editorial layout without square patches. */
+[data-theme='light'] .product-case-header,
+[data-theme='light'] .case-editorial {
+  background: transparent;
+}
+
+/* Case cards share text baselines; surfaces always reserve interior space. */
+.case-three-grid:has(> .case-note) {
+  column-gap: 24px;
+  row-gap: 12px;
+}
+.case-three-grid > .case-note {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  gap: 12px;
+  padding: var(--space-case-panel);
+}
+.case-three-grid > .case-note h3,
+.case-three-grid > .case-note p,
+.case-three-grid > .case-note .case-note-need {
+  margin: 0;
+}
+.case-system-grid > div {
+  min-width: 0;
+  padding: var(--space-case-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-glass);
+}
+.case-system-grid h3 {
+  margin-top: 0;
+}
+.case-swatches strong {
+  overflow-wrap: anywhere;
+}
+.case-takeaway {
+  display: grid;
+  gap: 20px;
+  border-radius: 0 16px 16px 0;
+  padding: var(--space-case-panel);
+}
+.case-takeaway p {
+  margin: 0;
+}
+.case-takeaway > a {
+  justify-self: start;
+}
+@media (max-width: 900px) {
+  .case-three-grid:has(> .case-note) {
+    row-gap: 20px;
+  }
+  .case-three-grid > .case-note {
+    display: block;
+    grid-row: auto;
+  }
+  .case-three-grid > .case-note h3 {
+    margin-bottom: 12px;
+  }
+  .case-three-grid > .case-note p + p {
+    margin-top: 12px;
+  }
+}
+@media (max-width: 700px) {
+  .case-swatches {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+  .case-lead-screen figcaption {
+    gap: 14px;
+    padding: 16px 8px 8px;
+  }
+  .gallery-feature-footer {
+    padding-top: 8px;
   }
 }

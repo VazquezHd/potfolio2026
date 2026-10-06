@@ -10,6 +10,7 @@ import { useScrollMotion } from './composables/useScrollMotion'
 import { usePortfolioNavigation } from './composables/usePortfolioNavigation'
 import ScrollParticles from './components/ScrollParticles.vue'
 import ContactSection from './components/ContactSection.vue'
+import CareerSummary from './components/CareerSummary.vue'
 import SiteHeader from './components/SiteHeader.vue'
 import ProjectCarousel from './components/ProjectCarousel.vue'
 import ProductDesignScene from './components/ProductDesignScene.vue'
@@ -141,20 +142,12 @@ const otherProjects = computed(() =>
               {{ $t('Soy') }} {{ $t(profile.shortName) }}{{ $t(', Product Designer.') }}
             </p>
             <p>{{ $t(profile.about) }}</p>
-            <p>{{ $t(profile.introduction) }}</p>
             <p class="value-statement">{{ $t(profile.value) }}</p>
             <div class="about-skills">
               <span v-for="skill in profile.skills" :key="skill">{{ $t(skill) }}</span>
             </div>
-            <p class="background-note">{{ $t(profile.background) }}</p>
-            <a
-              v-if="profile.resume"
-              :href="profile.resume"
-              :download="profile.resume.split('/').at(-1)"
-              class="text-link"
-              >{{ $t('Descarga mi CV (2026)') }} <ArrowUpRight :size="17"
-            /></a>
           </div>
+          <CareerSummary :profile="profile" />
         </section>
         <section
           id="capacidades"
