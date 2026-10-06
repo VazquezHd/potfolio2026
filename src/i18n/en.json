@@ -411,7 +411,6 @@
   "soluciones.": "solutions.",
   "Soy": "I'm",
   ", Product Designer.": ", a Product Designer.",
-  "Ver mi currículum (2024)": "View my résumé (2024)",
   "De UX a UI": "From UX to UI",
   "De la necesidad a la": "From need to",
   "interfaz.": "interface.",
@@ -436,7 +435,6 @@
   "Abrir original": "Open original",
   "Pantallas y decisiones del producto": "Product screens and decisions",
   "Descarga mi CV": "Download my CV",
-  "Currículum de Jorge Iván (2024)": "Jorge Iván's résumé (2024)",
   "Inicio": "Home",
   "Proyectos": "Projects",
   "Contacto": "Contact",
@@ -571,5 +569,8 @@
   "Hipótesis de trabajo, sin entrevistas ni pruebas realizadas.": "Working hypotheses; no interviews or tests conducted.",
   "Brief de producto": "Product brief",
   "Flujo de usuario": "User flow",
-  "Interfaz de producto": "Product interface"
+  "Interfaz de producto": "Product interface",
+  "También en GitLab": "Also on GitLab",
+  "Descarga mi CV (2026)": "Download my CV (2026)",
+  "CV de Jorge Iván · 2026": "Jorge Iván's CV · 2026"
 }

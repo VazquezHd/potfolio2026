@@ -15,7 +15,11 @@ import ProjectCarousel from './components/ProjectCarousel.vue'
 import ProductDesignScene from './components/ProductDesignScene.vue'
 import ProductCaseStudy from './components/ProductCaseStudy.vue'
 import { localize, locale } from './composables/usePreferences'
-const profile = computed(() => localize(baseProfile))
+import { selectResume } from './lib/resume'
+const profile = computed(() => ({
+  ...localize(baseProfile),
+  resume: selectResume(baseProfile.resumes, locale.value),
+}))
 const projects = computed(() => localize(baseProjects))
 const process = computed(() => localize(baseProcess))
 const filter = ref('Todos')
@@ -146,10 +150,9 @@ const otherProjects = computed(() =>
             <a
               v-if="profile.resume"
               :href="profile.resume"
-              target="_blank"
-              rel="noopener noreferrer"
+              :download="profile.resume.split('/').at(-1)"
               class="text-link"
-              >{{ $t('Ver mi currículum (2024)') }} <ArrowUpRight :size="17"
+              >{{ $t('Descarga mi CV (2026)') }} <ArrowUpRight :size="17"
             /></a>
           </div>
         </section>

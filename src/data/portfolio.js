@@ -16,7 +16,11 @@ export const profile = {
   email: '',
   linkedin: 'https://www.linkedin.com/in/vazquezhd/',
   github: 'https://github.com/VazquezHd',
-  resume: '/assets/documents/cv-jorge-ivan-2024.pdf',
+  gitlab: 'https://gitlab.com/vazquez.dg22',
+  resumes: {
+    es: '/assets/documents/jorge-ivan-vazquez-cv-es-2026.pdf',
+    en: '/assets/documents/jorge-ivan-vazquez-cv-en-2026.pdf',
+  },
   location: 'Hidalgo, México',
   skills: [
     'Levantamiento de requerimientos',

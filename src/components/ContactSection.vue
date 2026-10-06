@@ -35,6 +35,9 @@ defineProps({ profile: { type: Object, required: true } })
         <a v-if="profile.github" :href="profile.github" target="_blank" rel="noopener noreferrer"
           >{{ $t('También en GitHub') }} <ArrowUpRight :size="16" aria-hidden="true"
         /></a>
+        <a v-if="profile.gitlab" :href="profile.gitlab" target="_blank" rel="noopener noreferrer"
+          >{{ $t('También en GitLab') }} <ArrowUpRight :size="16" aria-hidden="true"
+        /></a>
       </div>
     </div>
   </section>

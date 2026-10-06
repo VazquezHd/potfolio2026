@@ -70,9 +70,9 @@ onUnmounted(() => {
       v-if="resume"
       class="header-contact"
       :href="resume"
-      download="Jorge-Ivan-Vazquez-CV-2024.pdf"
+      :download="resume.split('/').at(-1)"
       :aria-label="$t('Descarga mi CV')"
-      :title="$t('Currículum de Jorge Iván (2024)')"
+      :title="`${$t('CV de Jorge Iván · 2026')} · ${locale === 'es' ? 'Español' : 'English'}`"
     >
       <span>{{ $t('Descarga mi CV') }}</span
       ><Download :size="17" aria-hidden="true" />

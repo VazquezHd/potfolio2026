@@ -60,3 +60,5 @@ El movimiento de profundidad se gestiona en `useScrollMotion.js`: un listener pa
 Las galerías se organizan por filas con pistas compartidas para títulos y descripciones. Las miniaturas usan un encuadre uniforme; el visor conserva cada captura completa y su resolución original. El parallax se aplica por fila para mantener la alineación durante el scroll. Las cards de otros productos se calculan excluyendo el caso actual y admiten tres productos relacionados cuando el portafolio tenga cuatro casos.
 
 Las traducciones se mantienen en `src/i18n/en.json`. `usePreferences.js` centraliza idioma, tema y persistencia; la UI usa `$t` y los datos se localizan de forma reactiva. Las imágenes y el CV conservan el idioma de sus archivos originales.
+
+Los CV de 2026 están en `public/assets/documents/`. Los enlaces de descarga seleccionan ES o EN según el idioma activo. Las redes se configuran en `src/data/portfolio.js`.
