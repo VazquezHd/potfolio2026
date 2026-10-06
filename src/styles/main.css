@@ -3334,3 +3334,11 @@ h2,
     transition: none;
   }
 }
+
+@media (max-width: 700px) {
+  .carousel-controls > .carousel-case-link {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+}

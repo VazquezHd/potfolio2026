@@ -18,6 +18,7 @@ function step(direction) {
     selected.value = (selected.value + direction + props.projects.length) % props.projects.length
 }
 async function keyboard(event) {
+  if (event.altKey || event.ctrlKey || event.metaKey) return
   if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
   event.preventDefault()
   if (event.key === 'Home') selected.value = 0
@@ -115,9 +116,6 @@ onUnmounted(() => clearTimeout(clickTimer))
             :aria-hidden="selected !== index"
           >
             <p>{{ project.subtitle }}</p>
-            <a :href="`#proyecto/${project.slug}`" class="carousel-case-link"
-              >Explorar el caso <ArrowUpRight :size="18" aria-hidden="true"
-            /></a>
           </div>
         </div>
       </article>
@@ -136,6 +134,9 @@ onUnmounted(() => clearTimeout(clickTimer))
         </button>
       </div>
       <span class="carousel-hint">Selecciona o desliza</span>
+      <a :href="`#proyecto/${current.slug}`" class="carousel-case-link"
+        >Explorar el caso <ArrowUpRight :size="18" aria-hidden="true"
+      /></a>
       <div class="carousel-arrows">
         <button
           type="button"

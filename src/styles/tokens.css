@@ -1,4 +1,8 @@
 :root {
+  --wallet-base: #214f3f;
+  --wallet-primary: #34765d;
+  --wallet-accent: #91c9ae;
+  --wallet-surface: #eaf4ed;
   --space-section-gap: clamp(32px, 5vw, 64px);
   --space-panel-padding: clamp(28px, 5vw, 64px);
   --domain-base: #112833;

@@ -107,7 +107,10 @@ const study = computed(() => props.project.caseStudy)
         <p class="case-kicker">03 / Cómo estructuré la solución</p>
         <h2>{{ study.processTitle }}</h2>
         <p class="case-caption">
-          Resumen de decisiones visibles en el diseño. Validación con usuarios pendiente.
+          {{
+            study.processCaption ||
+            'Resumen de decisiones visibles en el diseño. Validación con usuarios pendiente.'
+          }}
         </p>
         <ol class="case-process">
           <li v-for="(step, index) in study.steps" :key="step.title">
@@ -119,7 +122,12 @@ const study = computed(() => props.project.caseStudy)
         <details class="case-research-details">
           <summary>Ver research propuesto y proto-personas</summary>
           <div class="research-details-content">
-            <p class="case-caption">Hipótesis de trabajo, sin entrevistas ni pruebas realizadas.</p>
+            <p class="case-caption">
+              {{
+                study.researchCaption ||
+                'Hipótesis de trabajo, sin entrevistas ni pruebas realizadas.'
+              }}
+            </p>
             <div class="case-two-grid">
               <article v-for="person in study.personas" :key="person.name" class="case-note">
                 <h3>{{ person.name }}</h3>
@@ -153,7 +161,7 @@ const study = computed(() => props.project.caseStudy)
               :href="study.paletteImage"
               target="_blank"
               rel="noopener noreferrer"
-              >Ver assets originales ↗</a
+              >{{ study.paletteLinkLabel || 'Ver assets originales ↗' }}</a
             >
           </div>
           <div class="case-type-specimen">

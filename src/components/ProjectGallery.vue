@@ -1,35 +1,90 @@
 <script setup>
-import { ref, computed, nextTick, onUnmounted } from 'vue'
+import { computed, nextTick, onUnmounted, ref, watch } from 'vue'
+import { ArrowLeft, ArrowRight, Maximize2 } from 'lucide-vue-next'
 const props = defineProps({ screens: { type: Array, required: true } })
-const rows = computed(() => {
-  const result = []
-  let pair = []
-  const flush = () => {
-    if (pair.length) {
-      result.push({ screens: pair, wide: false })
-      pair = []
-    }
+const index = ref(0)
+const screen = computed(() => props.screens[index.value])
+const mobile = computed(() => screen.value?.layout === 'mobile')
+const viewport = ref(null)
+const inlineZoom = ref(false)
+const thumbnails = ref(null)
+const focusStyle = computed(() => {
+  const s = screen.value
+  const f = s?.focus
+  if (!f) return {}
+  const x = s.width > f.width ? (f.x / (s.width - f.width)) * 100 : 50
+  const y = s.height > f.height ? (f.y / (s.height - f.height)) * 100 : 50
+  return {
+    backgroundImage: `url("${s.image}")`,
+    backgroundSize: `${(s.width / f.width) * 100}% auto`,
+    backgroundPosition: `${x}% ${y}%`,
+    aspectRatio: `${f.width} / ${f.height}`,
   }
-  for (const screen of props.screens) {
-    if (screen.layout === 'wide') {
-      flush()
-      result.push({ screens: [screen], wide: true })
-    } else {
-      pair.push(screen)
-      if (pair.length === 2) flush()
-    }
-  }
-  flush()
-  return result
 })
+async function select(value) {
+  if (!props.screens.length) return
+  index.value = (value + props.screens.length) % props.screens.length
+  inlineZoom.value = false
+  await nextTick()
+  viewport.value?.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  const item = thumbnails.value?.querySelectorAll('button')[index.value]
+  if (item)
+    thumbnails.value.scrollTo({
+      left:
+        item.offsetLeft -
+        thumbnails.value.offsetLeft -
+        (thumbnails.value.clientWidth - item.clientWidth) / 2,
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    })
+}
+async function toggleInlineZoom() {
+  const element = viewport.value
+  const image = element?.querySelector('img')
+  const x = image?.clientWidth
+    ? (element.scrollLeft + element.clientWidth / 2) / image.clientWidth
+    : 0.5
+  const y = image?.clientHeight
+    ? (element.scrollTop + element.clientHeight / 2) / image.clientHeight
+    : 0.5
+  inlineZoom.value = !inlineZoom.value
+  await nextTick()
+  if (element && image) {
+    element.scrollLeft = x * image.clientWidth - element.clientWidth / 2
+    element.scrollTop = y * image.clientHeight - element.clientHeight / 2
+  }
+}
+function keyboard(event) {
+  if (
+    viewer.value?.open ||
+    event.altKey ||
+    event.ctrlKey ||
+    event.metaKey ||
+    event.target.closest('.gallery-browser-viewport')
+  )
+    return
+  if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+  event.preventDefault()
+  select(
+    event.key === 'Home'
+      ? 0
+      : event.key === 'End'
+        ? props.screens.length - 1
+        : index.value + (event.key === 'ArrowRight' ? 1 : -1),
+  )
+}
+watch(
+  () => props.screens,
+  () => {
+    index.value = 0
+    inlineZoom.value = false
+  },
+)
 const selected = ref(null)
 const zoomed = ref(false)
 const viewer = ref(null)
 let previousOverflow = ''
-async function openScreen(event, screen) {
-  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-  event.preventDefault()
-  selected.value = screen
+async function openScreen() {
+  selected.value = screen.value
   zoomed.value = false
   previousOverflow = document.body.style.overflow
   document.body.style.overflow = 'hidden'
@@ -45,45 +100,121 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <div class="project-gallery">
-    <div
-      v-for="row in rows"
-      :key="row.screens[0].image"
-      class="gallery-row"
-      :class="{ 'is-wide': row.wide }"
-    >
-      <figure v-for="screen in row.screens" :key="screen.image" class="project-screen">
-        <figcaption>
-          <h3>{{ screen.title }}</h3>
-          <p class="screen-problem" :aria-hidden="!screen.problem || undefined">
-            {{ screen.problem }}
-          </p>
-          <p class="screen-description">{{ screen.description }}</p>
-        </figcaption>
-        <a
-          :href="screen.image"
-          target="_blank"
-          rel="noopener noreferrer"
-          :aria-label="`Ampliar: ${screen.title}`"
-          class="screen-link"
-          @click="openScreen($event, screen)"
-        >
-          <span class="screen-preview"
-            ><img
-              :src="screen.image"
-              :alt="screen.alt"
-              :width="screen.width"
-              :height="screen.height"
-              loading="lazy"
-              decoding="async"
-          /></span>
-          <span class="screen-meta"
-            ><small v-if="screen.skill">{{ screen.skill }}</small
-            ><span>Ver captura completa ↗</span></span
-          >
-        </a>
-      </figure>
+  <div
+    v-if="screen"
+    class="gallery-showcase"
+    role="region"
+    aria-label="Pantallas y decisiones del producto"
+    @keydown="keyboard"
+  >
+    <div ref="thumbnails" class="gallery-thumbnails" aria-label="Elegir pantalla">
+      <button
+        v-for="(item, position) in screens"
+        :key="item.image"
+        type="button"
+        :aria-label="`Ver pantalla: ${item.title}`"
+        :aria-pressed="index === position"
+        @click="select(position)"
+      >
+        <span class="gallery-thumb-image"
+          ><img
+            :src="item.image"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            :class="{ portrait: item.layout === 'mobile' }"
+        /></span>
+        <span class="gallery-thumb-title">{{ item.title }}</span>
+      </button>
     </div>
+    <figure class="gallery-feature">
+      <figcaption class="gallery-feature-caption">
+        <span class="case-kicker"
+          >{{ String(index + 1).padStart(2, '0') }} /
+          {{ String(screens.length).padStart(2, '0') }} · {{ screen.skill }}</span
+        >
+        <h3>{{ screen.title }}</h3>
+        <p v-if="screen.problem" class="gallery-feature-problem">{{ screen.problem }}</p>
+        <p>{{ screen.description }}</p>
+      </figcaption>
+      <div v-if="mobile" class="gallery-mobile-stage">
+        <div class="gallery-phone-frame">
+          <img
+            :key="screen.image"
+            :src="screen.image"
+            :alt="screen.alt"
+            :width="screen.width"
+            :height="screen.height"
+            decoding="async"
+          />
+        </div>
+        <div v-if="screen.focus" class="gallery-focus-panel">
+          <p class="case-kicker">Detalle del recorrido</p>
+          <h4>{{ screen.focusLabel || screen.skill }}</h4>
+          <div
+            class="gallery-focus-crop"
+            :style="focusStyle"
+            role="img"
+            :aria-label="`Detalle ampliado: ${screen.focusLabel || screen.title}`"
+          ></div>
+          <p class="gallery-focus-note">Este detalle complementa la pantalla completa.</p>
+        </div>
+      </div>
+      <div v-else class="gallery-browser-frame">
+        <div class="gallery-browser-bar" aria-hidden="true">
+          <span class="gallery-browser-dots"><i></i><i></i><i></i></span
+          ><span>{{ screen.skill }}</span
+          ><span>Vista del diseño</span>
+        </div>
+        <div
+          ref="viewport"
+          class="gallery-browser-viewport"
+          :class="{ 'is-zoomed': inlineZoom }"
+          tabindex="0"
+          :aria-label="`Captura desplazable: ${screen.title}`"
+        >
+          <img
+            :key="screen.image"
+            :src="screen.image"
+            :alt="screen.alt"
+            :width="screen.width"
+            :height="screen.height"
+            decoding="async"
+          />
+        </div>
+      </div>
+      <div class="gallery-feature-footer">
+        <p>
+          {{
+            mobile
+              ? 'Pantalla completa y detalle de la tarea.'
+              : 'Desplázate dentro de la captura para ver el resto.'
+          }}
+        </p>
+        <button
+          v-if="!mobile"
+          type="button"
+          class="gallery-inline-zoom"
+          :aria-pressed="inlineZoom"
+          @click="toggleInlineZoom"
+        >
+          {{ inlineZoom ? 'Vista completa' : 'Acercar aquí' }}
+        </button>
+        <button type="button" class="gallery-expand" @click="openScreen">
+          Ampliar <Maximize2 :size="15" aria-hidden="true" />
+        </button>
+        <div class="gallery-feature-arrows">
+          <button type="button" aria-label="Pantalla anterior" @click="select(index - 1)">
+            <ArrowLeft :size="18" /></button
+          ><button type="button" aria-label="Pantalla siguiente" @click="select(index + 1)">
+            <ArrowRight :size="18" />
+          </button>
+        </div>
+      </div>
+    </figure>
+    <p class="sr-only" role="status" aria-live="polite">
+      Pantalla {{ index + 1 }} de {{ screens.length }}: {{ screen.title }}
+    </p>
     <dialog
       ref="viewer"
       class="screen-viewer"

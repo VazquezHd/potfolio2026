@@ -1,3 +1,4 @@
+import { walletProject } from './wallet-ciudadana'
 import { domainProject } from './extincion-dominio'
 import { detentionProject } from './control-detenidos'
 import { schoolCase } from './gestion-escolar'
@@ -199,6 +200,7 @@ export const projects = [
   },
   detentionProject,
   domainProject,
+  walletProject,
 ]
 
 export const process = [

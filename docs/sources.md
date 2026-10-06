@@ -88,3 +88,20 @@ Los paneles de la portada comparten separación y padding mediante tokens de esp
 ### Movimiento del portafolio de referencia
 
 Se revisó https://dmejia.vercel.app: combina parallax decorativo en el inicio, entradas progresivas y contenido de experiencia y formación integrado en la página. Para este portafolio se implementan profundidad de inicio más visible, parallax de imágenes dentro de marcos recortados y entradas con Web Animations API. La estructura de experiencia y formación queda como recomendación, sin incorporar fechas ni cargos no confirmados. El movimiento respeta la preferencia de reducción de animaciones.
+
+## Wallet ciudadana · NIDO (6 de octubre de 2026)
+
+- Alcance confirmado por Jorge Iván: almacenamiento de documentos digitales, uso en trámites y gestión de documentos de hijos o dependientes como padre, madre o tutor.
+- El archivo contiene objetivos, requerimientos, perfiles propuestos, criterios móviles, vigencia, organización y errores del recorrido. Se sintetizan en el caso; no se atribuyen entrevistas ni resultados de pruebas.
+- Nueve capturas a escala 2: inicio web (2:74100), carpetas (2:62075), estructura de carpeta familiar de demostración (2:64494), carpetas móviles (2:29550), consulta móvil (2:53092), detalle (2:34060), compartir (composición temporal de 2:55436 y 2:62012), catálogo (1936:45216) e inicio de trámite (1926:40202).
+- El modal visible ofrece descarga y vínculo; selección de área destinataria se identifica como alcance descrito por el usuario, sin inventar una pantalla de esa función.
+- Adaptación solicitada: verde bosque #214F3F, principal #34765D, menta #91C9AE y superficie #EAF4ED. Se sustituyen vino y dorado en copias temporales, se retiran patrones y marca institucional. Montserrat se identifica en los nodos.
+- NIDO es identidad ficticia. Credenciales, documentos, avatar, datos y trámite se sustituyen por elementos de demostración. La carpeta familiar muestra datos de ejemplo sobre la estructura existente; no acredita un selector de tutela implementado.
+- Las versiones publicables se revisaron: cero nombres identificables, logos institucionales, rellenos vino ni fotos originales visibles. Las copias de Figma se retiraron; los originales se conservan. No se publica enlace al archivo original.
+- Vector de identidad: `src/assets/branding/nido.svg`. PNGs organizados en `public/assets/images/projects/wallet-ciudadana/`.
+
+### Presentación y navegación
+
+- Proyectos: carrusel expansible con selección, teclado, flechas y arrastre, inspirado en el video proporcionado por el usuario. Acceso al caso fuera del área que cambia de tamaño. Sin reproducción automática.
+- Proceso: cuatro pasos en una fila de escritorio y una vista breve en móvil; detalle dentro de los casos.
+- Las galerías de los cuatro casos usan miniaturas y una captura grande. Vistas web desplazables dentro de un marco de navegador. Móviles completos con ampliaciones de áreas funcionales tomadas de la misma captura; no alteran sus contenidos. La vista ampliada es opcional.

@@ -18,7 +18,7 @@ export function useScrollMotion(route) {
     ['.hero-art', 0.24, 56, '--scroll-shift'],
     ['.about-art', 0.14, 20, '--scroll-shift'],
     [
-      '.project-carousel, .related-products-grid, .gallery-row, .case-lead-screen',
+      '.project-carousel, .related-products-grid, .gallery-showcase, .case-lead-screen',
       0.055,
       18,
       '--scroll-shift',
@@ -31,7 +31,7 @@ export function useScrollMotion(route) {
     ],
   ]
   const reveals =
-    '.hero-copy, .section-heading, .about-copy, .expertise-grid, .process-compact, .contact-copy, .case-intro-grid, .case-chapter > h2, .case-three-grid, .case-flow-panel, .case-system-grid, .gallery-row'
+    '.hero-copy, .section-heading, .about-copy, .expertise-grid, .process-compact, .contact-copy, .case-intro-grid, .case-chapter > h2, .case-three-grid, .case-flow-panel, .case-system-grid, .gallery-showcase'
   function reset() {
     for (const entry of entries) entry.element.style.removeProperty(entry.property)
     for (const animation of animations) animation.cancel()
