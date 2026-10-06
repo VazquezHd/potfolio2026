@@ -68,3 +68,23 @@ Por solicitud de Jorge Iván, las nueve capturas con navegación se reexportaron
 - Fuente del logo: Montserrat SemiBold/Regular. Vector local: `src/assets/branding/nexo.svg`. Las nueve capturas de navegación se reexportaron a escala 2 con esa identidad.
 - Las copias temporales se retiraron tras exportar. NEXO es una marca de presentación del portafolio, no un nombre institucional confirmado.
 - Al final de cada caso, las cards con miniaturas muestran todos los demás productos disponibles. Se excluye el caso actual y la grilla admite los tres enlaces cuando existan cuatro productos.
+
+## Extinción de dominio · versión de presentación (6 de octubre de 2026)
+
+- Alcance confirmado por Jorge Iván: gestión de bienes incautados, varios perfiles, recopilación en fase preparatoria y seguimiento en fase procesal.
+- Diez vistas: resumen (834:4964), expedientes (834:5431), registro del bien (1756:16330), investigación (1757:19046), asignación (1761:23946), consulta del bien preparado (1765:30165), seguimiento procesal (1299:2118), demanda (1673:5678), audiencia (1682:6968) y transferencia (1692:7329).
+- Exportaciones a escala 2 desde copias temporales. Se sustituyen logo y datos por TRAZA, identidad ficticia, personas y equipos de demostración, folios DEMO y ubicación de ejemplo. Se retira la marca de agua de la barra lateral.
+- No se publican documentos de expedientes, imágenes de personas, domicilios originales, nombres de clientes, enlaces a archivos originales ni afiliación institucional. Las fuentes originales de Figma se mantienen sin cambios.
+- Assets 7:658 y 7:670: Montserrat y paleta con base #112833, principal #08394A y acentos #B38E5D/#D4C19C. Tokens en CSS; fuente local ya disponible.
+- Decisiones descritas a partir de las pantallas. No se atribuyen entrevistas, métricas, validaciones realizadas, cumplimiento normativo ni despliegue no confirmados.
+- La revisión de presentación cubre los contenidos exportados y publicados por este proyecto; no verifica titularidad, permisos contractuales ni acuerdos de confidencialidad.
+
+### Posicionamiento de Product Designer
+
+El usuario confirma capacidad para levantar necesidades y requerimientos y crear flujos. La portada prioriza esas competencias y conserva Lead UX/UI Designer como cargo actual en la biografía. Cada caso conecta necesidades y decisiones observables con un recorrido resumido de sus pantallas. Estos recorridos son documentación editorial del diseño; no se presentan como entrevistas, pruebas o artefactos de investigación originales. La validación pendiente sigue identificada.
+
+Los paneles de la portada comparten separación y padding mediante tokens de espaciado. TRAZA se centra en la barra lateral de las diez versiones anonimizadas, con mayor separación superior. Los originales de Figma se conservan.
+
+### Movimiento del portafolio de referencia
+
+Se revisó https://dmejia.vercel.app: combina parallax decorativo en el inicio, entradas progresivas y contenido de experiencia y formación integrado en la página. Para este portafolio se implementan profundidad de inicio más visible, parallax de imágenes dentro de marcos recortados y entradas con Web Animations API. La estructura de experiencia y formación queda como recomendación, sin incorporar fechas ni cargos no confirmados. El movimiento respeta la preferencia de reducción de animaciones.

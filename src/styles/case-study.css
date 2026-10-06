@@ -721,6 +721,8 @@
   gap: 48px;
 }
 .gallery-row {
+  width: 100%;
+  min-width: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto auto auto auto;
@@ -889,4 +891,102 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
+}
+
+@media (min-width: 701px) {
+  .related-products-grid.two-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 701px) {
+  .gallery-row:not(.is-wide) > .project-screen:only-child {
+    grid-column: 1 / -1;
+  }
+  .gallery-row:not(.is-wide) > .project-screen:only-child .screen-preview {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.case-note .case-note-need {
+  margin-bottom: 12px;
+}
+.case-note p strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.case-flow-panel {
+  margin-top: 32px;
+  padding: 28px;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 16px;
+  background: var(--color-glass);
+}
+.case-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+.case-flow li {
+  min-width: 0;
+  border-top: 2px solid var(--color-border);
+  padding-top: 16px;
+}
+.case-flow-number {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-accent);
+  font-size: 13px;
+}
+.case-flow strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 550;
+}
+.case-flow small {
+  display: block;
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .case-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 500px) {
+  .case-flow-panel {
+    padding: 20px;
+  }
+  .case-flow {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* The viewport is stationary; only its image moves, without changing card baselines. */
+.product-case .gallery-row:not(.is-wide) .screen-preview > img,
+.related-product-preview > img {
+  top: -8%;
+  bottom: auto;
+  height: 116%;
+  translate: 0 var(--image-shift, 0px);
+}
+.related-product-preview {
+  position: relative;
+}
+.related-product-preview > img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-case .screen-preview > img,
+  .related-product-preview > img {
+    translate: none;
+  }
 }

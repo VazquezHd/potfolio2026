@@ -2849,3 +2849,57 @@ h2,
     margin-inline: auto;
   }
 }
+
+@media (min-width: 1100px) {
+  .project-list.three-projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* One spacing rule for the main surfaces: separate panels and inset their content. */
+#contenido > section + section,
+#contenido > .product-case + .contact-section {
+  margin-block-start: var(--space-section-gap);
+}
+#contenido > :is(.projects-section, .about-section, .expertise-section, .process-section) {
+  padding-block: var(--space-panel-padding);
+}
+.expertise-section > .section-heading {
+  margin-bottom: 32px;
+}
+.expertise-grid article {
+  display: flex;
+  flex-direction: column;
+}
+.expertise-grid article small {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+/* Share title, description and capability tracks across the cards in each row. */
+.expertise-grid {
+  grid-template-rows: auto auto auto;
+  gap: 16px 22px;
+}
+.expertise-grid article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  min-width: 0;
+}
+.expertise-grid article h3,
+.expertise-grid article p,
+.expertise-grid article small {
+  margin: 0;
+  padding-top: 0;
+}
+
+/* Increased hero depth has its own travel space, independent of the section gap. */
+.hero-main {
+  padding-block: 72px;
+}
+@media (max-width: 700px) {
+  .hero-main {
+    padding-block: 32px;
+  }
+}

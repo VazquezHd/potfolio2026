@@ -7,7 +7,10 @@ defineProps({ profile: { type: Object, required: true } })
     <div class="contact-copy">
       <span class="eyebrow muted">¿Lo hablamos?</span>
       <h2>¿Tienes un proyecto<br />en mente?</h2>
-      <p>Si buscas a alguien que conecte diseño y desarrollo, me gustaría conocer tu proyecto.</p>
+      <p>
+        Si necesitas convertir una operación compleja en una experiencia clara, hablemos de tu
+        producto.
+      </p>
     </div>
     <div class="contact-actions">
       <a

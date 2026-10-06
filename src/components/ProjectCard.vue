@@ -32,7 +32,7 @@ defineProps({ project: { type: Object, required: true } })
         </div>
       </div>
       <a class="case-link" :href="`#proyecto/${project.slug}`"
-        >Ver proyecto <ArrowUpRight :size="17"
+        >Ver caso de producto <ArrowUpRight :size="17"
       /></a>
     </div>
   </article>

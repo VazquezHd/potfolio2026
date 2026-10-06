@@ -18,17 +18,26 @@ async function walk(dir) {
   }
   return result
 }
+async function validImage(path) {
+  const file = Bun.file(path)
+  if (!(await file.exists()) || file.size < 8) return false
+  if (path.endsWith('.png')) {
+    const signature = new Uint8Array(await file.slice(0, 8).arrayBuffer())
+    return [137, 80, 78, 71, 13, 10, 26, 10].every((byte, index) => signature[index] === byte)
+  }
+  return true
+}
 const slugs = new Set()
 for (const project of projects) {
   if (slugs.has(project.slug)) failures.push(`Slug repetido: ${project.slug}`)
   slugs.add(project.slug)
   if (
     !project.image.startsWith('/assets/images/projects/') ||
-    !(await Bun.file(`public${project.image}`).exists())
+    !(await validImage(`public${project.image}`))
   )
     failures.push(`Imagen inválida: ${project.slug}`)
   for (const screen of project.gallery || []) {
-    if (!(await Bun.file(`public${screen.image}`).exists()) || !screen.alt.trim())
+    if (!(await validImage(`public${screen.image}`)) || !screen.alt.trim())
       failures.push(`Pantalla inválida: ${project.slug} ${screen.title}`)
   }
   if (!project.imageAlt.trim()) failures.push(`Falta texto alternativo: ${project.slug}`)

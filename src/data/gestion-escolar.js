@@ -1,5 +1,12 @@
 // Hipótesis propuestas para el caso; no representan investigación realizada.
 export const schoolCase = {
+  flowTitle: 'Consultar y dar seguimiento',
+  flow: [
+    { label: 'Buscar alumno', detail: 'Localizar el registro' },
+    { label: 'Consultar situación', detail: 'Revisar indicadores' },
+    { label: 'Revisar pagos', detail: 'Distinguir pendientes' },
+    { label: 'Dar seguimiento', detail: 'Conservar el contexto' },
+  ],
   problemLabel: 'Hipótesis de problema por validar',
   leadCaption: 'Diseñé una visión general para conectar indicadores y actividad.',
   processTitle: 'Un MVP centrado en administración.',
@@ -12,14 +19,17 @@ export const schoolCase = {
   opportunities: [
     {
       title: 'Conectar información',
+      need: 'Consultar al alumno junto con su familia y sus pagos.',
       text: 'Organicé perfiles e indicadores alrededor de las tareas administrativas.',
     },
     {
       title: 'Reconocer pendientes',
+      need: 'Distinguir lo que requiere seguimiento administrativo.',
       text: 'Hice visibles adeudos y estados para orientar el seguimiento.',
     },
     {
       title: 'Definir responsabilidades',
+      need: 'Dar acceso según la tarea de cada perfil.',
       text: 'Separé consulta y edición para expresar el alcance de cada rol.',
     },
   ],

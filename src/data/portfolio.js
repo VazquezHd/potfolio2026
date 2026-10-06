@@ -1,3 +1,4 @@
+import { domainProject } from './extincion-dominio'
 import { detentionProject } from './control-detenidos'
 import { schoolCase } from './gestion-escolar'
 // Perfil actualizado con información proporcionada directamente por Jorge Iván.
@@ -5,18 +6,21 @@ export const profile = {
   name: 'Jorge Iván Vázquez Hernández',
   initials: 'JI',
   shortName: 'Jorge Iván',
-  role: 'Lead UX/UI Designer',
+  role: 'Product Designer',
   introduction:
-    'Construyo sistemas de diseño en Figma y desarrollo interfaces con Vue.js, Nuxt 3 y Tailwind CSS. Entiendo las restricciones de APIs y bases de datos, y trabajo con ingeniería para resolverlas desde el diseño.',
+    'Diseño la experiencia desde la arquitectura de información hasta los componentes, estados e interfaces en Figma. Trabajo con ingeniería desde el inicio y puedo implementar las vistas en Vue.js, Nuxt 3 y Tailwind CSS.',
   about:
-    'Lidero el diseño UX/UI de plataformas para el sector público en una empresa de software. Transformo operaciones complejas en flujos claros y diseño desde la arquitectura de componentes hasta la interfaz funcional.',
+    'Soy Product Designer y actualmente trabajo como Lead UX/UI Designer. Levanto necesidades y requerimientos, entiendo la operación y traduzco sus reglas en un alcance de producto y flujos de usuario claros.',
   email: '',
   linkedin: 'https://www.linkedin.com/in/vazquezhd/',
   github: 'https://github.com/VazquezHd',
   resume: '/assets/documents/cv-jorge-ivan-2024.pdf',
   location: 'Hidalgo, México',
   skills: [
-    'Arquitectura de producto',
+    'Levantamiento de requerimientos',
+    'Definición de MVP',
+    'Flujos de usuario',
+    'Arquitectura de información',
     'Sistemas de diseño',
     'Diseño UX/UI',
     'Desarrollo frontend',
@@ -34,7 +38,7 @@ export const profile = {
       year: '2024–2025',
     },
   ],
-  hero: 'Conecto diseño y desarrollo para llevar productos al mercado con menos fricción.',
+  hero: 'Levanto necesidades y requerimientos. Los convierto en flujos claros e interfaces que resuelven tareas concretas.',
   value:
     'Acelero el time to market porque diseño y desarrollo comparten la misma lógica: componentes, estados y reglas claras. Puedo implementar las vistas en frontend, resolver dudas técnicas y reducir la distancia entre el prototipo y el producto.',
   background: 'Mi formación en diseño evolucionó hacia la arquitectura de producto y el código.',
@@ -42,22 +46,22 @@ export const profile = {
     'También lidero proyectos independientes de software: defino el MVP, estructuro la propuesta web y la identidad del producto, y coordino la ejecución con ingenieros de software.',
   stack: [
     {
-      title: 'Sistemas de diseño',
-      tools: 'Figma · Variables · Design tokens · Auto Layout avanzado',
+      title: 'Necesidades y requerimientos',
+      tools: 'Levantamiento · Reglas de negocio · Alcance del MVP',
       description:
-        'Sistemas completos con componentes reutilizables y reglas que conectan diseño e implementación.',
+        'Entiendo quién necesita hacer qué, identifico restricciones y convierto la operación en requerimientos claros.',
     },
     {
-      title: 'Interfaces en producción',
-      tools: 'Vue.js · Nuxt 3 · Tailwind CSS',
+      title: 'Flujos y experiencia',
+      tools: 'Arquitectura de información · Perfiles · Estados',
       description:
-        'Construcción de vistas con una arquitectura de componentes preparada para crecer con el producto.',
+        'Organizo información, acciones y recorridos para que cada persona pueda completar su tarea con contexto.',
     },
     {
-      title: 'Ejecución con ingeniería',
-      tools: 'Git · VS Code · macOS',
+      title: 'UI y desarrollo',
+      tools: 'Figma · Sistemas de diseño · Vue · Nuxt · Tailwind',
       description:
-        'Un mismo lenguaje técnico para definir el MVP, coordinar la ejecución y acelerar la entrega.',
+        'Llevo los flujos a interfaces consistentes y componentes que diseño y desarrollo pueden compartir.',
     },
   ],
 }
@@ -70,14 +74,14 @@ export const projects = [
     context: 'Medio superior y superior',
     imageWidth: 2880,
     imageHeight: 2554,
-    subtitle: 'Personas, pagos y responsabilidades en una operación conectada.',
+    subtitle: 'Consultar alumnos, pagos y pendientes con el mismo contexto.',
     category: 'Diseño de producto',
     image: '/assets/images/projects/gestion-escolar/dashboard.png',
     imageAlt: 'Dashboard del rol administrador con resumen escolar, ingresos y actividad reciente.',
     color: 'blue',
     presentation: 'interface',
     status: 'Rol administrador',
-    tags: ['Producto web', 'Gestión escolar', 'Figma'],
+    tags: ['Definición de MVP', 'Flujos', 'UX/UI'],
     description:
       'Plataforma para gestionar la comunidad escolar y los movimientos de efectivo. Primer alcance construido: administración.',
     problemTitle: 'Una escuela, muchas tareas.',
@@ -194,31 +198,32 @@ export const projects = [
     ],
   },
   detentionProject,
+  domainProject,
 ]
 
 export const process = [
   {
     number: '01',
-    title: 'Definir',
-    text: 'Convierto la complejidad operativa en flujos y un MVP con alcance claro.',
-    tags: 'Producto · Flujos · MVP',
+    title: 'Entender',
+    text: 'Levanto necesidades y requerimientos: personas, tareas, reglas y restricciones.',
+    tags: 'Necesidades · Requerimientos',
   },
   {
     number: '02',
-    title: 'Sistematizar',
-    text: 'Estructuro componentes, variables y tokens para que la experiencia pueda escalar.',
-    tags: 'Figma · COMPONENTES · TOKENS',
+    title: 'Definir',
+    text: 'Priorizo el MVP y organizo la información, los perfiles y sus flujos.',
+    tags: 'Alcance · Arquitectura · Flujos',
   },
   {
     number: '03',
-    title: 'Construir',
-    text: 'Desarrollo las vistas en frontend con las restricciones de APIs y datos en mente.',
-    tags: 'Vue · Nuxt · Tailwind',
+    title: 'Diseñar',
+    text: 'Convierto los recorridos en interfaces con jerarquía, componentes y estados claros.',
+    tags: 'UX · UI · Sistemas de diseño',
   },
   {
     number: '04',
-    title: 'Entregar',
-    text: 'Coordino la ejecución con ingeniería para reducir fricción y acelerar la salida al mercado.',
-    tags: 'Ingeniería · Entrega',
+    title: 'Construir',
+    text: 'Alineo decisiones con ingeniería y puedo implementar las vistas en frontend.',
+    tags: 'Componentes · Frontend · Entrega',
   },
 ]

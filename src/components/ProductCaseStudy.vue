@@ -29,7 +29,7 @@ const study = computed(() => props.project.caseStudy)
           </div>
           <div>
             <dt>Enfoque del caso</dt>
-            <dd>Producto · UX · Sistemas</dd>
+            <dd>Necesidades · Flujos · UX/UI</dd>
           </div>
           <div>
             <dt>Herramienta de diseño</dt>
@@ -38,6 +38,7 @@ const study = computed(() => props.project.caseStudy)
         </dl>
       </div>
       <p class="case-summary">{{ project.description }}</p>
+      <p v-if="project.presentationNote" class="case-caption">{{ project.presentationNote }}</p>
       <figure class="case-lead-screen">
         <a
           :href="project.image"
@@ -63,7 +64,7 @@ const study = computed(() => props.project.caseStudy)
     </header>
     <nav class="case-index" aria-label="Contenido del caso">
       <a :href="`#proyecto/${project.slug}/caso-problema`">Problema</a>
-      <a :href="`#proyecto/${project.slug}/caso-solucion`">Pantallas</a>
+      <a :href="`#proyecto/${project.slug}/caso-solucion`">Solución</a>
       <a :href="`#proyecto/${project.slug}/caso-proceso`">Proceso</a>
       <a :href="`#proyecto/${project.slug}/caso-sistema`">Sistema visual</a>
     </nav>
@@ -76,23 +77,37 @@ const study = computed(() => props.project.caseStudy)
         <div class="case-three-grid">
           <article v-for="item in study.opportunities" :key="item.title" class="case-note">
             <h3>{{ item.title }}</h3>
-            <p>{{ item.text }}</p>
+            <p v-if="item.need" class="case-note-need">
+              <strong>Necesidad.</strong> {{ item.need }}
+            </p>
+            <p><strong>Decisión.</strong> {{ item.text }}</p>
           </article>
+        </div>
+        <div v-if="study.flow" class="case-flow-panel">
+          <p class="case-kicker">Flujo clave · Resumen del diseño</p>
+          <h3>{{ study.flowTitle }}</h3>
+          <ol class="case-flow">
+            <li v-for="(step, index) in study.flow" :key="step.label">
+              <span class="case-flow-number">0{{ index + 1 }}</span>
+              <strong>{{ step.label }}</strong>
+              <small>{{ step.detail }}</small>
+            </li>
+          </ol>
         </div>
       </section>
       <section id="caso-solucion" class="case-chapter">
-        <p class="case-kicker">02 / El producto en pantallas</p>
-        <h2>Diseñé alrededor de lo que hay que resolver.</h2>
+        <p class="case-kicker">02 / De la decisión a la interfaz</p>
+        <h2>Así se traduce el problema en una solución.</h2>
         <p class="case-caption">
           Diseño en Figma · Contenido de demostración · Capturas ampliables
         </p>
         <ProjectGallery :screens="project.gallery" />
       </section>
       <section id="caso-proceso" class="case-chapter">
-        <p class="case-kicker">03 / Criterio de producto</p>
+        <p class="case-kicker">03 / Cómo estructuré la solución</p>
         <h2>{{ study.processTitle }}</h2>
         <p class="case-caption">
-          Resumen del enfoque propuesto. Investigación y validación pendientes.
+          Resumen de decisiones visibles en el diseño. Validación con usuarios pendiente.
         </p>
         <ol class="case-process">
           <li v-for="(step, index) in study.steps" :key="step.title">
@@ -125,7 +140,7 @@ const study = computed(() => props.project.caseStudy)
         <h2>Un lenguaje que se mantiene entre módulos.</h2>
         <div class="case-system-grid">
           <div>
-            <h3>Paleta original</h3>
+            <h3>{{ study.paletteLabel || 'Paleta original' }}</h3>
             <ul class="case-swatches">
               <li v-for="color in study.palette" :key="color.token">
                 <span :style="{ background: `var(${color.token})` }"></span
@@ -159,7 +174,12 @@ const study = computed(() => props.project.caseStudy)
         </div>
         <div class="case-takeaway">
           <p>{{ study.conclusion }}</p>
-          <a :href="project.source" target="_blank" rel="noopener noreferrer" class="text-link"
+          <a
+            v-if="project.source"
+            :href="project.source"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-link"
             >Explorar el diseño en Figma ↗</a
           >
         </div>

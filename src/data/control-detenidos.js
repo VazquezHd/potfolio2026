@@ -3,7 +3,7 @@ const screen = (file, title, description, skill, height, extra = {}) => ({
   title,
   description,
   skill,
-  image: `${base}${file}.png`,
+  image: `${base}${file.includes('.') ? file : `${file}.png`}`,
   alt: `${title}. Vista del diseño con contenido de demostración.`,
   width: 2880,
   height,
@@ -14,7 +14,7 @@ export const detentionProject = {
   slug: 'control-detenidos',
   number: '02',
   name: 'Control de detenidos',
-  subtitle: 'Cada persona, pertenencia y movimiento con contexto.',
+  subtitle: 'Seguir pertenencias y movimientos sin perder el contexto.',
   category: 'Diseño de producto',
   domain: 'Operación entre áreas',
   context: 'Personas · Pertenencias · Dependencias',
@@ -25,7 +25,7 @@ export const detentionProject = {
   imageHeight: 2048,
   color: 'blue',
   presentation: 'interface',
-  tags: ['Producto web', 'Trazabilidad', 'Figma'],
+  tags: ['Arquitectura', 'Flujos', 'UX/UI'],
   description:
     'Sistema para relacionar expedientes y pertenencias, registrar sus movimientos y coordinar solicitudes con MP, SEMEFO y otras áreas.',
   source: 'https://www.figma.com/design/2LKWtCgnYCQHz8bGTJ4MXi/Control-de-detenidos?node-id=1-3',
@@ -54,7 +54,7 @@ export const detentionProject = {
       { problem: 'Saber dónde está algo exige entender cómo llegó ahí.' },
     ),
     screen(
-      'oficios',
+      'oficios.jpg',
       'Mantener la conversación dentro del caso',
       'Mensajes, adjuntos y respuestas comparten contexto con el oficio y su línea de tiempo.',
       'Coordinación entre áreas',
@@ -62,14 +62,14 @@ export const detentionProject = {
       { problem: 'Una respuesta pierde utilidad si se separa de su solicitud.' },
     ),
     screen(
-      'comunicacion',
+      'comunicacion.jpg',
       'Coordinar solicitudes entre dependencias',
       'Separé destinos y estados para seguir lo enviado, lo recibido y lo que sigue en proceso.',
       'Visibilidad del estado',
       2952,
     ),
     screen(
-      'respuesta',
+      'respuesta.jpg',
       'Dar continuidad a una solicitud',
       'Los comentarios y estados hacen visible qué necesita revisión y qué acción puede seguir.',
       'Diseño de seguimiento',
@@ -99,6 +99,13 @@ export const detentionProject = {
     ),
   ],
   caseStudy: {
+    flowTitle: 'Seguir una pertenencia dentro del caso',
+    flow: [
+      { label: 'Abrir expediente', detail: 'Ubicar el caso' },
+      { label: 'Vincular pertenencias', detail: 'Relacionar el inventario' },
+      { label: 'Registrar movimiento', detail: 'Conservar responsable y estado' },
+      { label: 'Consultar historial', detail: 'Reconstruir el recorrido' },
+    ],
     challenge: 'La trazabilidad se pierde cuando el contexto se fragmenta.',
     scenario:
       'Personas, pertenencias, movimientos y mensajes necesitan conservar su relación durante todo el seguimiento.',
@@ -110,14 +117,17 @@ export const detentionProject = {
     opportunities: [
       {
         title: 'Conservar el contexto',
+        need: 'Saber a qué expediente pertenece cada objeto.',
         text: 'Relacioné expedientes, pertenencias y movimientos dentro de una navegación compartida.',
       },
       {
         title: 'Dar continuidad',
+        need: 'Consultar una respuesta junto con su solicitud.',
         text: 'Vinculé solicitudes, mensajes y respuestas con su estado e historial.',
       },
       {
         title: 'Hacer visible la operación',
+        need: 'Reconstruir movimientos y sus responsables.',
         text: 'Separé la consulta de casos, la auditoría y los permisos por perfil.',
       },
     ],

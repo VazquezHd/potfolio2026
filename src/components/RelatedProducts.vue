@@ -5,7 +5,7 @@ defineProps({ projects: { type: Array, required: true } })
   <section v-if="projects.length" class="related-products" aria-labelledby="related-products-title">
     <p class="case-kicker">Continúa explorando</p>
     <h2 id="related-products-title">Otros productos</h2>
-    <div class="related-products-grid">
+    <div class="related-products-grid" :class="{ 'two-products': projects.length === 2 }">
       <a
         v-for="project in projects"
         :key="project.slug"

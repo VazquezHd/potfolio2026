@@ -1,4 +1,10 @@
 :root {
+  --space-section-gap: clamp(32px, 5vw, 64px);
+  --space-panel-padding: clamp(28px, 5vw, 64px);
+  --domain-base: #112833;
+  --domain-primary: #08394a;
+  --domain-accent: #b38e5d;
+  --domain-support: #d4c19c;
   --detention-base: #112833;
   --detention-primary: #08394a;
   --detention-neutral: #707272;

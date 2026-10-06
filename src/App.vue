@@ -40,7 +40,7 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           </div>
           <div class="hero-main">
             <div class="hero-copy">
-              <h1>Del diseño<br />al <span class="text-accent">producto.</span></h1>
+              <h1>Del problema<br />al <span class="text-accent">producto.</span></h1>
               <p>{{ profile.hero }}</p>
               <a href="#proyectos" class="button-primary"
                 >Explorar proyectos <ArrowDown :size="17"
@@ -50,7 +50,7 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           </div>
           <div class="hero-bottom">
             <span>{{ profile.name }}</span
-            ><span>Diseño de producto <i>·</i> Sistemas <i>·</i> Frontend</span
+            ><span>Necesidades <i>·</i> Flujos <i>·</i> UX/UI</span
             ><a href="#proyectos" aria-label="Ir a proyectos"><ArrowDown :size="16" /></a>
           </div>
         </section>
@@ -58,9 +58,9 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           <div class="section-heading">
             <div>
               <span class="eyebrow muted">Proyectos seleccionados</span>
-              <h2>Proyectos que toman <span class="text-accent">forma.</span></h2>
+              <h2>Problemas convertidos en <span class="text-accent">producto.</span></h2>
             </div>
-            <p>Del primer porqué al último detalle.<br />Un vistazo a cómo pienso y diseño.</p>
+            <p>El problema, el recorrido y las decisiones.<br />Así conecto UX y UI.</p>
           </div>
           <div v-if="filters.length > 2" class="project-toolbar">
             <div class="filters" role="group" aria-label="Filtrar proyectos">
@@ -76,7 +76,13 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
             </div>
             <span class="sample-note">Diseño UX/UI · Figma</span>
           </div>
-          <div class="project-list" :class="{ 'single-project': projects.length === 1 }">
+          <div
+            class="project-list"
+            :class="{
+              'single-project': projects.length === 1,
+              'three-projects': projects.length === 3,
+            }"
+          >
             <ProjectCard v-for="project in shown" :key="project.slug" :project="project" />
           </div>
         </section>
@@ -87,8 +93,8 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           </div>
           <div class="about-copy">
             <span class="eyebrow muted">Sobre mí</span>
-            <h2>Diseño sistemas.<br />Construyo <span class="text-accent">producto.</span></h2>
-            <p class="about-intro">Soy {{ profile.shortName }}, Lead UX/UI Designer.</p>
+            <h2>Entiendo necesidades.<br />Diseño <span class="text-accent">soluciones.</span></h2>
+            <p class="about-intro">Soy {{ profile.shortName }}, Product Designer.</p>
             <p>{{ profile.about }}</p>
             <p>{{ profile.introduction }}</p>
             <p class="value-statement">{{ profile.value }}</p>
@@ -113,8 +119,8 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
         >
           <div class="section-heading">
             <div>
-              <span class="eyebrow muted">Herramientas y experiencia</span>
-              <h2>Del sistema a la <span class="text-accent">interfaz.</span></h2>
+              <span class="eyebrow muted">De UX a UI</span>
+              <h2>De la necesidad a la <span class="text-accent">interfaz.</span></h2>
             </div>
           </div>
           <div class="expertise-grid">
@@ -133,9 +139,9 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           <div class="section-heading">
             <div>
               <span class="eyebrow muted">Mi forma de trabajar</span>
-              <h2>Del MVP al <span class="text-accent">mercado.</span></h2>
+              <h2>Un proceso con <span class="text-accent">intención.</span></h2>
             </div>
-            <p>Diseño e ingeniería alineados.<br />Menos fricción para entregar.</p>
+            <p>Entender, definir, diseñar y construir.<br />Cada decisión tiene un propósito.</p>
           </div>
           <div class="process-grid">
             <article v-for="step in process" :key="step.number">
