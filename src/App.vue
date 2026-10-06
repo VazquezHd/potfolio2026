@@ -1,13 +1,13 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { ArrowUpRight, ArrowDown, Plus } from 'lucide-vue-next'
+import { ArrowUpRight, ArrowDown } from 'lucide-vue-next'
 import { profile, projects, process } from './data/portfolio'
 import { useScrollMotion } from './composables/useScrollMotion'
 import { usePortfolioNavigation } from './composables/usePortfolioNavigation'
 import ScrollParticles from './components/ScrollParticles.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteHeader from './components/SiteHeader.vue'
-import ProjectCard from './components/ProjectCard.vue'
+import ProjectCarousel from './components/ProjectCarousel.vue'
 import AtomicMap from './components/AtomicMap.vue'
 import ProductCaseStudy from './components/ProductCaseStudy.vue'
 const filter = ref('Todos')
@@ -76,15 +76,7 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
             </div>
             <span class="sample-note">Diseño UX/UI · Figma</span>
           </div>
-          <div
-            class="project-list"
-            :class="{
-              'single-project': projects.length === 1,
-              'three-projects': projects.length === 3,
-            }"
-          >
-            <ProjectCard v-for="project in shown" :key="project.slug" :project="project" />
-          </div>
+          <ProjectCarousel :projects="shown" />
         </section>
         <section id="sobre-mi" class="about-section page-width section-space">
           <div class="about-art" aria-hidden="true">
@@ -138,22 +130,19 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
         <section id="proceso" class="page-width section-space process-section">
           <div class="section-heading">
             <div>
-              <span class="eyebrow muted">Mi forma de trabajar</span>
-              <h2>Un proceso con <span class="text-accent">intención.</span></h2>
+              <span class="eyebrow muted">Proceso</span>
+              <h2>Así <span class="text-accent">trabajo.</span></h2>
             </div>
-            <p>Entender, definir, diseñar y construir.<br />Cada decisión tiene un propósito.</p>
           </div>
-          <div class="process-grid">
-            <article v-for="step in process" :key="step.number">
-              <div class="process-top">
-                <span>{{ step.number }}</span
-                ><Plus :size="18" />
+          <ol class="process-compact">
+            <li v-for="step in process" :key="step.number">
+              <span>{{ step.number }}</span>
+              <div>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.summary }}</p>
               </div>
-              <h3>{{ step.title }}</h3>
-              <p>{{ step.text }}</p>
-              <small>{{ step.tags }}</small>
-            </article>
-          </div>
+            </li>
+          </ol>
         </section>
       </template>
       <ProductCaseStudy v-else :project="active" :other-projects="otherProjects" />

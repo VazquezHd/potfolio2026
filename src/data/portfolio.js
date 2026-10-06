@@ -205,24 +205,28 @@ export const process = [
   {
     number: '01',
     title: 'Entender',
+    summary: 'Necesidades y requerimientos.',
     text: 'Levanto necesidades y requerimientos: personas, tareas, reglas y restricciones.',
     tags: 'Necesidades · Requerimientos',
   },
   {
     number: '02',
     title: 'Definir',
+    summary: 'Alcance, información y flujos.',
     text: 'Priorizo el MVP y organizo la información, los perfiles y sus flujos.',
     tags: 'Alcance · Arquitectura · Flujos',
   },
   {
     number: '03',
     title: 'Diseñar',
+    summary: 'UX, UI y componentes.',
     text: 'Convierto los recorridos en interfaces con jerarquía, componentes y estados claros.',
     tags: 'UX · UI · Sistemas de diseño',
   },
   {
     number: '04',
     title: 'Construir',
+    summary: 'Frontend y entrega con ingeniería.',
     text: 'Alineo decisiones con ingeniería y puedo implementar las vistas en frontend.',
     tags: 'Componentes · Frontend · Entrega',
   },
