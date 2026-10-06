@@ -52,3 +52,9 @@
   --color-particle-signal: #ffffff;
   --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
 }
+
+@property --scene-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #80b7ff;
+}

@@ -4128,3 +4128,102 @@ h2,
     overflow: clip;
   }
 }
+
+.design-scene-stage {
+  transition: --scene-accent 800ms ease;
+}
+.design-scene-footer {
+  min-height: 100px;
+}
+@media (max-width: 700px) {
+  .design-scene-footer {
+    min-height: 130px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .design-scene-stage {
+    transition: none;
+  }
+}
+
+/* Content is prepared offscreen and enters as a complete, aligned group. */
+.motion-waiting {
+  opacity: 0;
+  pointer-events: none;
+}
+.motion-heading-mask {
+  display: block;
+  overflow: hidden;
+  padding-top: 0.14em;
+  margin-top: -0.14em;
+}
+.motion-heading-ink {
+  display: block;
+}
+.expertise-grid,
+.process-compact {
+  margin-block: 16px;
+}
+@media (max-width: 700px) {
+  .hero-personal-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-personal-actions > a {
+    display: flex;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hero-personal-actions .hero-conversation {
+    padding: 15px 20px;
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    background: var(--color-glass);
+  }
+  .carousel-controls > .carousel-case-link {
+    width: 100%;
+    min-height: 52px;
+    justify-content: space-between;
+  }
+  .contact-actions {
+    width: 100%;
+  }
+  .contact-actions > .button-primary {
+    width: 100%;
+    min-height: 52px;
+    justify-content: space-between;
+  }
+  .contact-details {
+    width: 100%;
+  }
+  .contact-details > a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 16px;
+    min-height: 48px;
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    background: var(--color-glass);
+  }
+  .case-takeaway > .text-link {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 14px 16px;
+    min-height: 52px;
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    background: var(--color-glass);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-waiting {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

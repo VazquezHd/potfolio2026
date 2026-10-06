@@ -70,7 +70,13 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           <div class="section-heading">
             <div>
               <span class="eyebrow muted">Proyectos seleccionados</span>
-              <h2>Problemas convertidos en <span class="text-accent">producto.</span></h2>
+              <h2>
+                <span class="motion-heading-mask"
+                  ><span class="motion-heading-ink"
+                    >Problemas convertidos en <span class="text-accent">producto.</span></span
+                  ></span
+                >
+              </h2>
             </div>
             <p>El problema, el recorrido y las decisiones.<br />Así conecto UX y UI.</p>
           </div>
@@ -97,7 +103,14 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           </div>
           <div class="about-copy">
             <span class="eyebrow muted">Sobre mí</span>
-            <h2>Entiendo necesidades.<br />Diseño <span class="text-accent">soluciones.</span></h2>
+            <h2>
+              <span class="motion-heading-mask"
+                ><span class="motion-heading-ink"
+                  >Entiendo necesidades.<br />Diseño
+                  <span class="text-accent">soluciones.</span></span
+                ></span
+              >
+            </h2>
             <p class="about-intro">Soy {{ profile.shortName }}, Product Designer.</p>
             <p>{{ profile.about }}</p>
             <p>{{ profile.introduction }}</p>
@@ -124,7 +137,13 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           <div class="section-heading">
             <div>
               <span class="eyebrow muted">De UX a UI</span>
-              <h2>De la necesidad a la <span class="text-accent">interfaz.</span></h2>
+              <h2>
+                <span class="motion-heading-mask"
+                  ><span class="motion-heading-ink"
+                    >De la necesidad a la <span class="text-accent">interfaz.</span></span
+                  ></span
+                >
+              </h2>
             </div>
           </div>
           <div class="expertise-grid">
@@ -143,7 +162,13 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           <div class="section-heading">
             <div>
               <span class="eyebrow muted">Proceso</span>
-              <h2>Así <span class="text-accent">trabajo.</span></h2>
+              <h2>
+                <span class="motion-heading-mask"
+                  ><span class="motion-heading-ink"
+                    >Así <span class="text-accent">trabajo.</span></span
+                  ></span
+                >
+              </h2>
             </div>
           </div>
           <ol class="process-compact">

@@ -109,3 +109,7 @@ Se revisó https://dmejia.vercel.app: combina parallax decorativo en el inicio, 
 ### Inicio personal y escena de diseño de producto
 
 El inicio presenta a Jorge Iván Vázquez Hernández por nombre, con su rol y propuesta de valor. Se retira el mapa de Atomic Design, conservado en `docs/archive/AtomicMap.vue`. La nueva escena usa visuales ilustrativos de requerimientos, un flujo genérico y una interfaz construida en HTML/CSS; no consume capturas ni datos de proyectos. El cambio de vistas es automático cada 6,2 segundos, con control manual, detención por foco y suspensión fuera de pantalla, con la pestaña oculta o con movimiento reducido. La esfera de partículas conserva su geometría y cierre; el movimiento de la escena se aplica en una capa separada.
+
+### Entrada progresiva y CTA móviles
+
+Los bloques de la landing se preparan fuera de pantalla y se revelan al entrar al viewport, con títulos enmascarados y movimiento por grupos para conservar alineación. El parallax aplica distintas velocidades a arte, contenido y grupos de cards, con límites y espacio reservado. Los CTA principales de inicio, carrusel y contacto usan el ancho completo de su contenedor en móvil y una altura mínima de 52 px. Se verificaron anchos de 320 y 390 px sin desbordamiento horizontal.

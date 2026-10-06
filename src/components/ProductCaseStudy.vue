@@ -71,7 +71,11 @@ const study = computed(() => props.project.caseStudy)
     <div class="case-editorial">
       <section id="caso-problema" class="case-chapter">
         <p class="case-kicker">01 / Problema y propuesta</p>
-        <h2>{{ study.challenge }}</h2>
+        <h2>
+          <span class="motion-heading-mask"
+            ><span class="motion-heading-ink">{{ study.challenge }}</span></span
+          >
+        </h2>
         <p class="case-reading">{{ study.scenario }} {{ study.hypothesis }}</p>
         <p class="case-evidence-label">{{ study.problemLabel }}</p>
         <div class="case-three-grid">
@@ -97,7 +101,13 @@ const study = computed(() => props.project.caseStudy)
       </section>
       <section id="caso-solucion" class="case-chapter">
         <p class="case-kicker">02 / De la decisión a la interfaz</p>
-        <h2>Así se traduce el problema en una solución.</h2>
+        <h2>
+          <span class="motion-heading-mask"
+            ><span class="motion-heading-ink"
+              >Así se traduce el problema en una solución.</span
+            ></span
+          >
+        </h2>
         <p class="case-caption">
           Diseño en Figma · Contenido de demostración · Capturas ampliables
         </p>
@@ -105,7 +115,11 @@ const study = computed(() => props.project.caseStudy)
       </section>
       <section id="caso-proceso" class="case-chapter">
         <p class="case-kicker">03 / Cómo estructuré la solución</p>
-        <h2>{{ study.processTitle }}</h2>
+        <h2>
+          <span class="motion-heading-mask"
+            ><span class="motion-heading-ink">{{ study.processTitle }}</span></span
+          >
+        </h2>
         <p class="case-caption">
           {{
             study.processCaption ||
@@ -145,7 +159,13 @@ const study = computed(() => props.project.caseStudy)
       </section>
       <section id="caso-sistema" class="case-chapter">
         <p class="case-kicker">04 / Sistema visual</p>
-        <h2>Un lenguaje que se mantiene entre módulos.</h2>
+        <h2>
+          <span class="motion-heading-mask"
+            ><span class="motion-heading-ink"
+              >Un lenguaje que se mantiene entre módulos.</span
+            ></span
+          >
+        </h2>
         <div class="case-system-grid">
           <div>
             <h3>{{ study.paletteLabel || 'Paleta original' }}</h3>

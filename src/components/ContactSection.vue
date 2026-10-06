@@ -6,7 +6,11 @@ defineProps({ profile: { type: Object, required: true } })
   <section id="contacto" class="contact-section contact-panel page-width">
     <div class="contact-copy">
       <span class="eyebrow muted">¿Lo hablamos?</span>
-      <h2>¿Tienes un proyecto<br />en mente?</h2>
+      <h2>
+        <span class="motion-heading-mask"
+          ><span class="motion-heading-ink">¿Tienes un proyecto<br />en mente?</span></span
+        >
+      </h2>
       <p>
         Si necesitas convertir una operación compleja en una experiencia clara, hablemos de tu
         producto.

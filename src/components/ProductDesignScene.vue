@@ -86,6 +86,7 @@ function keyboard(event) {
   )
 }
 function focusIn() {
+  explicitlyResumed = false
   focused = true
   schedule()
 }
