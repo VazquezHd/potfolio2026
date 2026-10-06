@@ -1,20 +1,24 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { ArrowUpRight, ArrowDown, ArrowLeft, ArrowRight, Plus, Sparkles } from 'lucide-vue-next'
+import { ArrowUpRight, ArrowDown, Plus } from 'lucide-vue-next'
 import { profile, projects, process } from './data/portfolio'
+import { useScrollMotion } from './composables/useScrollMotion'
 import { usePortfolioNavigation } from './composables/usePortfolioNavigation'
 import ScrollParticles from './components/ScrollParticles.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteHeader from './components/SiteHeader.vue'
 import ProjectCard from './components/ProjectCard.vue'
 import AtomicMap from './components/AtomicMap.vue'
+import ProductCaseStudy from './components/ProductCaseStudy.vue'
 const filter = ref('Todos')
-const filters = ['Todos', 'Diseño UX/UI', 'Experiencia web']
+const filters = computed(() => ['Todos', ...new Set(projects.map((project) => project.category))])
 const shown = computed(() =>
   projects.filter((project) => filter.value === 'Todos' || project.category === filter.value),
 )
 const projectCount = computed(() => String(projects.length).padStart(2, '0'))
-const { slug, active, nextProject, currentSection, main } = usePortfolioNavigation()
+const { slug, active, currentSection, main } = usePortfolioNavigation()
+useScrollMotion(slug)
+const otherProjects = computed(() => projects.filter((project) => project.slug !== slug.value))
 </script>
 <template>
   <ScrollParticles :scene-key="slug" />
@@ -58,7 +62,7 @@ const { slug, active, nextProject, currentSection, main } = usePortfolioNavigati
             </div>
             <p>Del primer porqué al último detalle.<br />Un vistazo a cómo pienso y diseño.</p>
           </div>
-          <div class="project-toolbar">
+          <div v-if="filters.length > 2" class="project-toolbar">
             <div class="filters" role="group" aria-label="Filtrar proyectos">
               <button
                 v-for="item in filters"
@@ -72,7 +76,7 @@ const { slug, active, nextProject, currentSection, main } = usePortfolioNavigati
             </div>
             <span class="sample-note">Diseño UX/UI · Figma</span>
           </div>
-          <div class="project-list">
+          <div class="project-list" :class="{ 'single-project': projects.length === 1 }">
             <ProjectCard v-for="project in shown" :key="project.slug" :project="project" />
           </div>
         </section>
@@ -146,76 +150,7 @@ const { slug, active, nextProject, currentSection, main } = usePortfolioNavigati
           </div>
         </section>
       </template>
-      <template v-else>
-        <section class="case-hero page-width">
-          <a href="#proyectos" class="text-link"><ArrowLeft :size="17" /> Volver a proyectos</a>
-          <div class="case-label eyebrow">Proyecto {{ active.number }} · Diseño UX/UI</div>
-          <h1>{{ active.name }}<span class="text-accent">.</span></h1>
-          <p class="case-subtitle">{{ active.subtitle }}</p>
-          <div class="case-overview">
-            <p>{{ active.description }}</p>
-            <dl>
-              <div>
-                <dt>Enfoque</dt>
-                <dd>{{ active.category }}</dd>
-              </div>
-              <div>
-                <dt>Estado</dt>
-                <dd>Maquetación en Figma</dd>
-              </div>
-            </dl>
-          </div>
-          <div class="case-visual" :class="active.color">
-            <img
-              class="real-project-image"
-              :src="active.image"
-              :alt="active.imageAlt"
-              decoding="async"
-            />
-          </div>
-        </section>
-        <section class="case-content page-width">
-          <div class="case-section">
-            <span class="eyebrow muted">La propuesta</span>
-            <div>
-              <h2>Una vista del proyecto.</h2>
-              <p>{{ active.problem }}</p>
-            </div>
-          </div>
-          <div class="case-section">
-            <span class="eyebrow muted">La interfaz</span>
-            <div>
-              <h2>Elementos del diseño.</h2>
-              <p>{{ active.approach }}</p>
-              <ul class="decisions">
-                <li v-for="decision in active.decisions" :key="decision">
-                  <Sparkles :size="18" />{{ decision }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="case-section">
-            <span class="eyebrow muted">Documentación</span>
-            <div>
-              <h2>Del diseño al caso de estudio.</h2>
-              <p>{{ active.outcome }}</p>
-              <p class="case-disclaimer">
-                Proyecto recuperado del portafolio original de Jorge Iván. La descripción se basa en
-                las pantallas publicadas; el proceso y los resultados necesitan documentación
-                adicional.
-              </p>
-              <a :href="active.source" target="_blank" rel="noopener noreferrer" class="text-link"
-                >Ver publicación original <ArrowUpRight :size="17"
-              /></a>
-            </div>
-          </div>
-          <a :href="`#proyecto/${nextProject.slug}`" class="next-case"
-            ><span
-              ><small>Siguiente proyecto</small><strong>{{ nextProject.name }}</strong></span
-            ><ArrowRight :size="38"
-          /></a>
-        </section>
-      </template>
+      <ProductCaseStudy v-else :project="active" :other-projects="otherProjects" />
       <ContactSection :profile="profile" />
     </main>
     <footer class="site-footer page-width">

@@ -2687,3 +2687,165 @@ h2,
 .site-footer {
   font-size: 13px;
 }
+
+/* Case study screenshots keep their original proportions and can be opened at full size. */
+.project-list.single-project {
+  grid-template-columns: 1fr;
+  max-width: 920px;
+  margin-inline: auto;
+}
+.project-cover.interface-preview {
+  padding: 28px;
+  background: var(--color-surface-raised);
+}
+.project-cover.interface-preview .real-project-image {
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px;
+}
+.case-visual.interface-preview {
+  height: auto;
+  padding: 28px;
+  background: var(--color-surface-raised);
+}
+.case-visual.interface-preview .real-project-image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.project-gallery {
+  display: grid;
+  gap: 64px;
+  padding-block: 32px 64px;
+}
+.project-screen {
+  margin: 0;
+}
+.project-screen figcaption {
+  margin-bottom: 24px;
+  max-width: 65ch;
+}
+.project-screen h3 {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 550;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+}
+.project-screen p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+.screen-link {
+  display: block;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  background: var(--color-surface-raised);
+}
+.screen-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.screen-link > span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 44px;
+  padding-top: 12px;
+  font-size: 14px;
+  color: var(--color-accent);
+}
+@media (max-width: 700px) {
+  .project-cover.interface-preview,
+  .case-visual.interface-preview {
+    padding: 14px;
+  }
+  .project-gallery {
+    gap: 40px;
+  }
+  .screen-link {
+    padding: 10px;
+  }
+  .project-screen p {
+    font-size: 16px;
+  }
+}
+
+@import './case-study.css';
+
+/* Scroll-linked depth, independent of hover transforms. Content stays visible. */
+.scroll-depth {
+  translate: 0 var(--scroll-shift, 0px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-depth {
+    translate: none;
+  }
+}
+
+/* Reserve the full travel distance so parallax never crosses adjacent content. */
+.hero-main {
+  padding-block: 48px;
+}
+.hero-bottom {
+  position: relative;
+  margin-bottom: 24px;
+}
+.about-art {
+  position: relative;
+  top: auto;
+  margin-block: 36px;
+}
+.project-list,
+.related-products-grid {
+  margin-block: 24px;
+}
+.case-lead-screen {
+  margin-block: 24px;
+}
+.gallery-row {
+  margin-block: 20px;
+}
+@media (max-width: 700px) {
+  .hero-main {
+    padding-block: 32px;
+  }
+  .about-art {
+    margin-block: 20px;
+  }
+}
+
+.floating-nav a,
+.floating-header .header-contact {
+  white-space: nowrap;
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .floating-nav a {
+    font-size: 12px;
+    gap: 6px;
+    padding-inline: 9px;
+  }
+  .floating-header .header-contact {
+    font-size: 12px;
+    padding-inline: 12px;
+  }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .hero-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-art.atomic-panel {
+    width: 100%;
+    max-width: 540px;
+    margin-inline: auto;
+  }
+}

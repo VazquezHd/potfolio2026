@@ -43,9 +43,9 @@ Edita los tokens semánticos de `src/styles/tokens.css`: fondo, superficies, ace
 
 ## Contenido y accesibilidad
 
-Los seis proyectos son recuperados del portafolio anterior. Las descripciones corresponden a las pantallas publicadas; no se inventan investigación ni métricas. Las fuentes están en `docs/sources.md`. El CV descargable es de 2024 y está guardado en `public/assets/documents/`.
+La selección actual empieza con Gestión escolar, preparado desde la sección redi del archivo de Figma. El usuario confirma el alcance del rol administrador; las decisiones describen las pantallas y no se inventan investigación ni métricas. Los seis proyectos anteriores están archivados en docs/archive/. Las fuentes están en `docs/sources.md`. El CV descargable es de 2024 y está guardado en `public/assets/documents/`.
 
-Las imágenes incluyen texto alternativo, carga diferida en las tarjetas y contenedores con relación de aspecto estable. La navegación incluye enlace para saltar al contenido, estado activo, controles accesibles y cierre del menú con Escape.
+Las imágenes incluyen texto alternativo, carga diferida en las tarjetas y contenedores con relación de aspecto estable. La navegación incluye enlace para saltar al contenido, estado activo, controles accesibles y una selección activa que reconoce el final de la página.
 
 Las partículas se dibujan en 3D con Three.js/WebGL, cámara de 35° y mezcla aditiva. Usan 4.000 puntos en escritorio y 1.800 en móvil. Las formas se precalculan y cambian continuamente con el scroll: esfera, grupos de esferas, superficie orgánica, onda, túnel y señal. La animación se detiene con la página oculta, respeta `prefers-reduced-motion` y no captura interacciones.
 
@@ -54,3 +54,7 @@ Las partículas se dibujan en 3D con Three.js/WebGL, cámara de 35° y mezcla ad
 `bun run check` detecta imágenes ausentes, slugs repetidos, colores fuera de los tokens y capturas en la raíz. `bun run test` verifica el acceso del servidor a archivos estáticos y el rechazo de rutas malformadas o fuera del directorio público. Prettier mantiene el formato del código.
 
 La tipografía DM Sans se sirve localmente desde `dist/assets/fonts/`, junto con su licencia. Su paquete fuente es `@fontsource-variable/dm-sans`; el build copia únicamente el archivo variable latino necesario para los textos en español.
+
+El movimiento de profundidad se gestiona en `useScrollMotion.js`: un listener pasivo, elementos cercanos al viewport y un único ciclo de actualización. Respeta `prefers-reduced-motion` y se detiene al ocultar la pestaña. Las partículas interpolan el scroll y terminan de nuevo en una esfera con puntos finos y rotación suave.
+
+Las galerías se organizan por filas con pistas compartidas para títulos y descripciones. Las miniaturas usan un encuadre uniforme; el visor conserva cada captura completa y su resolución original. El parallax se aplica por fila para mantener la alineación durante el scroll. Las cards de otros productos se calculan excluyendo el caso actual y admiten tres productos relacionados cuando el portafolio tenga cuatro casos.

@@ -1,3 +1,5 @@
+import { detentionProject } from './control-detenidos'
+import { schoolCase } from './gestion-escolar'
 // Perfil actualizado con información proporcionada directamente por Jorge Iván.
 export const profile = {
   name: 'Jorge Iván Vázquez Hernández',
@@ -61,155 +63,137 @@ export const profile = {
 }
 export const projects = [
   {
-    slug: 'chuchito',
+    slug: 'gestion-escolar',
     number: '01',
-    name: 'Chuchito',
-    subtitle: 'Un menú digital de sushi.',
-    category: 'Diseño UX/UI',
-    image: '/assets/images/projects/chuchito.png',
-    imageAlt: 'Diseño de interfaz de Chuchito presentado en el portafolio de Jorge Iván',
-    color: 'purple',
-    tags: ['Figma', 'App móvil', 'Alimentos'],
-    description:
-      'Diseño de interfaz móvil con catálogo de sushi, categorías, promociones y una pantalla de detalle con ingredientes y acción de compra.',
-    problem:
-      'Diseño de interfaz móvil con catálogo de sushi, categorías, promociones y una pantalla de detalle con ingredientes y acción de compra.',
-    approach:
-      'La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.',
-    decisions: [
-      'Catálogo organizado por categorías',
-      'Promoción del día visible en el inicio',
-      'Detalle con ingredientes y precio',
-    ],
-    outcome:
-      'La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.',
-    source: 'https://vazquez-hd.vercel.app/#projects',
-  },
-  {
-    slug: 'blooms',
-    number: '02',
-    name: 'Blooms',
-    subtitle: 'Del catálogo al carrito.',
-    category: 'Diseño UX/UI',
-    image: '/assets/images/projects/blooms.png',
-    imageAlt: 'Diseño de interfaz de Blooms presentado en el portafolio de Jorge Iván',
-    color: 'green',
-    tags: ['Figma', 'Comercio digital', 'App móvil'],
-    description:
-      'Diseño de interfaz móvil para explorar plantas y macetas. La presentación incluye catálogo, detalle de producto y carrito de compra.',
-    problem:
-      'Diseño de interfaz móvil para explorar plantas y macetas. La presentación incluye catálogo, detalle de producto y carrito de compra.',
-    approach:
-      'La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.',
-    decisions: [
-      'Categorías para explorar el catálogo',
-      'Detalle con información de producto',
-      'Carrito con cantidades y desglose del total',
-    ],
-    outcome:
-      'La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.',
-    source: 'https://vazquez-hd.vercel.app/#projects',
-  },
-  {
-    slug: 'm8-club-salud',
-    number: '03',
-    name: 'M8 Club Salud',
-    subtitle: 'Una puerta de entrada a la salud.',
-    category: 'Experiencia web',
-    image: '/assets/images/projects/m8-club-salud.png',
-    imageAlt: 'Diseño de interfaz de M8 Club Salud presentado en el portafolio de Jorge Iván',
+    name: 'Gestión escolar',
+    domain: 'Educación',
+    context: 'Medio superior y superior',
+    imageWidth: 2880,
+    imageHeight: 2554,
+    subtitle: 'Personas, pagos y responsabilidades en una operación conectada.',
+    category: 'Diseño de producto',
+    image: '/assets/images/projects/gestion-escolar/dashboard.png',
+    imageAlt: 'Dashboard del rol administrador con resumen escolar, ingresos y actividad reciente.',
     color: 'blue',
-    tags: ['Figma', 'Diseño web', 'Salud'],
+    presentation: 'interface',
+    status: 'Rol administrador',
+    tags: ['Producto web', 'Gestión escolar', 'Figma'],
     description:
-      'Maquetación de una página de inicio para M8 Club Salud, con navegación hacia beneficios y medicamentos, y accesos de registro e ingreso.',
+      'Plataforma para gestionar la comunidad escolar y los movimientos de efectivo. Primer alcance construido: administración.',
+    problemTitle: 'Una escuela, muchas tareas.',
     problem:
-      'Maquetación de una página de inicio para M8 Club Salud, con navegación hacia beneficios y medicamentos, y accesos de registro e ingreso.',
+      'El administrador necesita trabajar con información de distintas áreas: comunidad escolar, entradas y salidas de efectivo y seguimiento de la operación. La propuesta reúne estas tareas en una misma aplicación, con módulos identificables y una navegación compartida.',
+    approachTitle: 'Una estructura que se mantiene entre módulos.',
     approach:
-      'La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.',
+      'El diseño mantiene la navegación lateral y la búsqueda en las distintas vistas. El inicio ofrece un resumen de la operación; los módulos permiten pasar a tareas concretas. La administración de permisos distingue entre consultar, editar y no tener acceso.',
     decisions: [
-      'Propuesta principal en la primera pantalla',
-      'Accesos de registro e ingreso',
-      'Navegación por áreas del servicio',
+      'Un dashboard para revisar indicadores y actividad antes de entrar a cada módulo.',
+      'La gestión de usuarios separa alumnos, padres de familia y personal.',
+      'Los permisos se organizan por módulo con tres niveles: sin acceso, ver y editar.',
+      'El acceso contempla varios roles; el alcance actual se concentra en administración.',
     ],
+    outcomeTitle: 'El primer alcance: administración.',
     outcome:
-      'La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.',
-    source: 'https://vazquez-hd.vercel.app/#projects',
-  },
-  {
-    slug: 'uaeh',
-    number: '04',
-    name: 'UAEH',
-    subtitle: 'Las actividades, en un solo lugar.',
-    category: 'Experiencia web',
-    image: '/assets/images/projects/uaeh.png',
-    imageAlt: 'Diseño de interfaz de UAEH presentado en el portafolio de Jorge Iván',
-    color: 'purple',
-    tags: ['Figma', 'Educación', 'Plataforma web'],
-    description:
-      'Interfaz académica para la Escuela Superior de Actopan: navegación por parciales, actividades completadas y un indicador del tiempo restante.',
-    problem:
-      'Interfaz académica para la Escuela Superior de Actopan: navegación por parciales, actividades completadas y un indicador del tiempo restante.',
-    approach:
-      'La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.',
-    decisions: [
-      'Navegación por periodos académicos',
-      'Actividades completadas a la vista',
-      'Indicador temporal junto al contenido principal',
+      'El rol administrador es el punto de partida construido. Los demás roles forman parte del alcance previsto de la aplicación. Este caso presenta ese primer conjunto de pantallas y la estructura sobre la que puede continuar el producto.',
+    source: 'https://www.figma.com/design/WlDP4Mn1OTyMdoKxLg02GL/secretaria?node-id=200-4474',
+    sourceLabel: 'Ver diseño en Figma',
+    caseStudy: schoolCase,
+    gallery: [
+      {
+        title: 'Encontrar al alumno y entender su situación',
+        problem: 'Un registro necesita más contexto que un nombre.',
+        description:
+          'Reuní adeudo, promedio, faltas y período; la alerta destaca lo que requiere atención.',
+        skill: 'Arquitectura de información',
+        image: '/assets/images/projects/gestion-escolar/alumnos.png',
+        alt: 'Gestión de alumnos con búsqueda, indicadores por registro y alerta de adeudo; datos de demostración.',
+        width: 2880,
+        height: 2954,
+      },
+      {
+        title: 'Dar seguimiento a las familias',
+        problem: 'La relación con cada familia también necesita seguimiento.',
+        description:
+          'Organicé hijos vinculados, asistencia a juntas y firma de boletas en una misma ficha.',
+        skill: 'Diseño de seguimiento',
+        image: '/assets/images/projects/gestion-escolar/familias.png',
+        alt: 'Gestión de familias con hijos vinculados, asistencia y firma de boletas; datos de demostración.',
+        width: 2880,
+        height: 2954,
+      },
+      {
+        title: 'Leer la operación financiera',
+        problem: 'Una cifra aislada no explica la operación.',
+        description:
+          'Separé ingresos, egresos, balance y colegiaturas por cobrar en un resumen compartido.',
+        skill: 'Jerarquía de información',
+        image: '/assets/images/projects/gestion-escolar/finanzas.png',
+        alt: 'Resumen de ingresos, egresos, balance y colegiaturas pendientes.',
+        width: 2305,
+        height: 466,
+        layout: 'wide',
+      },
+      {
+        title: 'Reconocer lo que sigue pendiente',
+        description:
+          'El seguimiento de colegiaturas distingue lo recibido de lo pendiente por período.',
+        skill: 'Visibilidad del estado',
+        image: '/assets/images/projects/gestion-escolar/colegiaturas.png',
+        alt: 'Seguimiento de colegiaturas con montos recibidos y pendientes.',
+        width: 2260,
+        height: 1732,
+      },
+      {
+        title: 'Definir quién puede hacer qué',
+        description:
+          'Cada módulo separa sin acceso, consulta y edición para expresar responsabilidades.',
+        skill: 'Diseño de permisos',
+        image: '/assets/images/projects/gestion-escolar/permisos.png',
+        alt: 'Panel de permisos con opciones Sin acceso, Ver y Editar.',
+        width: 1696,
+        height: 1508,
+      },
+      {
+        title: 'Pasar del total al concepto',
+        description: 'Agrupé los ingresos extra por concepto y mantuve su total a la vista.',
+        skill: 'Organización financiera',
+        image: '/assets/images/projects/gestion-escolar/ingresos.png',
+        alt: 'Detalle de ingresos extra y resumen de importes.',
+        width: 1110,
+        height: 1514,
+      },
+      {
+        title: 'Revisar un ingreso sin perder contexto',
+        problem: 'El importe necesita una explicación.',
+        description:
+          'El detalle reúne concepto, fecha, método de pago y pagos asociados, con salidas a PDF e impresión.',
+        skill: 'Diseño de flujos',
+        image: '/assets/images/projects/gestion-escolar/detalle-ingreso.png',
+        alt: 'Detalle de ingreso con concepto, fecha, método de pago y pagos de demostración.',
+        width: 1792,
+        height: 2714,
+      },
+      {
+        title: 'Adaptarse a distintas escuelas',
+        description: 'Logo y acento personalizables sobre una estructura de uso compartida.',
+        skill: 'Diseño para escalar',
+        image: '/assets/images/projects/gestion-escolar/personalizacion.png',
+        alt: 'Configuración institucional de logo y color con vista previa.',
+        width: 2880,
+        height: 2048,
+      },
+      {
+        title: 'Compartir el punto de entrada',
+        description: 'Un acceso común contempla los distintos perfiles previstos del producto.',
+        skill: 'Consistencia de experiencia',
+        image: '/assets/images/projects/gestion-escolar/acceso.png',
+        alt: 'Inicio de sesión y accesos de demostración por rol.',
+        width: 2880,
+        height: 2048,
+      },
     ],
-    outcome:
-      'La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.',
-    source: 'https://vazquez-hd.vercel.app/#projects',
   },
-  {
-    slug: 'go-more',
-    number: '05',
-    name: 'GO MORE',
-    subtitle: 'Servicios de limpieza en la web.',
-    category: 'Experiencia web',
-    image: '/assets/images/projects/go-more.jpg',
-    imageAlt: 'Diseño de interfaz de GO MORE presentado en el portafolio de Jorge Iván',
-    color: 'blue',
-    tags: ['Figma', 'Diseño web', 'Servicios'],
-    description:
-      'Maquetación web para GO MORE Cleaning Services. La vista presenta el servicio, navegación a información del equipo y accesos para cotizar o reservar.',
-    problem:
-      'Maquetación web para GO MORE Cleaning Services. La vista presenta el servicio, navegación a información del equipo y accesos para cotizar o reservar.',
-    approach:
-      'La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.',
-    decisions: [
-      'Presentación del servicio en la portada',
-      'Accesos a cotización y reserva',
-      'Navegación a servicios y equipo',
-    ],
-    outcome:
-      'La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.',
-    source: 'https://vazquez-hd.vercel.app/#projects',
-  },
-  {
-    slug: 'pre-academy',
-    number: '06',
-    name: 'Pre Academy',
-    subtitle: 'El perfil académico, de un vistazo.',
-    category: 'Experiencia web',
-    image: '/assets/images/projects/pre-academy.png',
-    imageAlt: 'Diseño de interfaz de Pre Academy presentado en el portafolio de Jorge Iván',
-    color: 'green',
-    tags: ['Figma', 'Educación', 'Plataforma web'],
-    description:
-      'Diseño de una interfaz de perfil estudiantil para Pre Academy, con navegación lateral, puntaje, posición en el ranking y registro académico.',
-    problem:
-      'Diseño de una interfaz de perfil estudiantil para Pre Academy, con navegación lateral, puntaje, posición en el ranking y registro académico.',
-    approach:
-      'La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.',
-    decisions: [
-      'Navegación lateral por áreas académicas',
-      'Resumen de puntaje y ranking',
-      'Perfil y registro académico en una misma vista',
-    ],
-    outcome:
-      'La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.',
-    source: 'https://vazquez-hd.vercel.app/#projects',
-  },
+  detentionProject,
 ]
 
 export const process = [

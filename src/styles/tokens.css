@@ -1,4 +1,14 @@
 :root {
+  --detention-base: #112833;
+  --detention-primary: #08394a;
+  --detention-neutral: #707272;
+  --detention-muted: #98989a;
+  --font-montserrat: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --school-base: #27374d;
+  --school-support: #526d82;
+  --school-soft: #9db2bf;
+  --school-surface: #f1f6f9;
+  --school-border: #dde6ed;
   --color-background: #0b101b;
   --color-surface: #101a2b;
   --color-surface-raised: #101c30;

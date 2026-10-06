@@ -7,7 +7,7 @@ defineProps({ project: { type: Object, required: true } })
     <a
       :href="`#proyecto/${project.slug}`"
       class="project-cover"
-      :class="project.color"
+      :class="[project.color, { 'interface-preview': project.presentation === 'interface' }]"
       :aria-label="`Ver proyecto ${project.name}`"
       ><img
         class="real-project-image"

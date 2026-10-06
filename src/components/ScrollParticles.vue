@@ -10,6 +10,7 @@ import {
   PointsMaterial,
   AdditiveBlending,
   Color,
+  CanvasTexture,
 } from 'three'
 import { projects } from '../data/portfolio'
 import { createParticleShapes } from '../lib/particle-shapes'
@@ -21,9 +22,9 @@ const stages = [
   { id: 'sobre-mi', shape: 'organic', depth: -3.5, opacity: 0.5 },
   { id: 'capacidades', shape: 'wave', depth: -3.5, opacity: 0.35 },
   { id: 'proceso', shape: 'tunnel', depth: -3.5, opacity: 0.35 },
-  { id: 'contacto', shape: 'signal', depth: 0, opacity: 1 },
+  { id: 'contacto', shape: 'sphere', depth: 0, opacity: 0.65 },
 ]
-let renderer, scene, camera, geometry, material, cloud, shapes, positions
+let renderer, scene, camera, geometry, material, cloud, shapes, positions, sprite
 let observer,
   reduced,
   anchors = [],
@@ -33,9 +34,10 @@ let observer,
   rotation = 0
 let width = 0,
   scrollY = 0,
+  visualScroll = 0,
   depth = 0,
   opacity = 0.8
-let heroColor, blueColor, signalColor
+let heroColor, blueColor
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 function measure() {
   if (!renderer) return
@@ -49,17 +51,30 @@ function measure() {
   const styles = getComputedStyle(document.documentElement)
   heroColor = new Color(styles.getPropertyValue('--color-particle-hero').trim())
   blueColor = new Color(styles.getPropertyValue('--color-particle-point').trim())
-  signalColor = new Color(styles.getPropertyValue('--color-particle-signal').trim())
+  const caseIds = [
+    '.product-case-header',
+    '#caso-problema',
+    '#caso-solucion',
+    '#caso-proceso',
+    '#caso-sistema',
+    '#contacto',
+  ]
+  const maxScroll = Math.max(0, document.documentElement.scrollHeight - height)
   anchors = stages
     .map((stage, index) => {
-      const element = document.getElementById(stage.id)
+      const element = props.sceneKey
+        ? document.querySelector(caseIds[index])
+        : document.getElementById(stage.id)
       return element
         ? {
             ...stage,
             top:
               index === 0
                 ? 0
-                : Math.max(0, element.getBoundingClientRect().top + window.scrollY - 95),
+                : Math.min(
+                    maxScroll,
+                    Math.max(0, element.getBoundingClientRect().top + window.scrollY - 95),
+                  ),
           }
         : null
     })
@@ -71,11 +86,12 @@ function progress() {
     return { from: stages[0], to: stages[0], blend: 0, position: 0 }
   let index = Math.max(
     0,
-    anchors.findLastIndex((stage) => stage.top <= scrollY),
+    anchors.findLastIndex((stage) => stage.top <= visualScroll),
   )
   const from = anchors[index],
     to = anchors[index + 1] || from
-  const blend = from === to ? 0 : clamp((scrollY - from.top) / Math.max(1, to.top - from.top), 0, 1)
+  const blend =
+    from === to ? 0 : clamp((visualScroll - from.top) / Math.max(1, to.top - from.top), 0, 1)
   return { from, to, blend, position: index + blend }
 }
 function render(timestamp) {
@@ -84,7 +100,10 @@ function render(timestamp) {
   const delta = lastTime ? Math.min((timestamp - lastTime) / 1000, 0.05) : 0
   lastTime = timestamp
   time += delta
-  const { from, to, blend, position } = progress()
+  visualScroll += (scrollY - visualScroll) * (reduced.matches ? 1 : 1 - Math.exp(-9 * delta))
+  const state = progress()
+  const { from, to, position } = state
+  const blend = state.blend * state.blend * (3 - 2 * state.blend)
   const intensity = 0.2 + 0.8 * Math.min(1, Math.abs(position - Math.round(position)) * 4)
   const damping = 1 - Math.exp(-6.3 * delta)
   depth += (from.depth + (to.depth - from.depth) * blend - depth) * damping
@@ -107,14 +126,13 @@ function render(timestamp) {
   geometry.attributes.position.needsUpdate = true
   if (!reduced.matches) rotation += delta * 0.05 * intensity
   cloud.rotation.y = rotation
+  cloud.rotation.z = 0
   const targetColor =
     from.shape === 'sphere' ? heroColor.clone().lerp(blueColor, blend) : blueColor.clone()
-  if (to.shape === 'signal') targetColor.lerp(signalColor, blend)
-  if (from.shape === 'signal') targetColor.copy(signalColor)
+  if (to.shape === 'sphere') targetColor.lerp(heroColor, blend)
   material.color.lerp(targetColor, reduced.matches ? 1 : 1 - Math.exp(-3.1 * delta))
-  const signalStrength = clamp((position - (anchors.length - 1.5)) * 2, 0, 1)
-  material.opacity = reduced.matches ? 0.8 : opacity + (1 - opacity) * signalStrength
-  material.size = reduced.matches ? 0.04 : 0.04 + signalStrength * 0.06
+  material.opacity = reduced.matches ? 0.8 : opacity
+  material.size = 0.04
   renderer.render(scene, camera)
   container.value.dataset.shape = blend > 0.5 ? to.shape : from.shape
   container.value.dataset.motion = reduced.matches ? 'static' : 'scroll'
@@ -143,11 +161,23 @@ onMounted(() => {
   scene = new Scene()
   camera = new PerspectiveCamera(35, 1, 0.1, 100)
   camera.position.z = 12
-  shapes = createParticleShapes(projects.length)
+  shapes = createParticleShapes(Math.max(4, projects.length))
   positions = new Float32Array(shapes.sphere)
   geometry = new BufferGeometry()
   geometry.setAttribute('position', new BufferAttribute(positions, 3))
+  const pointCanvas = document.createElement('canvas')
+  pointCanvas.width = pointCanvas.height = 32
+  const context = pointCanvas.getContext('2d')
+  const glow = context.createRadialGradient(16, 16, 0, 16, 16, 16)
+  glow.addColorStop(0, 'white')
+  glow.addColorStop(0.55, 'white')
+  glow.addColorStop(1, 'transparent')
+  context.fillStyle = glow
+  context.fillRect(0, 0, 32, 32)
+  sprite = new CanvasTexture(pointCanvas)
   material = new PointsMaterial({
+    map: sprite,
+
     size: 0.04,
     transparent: true,
     opacity: 0.8,
@@ -165,14 +195,14 @@ onMounted(() => {
   window.addEventListener('resize', measure)
   window.addEventListener('scroll', onScroll, { passive: true })
   document.addEventListener('visibilitychange', onVisibility)
-  scrollY = window.scrollY
+  scrollY = visualScroll = window.scrollY
   measure()
   material.color.copy(heroColor)
 })
 watch(
   () => props.sceneKey,
   () => {
-    scrollY = window.scrollY
+    scrollY = visualScroll = window.scrollY
     measure()
   },
   { flush: 'post' },
@@ -186,6 +216,7 @@ onUnmounted(() => {
   document.removeEventListener('visibilitychange', onVisibility)
   geometry?.dispose()
   material?.dispose()
+  sprite?.dispose()
   renderer?.dispose()
   renderer?.forceContextLoss()
 })

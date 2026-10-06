@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "chuchito",
+    "number": "01",
+    "name": "Chuchito",
+    "subtitle": "Un menú digital de sushi.",
+    "category": "Diseño UX/UI",
+    "image": "imagenes/chuchito.png",
+    "imageAlt": "Diseño de interfaz de Chuchito presentado en el portafolio de Jorge Iván",
+    "color": "purple",
+    "tags": ["Figma", "App móvil", "Alimentos"],
+    "description": "Diseño de interfaz móvil con catálogo de sushi, categorías, promociones y una pantalla de detalle con ingredientes y acción de compra.",
+    "problem": "Diseño de interfaz móvil con catálogo de sushi, categorías, promociones y una pantalla de detalle con ingredientes y acción de compra.",
+    "approach": "La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.",
+    "decisions": [
+      "Catálogo organizado por categorías",
+      "Promoción del día visible en el inicio",
+      "Detalle con ingredientes y precio"
+    ],
+    "outcome": "La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.",
+    "source": "https://vazquez-hd.vercel.app/#projects"
+  },
+  {
+    "slug": "blooms",
+    "number": "02",
+    "name": "Blooms",
+    "subtitle": "Del catálogo al carrito.",
+    "category": "Diseño UX/UI",
+    "image": "imagenes/blooms.png",
+    "imageAlt": "Diseño de interfaz de Blooms presentado en el portafolio de Jorge Iván",
+    "color": "green",
+    "tags": ["Figma", "Comercio digital", "App móvil"],
+    "description": "Diseño de interfaz móvil para explorar plantas y macetas. La presentación incluye catálogo, detalle de producto y carrito de compra.",
+    "problem": "Diseño de interfaz móvil para explorar plantas y macetas. La presentación incluye catálogo, detalle de producto y carrito de compra.",
+    "approach": "La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.",
+    "decisions": [
+      "Categorías para explorar el catálogo",
+      "Detalle con información de producto",
+      "Carrito con cantidades y desglose del total"
+    ],
+    "outcome": "La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.",
+    "source": "https://vazquez-hd.vercel.app/#projects"
+  },
+  {
+    "slug": "m8-club-salud",
+    "number": "03",
+    "name": "M8 Club Salud",
+    "subtitle": "Una puerta de entrada a la salud.",
+    "category": "Experiencia web",
+    "image": "imagenes/m8-club-salud.png",
+    "imageAlt": "Diseño de interfaz de M8 Club Salud presentado en el portafolio de Jorge Iván",
+    "color": "blue",
+    "tags": ["Figma", "Diseño web", "Salud"],
+    "description": "Maquetación de una página de inicio para M8 Club Salud, con navegación hacia beneficios y medicamentos, y accesos de registro e ingreso.",
+    "problem": "Maquetación de una página de inicio para M8 Club Salud, con navegación hacia beneficios y medicamentos, y accesos de registro e ingreso.",
+    "approach": "La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.",
+    "decisions": [
+      "Propuesta principal en la primera pantalla",
+      "Accesos de registro e ingreso",
+      "Navegación por áreas del servicio"
+    ],
+    "outcome": "La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.",
+    "source": "https://vazquez-hd.vercel.app/#projects"
+  },
+  {
+    "slug": "uaeh",
+    "number": "04",
+    "name": "UAEH",
+    "subtitle": "Las actividades, en un solo lugar.",
+    "category": "Experiencia web",
+    "image": "imagenes/uaeh.png",
+    "imageAlt": "Diseño de interfaz de UAEH presentado en el portafolio de Jorge Iván",
+    "color": "purple",
+    "tags": ["Figma", "Educación", "Plataforma web"],
+    "description": "Interfaz académica para la Escuela Superior de Actopan: navegación por parciales, actividades completadas y un indicador del tiempo restante.",
+    "problem": "Interfaz académica para la Escuela Superior de Actopan: navegación por parciales, actividades completadas y un indicador del tiempo restante.",
+    "approach": "La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.",
+    "decisions": [
+      "Navegación por periodos académicos",
+      "Actividades completadas a la vista",
+      "Indicador temporal junto al contenido principal"
+    ],
+    "outcome": "La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.",
+    "source": "https://vazquez-hd.vercel.app/#projects"
+  },
+  {
+    "slug": "go-more",
+    "number": "05",
+    "name": "GO MORE",
+    "subtitle": "Servicios de limpieza en la web.",
+    "category": "Experiencia web",
+    "image": "imagenes/go-more.jpg",
+    "imageAlt": "Diseño de interfaz de GO MORE presentado en el portafolio de Jorge Iván",
+    "color": "blue",
+    "tags": ["Figma", "Diseño web", "Servicios"],
+    "description": "Maquetación web para GO MORE Cleaning Services. La vista presenta el servicio, navegación a información del equipo y accesos para cotizar o reservar.",
+    "problem": "Maquetación web para GO MORE Cleaning Services. La vista presenta el servicio, navegación a información del equipo y accesos para cotizar o reservar.",
+    "approach": "La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.",
+    "decisions": [
+      "Presentación del servicio en la portada",
+      "Accesos a cotización y reserva",
+      "Navegación a servicios y equipo"
+    ],
+    "outcome": "La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.",
+    "source": "https://vazquez-hd.vercel.app/#projects"
+  },
+  {
+    "slug": "pre-academy",
+    "number": "06",
+    "name": "Pre Academy",
+    "subtitle": "El perfil académico, de un vistazo.",
+    "category": "Experiencia web",
+    "image": "imagenes/pre-academy.png",
+    "imageAlt": "Diseño de interfaz de Pre Academy presentado en el portafolio de Jorge Iván",
+    "color": "green",
+    "tags": ["Figma", "Educación", "Plataforma web"],
+    "description": "Diseño de una interfaz de perfil estudiantil para Pre Academy, con navegación lateral, puntaje, posición en el ranking y registro académico.",
+    "problem": "Diseño de una interfaz de perfil estudiantil para Pre Academy, con navegación lateral, puntaje, posición en el ranking y registro académico.",
+    "approach": "La presentación original documenta la maquetación en Figma. Estos son los elementos visibles en la interfaz; la investigación, las restricciones y el proceso de decisión quedan por documentar.",
+    "decisions": [
+      "Navegación lateral por áreas académicas",
+      "Resumen de puntaje y ranking",
+      "Perfil y registro académico en una misma vista"
+    ],
+    "outcome": "La pieza publicada permite revisar la propuesta visual. El portafolio original no detalla pruebas de usabilidad ni métricas de impacto para este proyecto.",
+    "source": "https://vazquez-hd.vercel.app/#projects"
+  }
+]

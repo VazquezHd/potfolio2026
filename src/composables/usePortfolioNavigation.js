@@ -30,7 +30,9 @@ export function usePortfolioNavigation() {
     if (!frame) frame = requestAnimationFrame(updateCurrentSection)
   }
   function observeSections() {
-    sections = [...document.querySelectorAll('main section[id]')]
+    sections = [...document.querySelectorAll('main section[id]')].filter(
+      (section) => !section.id.startsWith('caso-'),
+    )
     updateCurrentSection()
   }
   async function syncRoute() {
@@ -56,7 +58,14 @@ export function usePortfolioNavigation() {
     await nextTick()
     if (disposed) return
     observeSections()
-    if (isCase || !hash) {
+    const caseAnchor = isCase ? hash.split('/')[2] : ''
+    if (caseAnchor) {
+      document.getElementById(caseAnchor)?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'instant'
+          : 'smooth',
+      })
+    } else if (isCase || !hash) {
       window.scrollTo({ top: 0, behavior: 'instant' })
       main.value?.focus({ preventScroll: true })
     } else {

@@ -27,6 +27,10 @@ for (const project of projects) {
     !(await Bun.file(`public${project.image}`).exists())
   )
     failures.push(`Imagen inválida: ${project.slug}`)
+  for (const screen of project.gallery || []) {
+    if (!(await Bun.file(`public${screen.image}`).exists()) || !screen.alt.trim())
+      failures.push(`Pantalla inválida: ${project.slug} ${screen.title}`)
+  }
   if (!project.imageAlt.trim()) failures.push(`Falta texto alternativo: ${project.slug}`)
 }
 for (const file of await walk('src')) {

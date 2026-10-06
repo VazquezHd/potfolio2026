@@ -36,6 +36,14 @@ export async function buildSite() {
     './dist/assets/fonts/dm-sans-latin-wght-normal.woff2',
   )
   await cp('./node_modules/@fontsource-variable/dm-sans/LICENSE', './dist/assets/fonts/LICENSE.txt')
+  await cp(
+    './node_modules/@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2',
+    './dist/assets/fonts/montserrat-latin-wght-normal.woff2',
+  )
+  await cp(
+    './node_modules/@fontsource-variable/montserrat/LICENSE',
+    './dist/assets/fonts/Montserrat-LICENSE.txt',
+  )
   const tokens = await Bun.file('./src/styles/tokens.css').text()
   const token = (name) => {
     const value = tokens.match(new RegExp(`--color-${name}:\\s*(#[a-fA-F0-9]{6});`))?.[1]

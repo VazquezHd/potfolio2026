@@ -19,7 +19,7 @@ const noise = (x, y, z) => Math.sin(x * 0.5) * Math.cos(y * 0.3) * Math.sin(z * 
 export function createParticleShapes(projectCount) {
   const random = randomGenerator()
   const shapes = {}
-  for (const name of ['sphere', 'organic', 'tunnel', 'clusters', 'wave', 'signal']) {
+  for (const name of ['sphere', 'organic', 'tunnel', 'clusters', 'wave']) {
     const positions = new Float32Array(COUNT * 3)
     for (let i = 0; i < COUNT; i++) {
       let x, y, z
@@ -50,11 +50,6 @@ export function createParticleShapes(projectCount) {
         x = ((i % side) - side / 2) * 0.5
         z = (Math.floor(i / side) - side / 2) * 0.5
         y = Math.sin(x * 0.5) * Math.cos(z * 0.5) * 1.5
-      }
-      if (name === 'signal') {
-        x = (random() - 0.5) * 0.05
-        y = (random() - 0.5) * 0.05
-        z = (random() - 0.5) * 0.05
       }
       positions.set([x, y, z], i * 3)
     }
