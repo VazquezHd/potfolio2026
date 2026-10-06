@@ -1,10 +1,11 @@
-import { computed, ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { computed, ref, nextTick, onMounted, onUnmounted, watch } from 'vue'
+import { localize, locale } from './usePreferences'
 import { projects } from '../data/portfolio'
 export function usePortfolioNavigation() {
   const slug = ref('')
   const currentSection = ref('inicio')
   const main = ref(null)
-  const active = computed(() => projects.find((project) => project.slug === slug.value))
+  const active = computed(() => localize(projects.find((project) => project.slug === slug.value)))
   const nextProject = computed(
     () =>
       projects[
@@ -76,6 +77,12 @@ export function usePortfolioNavigation() {
       })
     }
   }
+  watch(locale, () => {
+    document.title = active.value
+      ? `${active.value.name} — Jorge Iván`
+      : 'Jorge Iván — Product Designer'
+    nextTick(observeSections)
+  })
   onMounted(() => {
     syncRoute()
     window.addEventListener('hashchange', syncRoute)

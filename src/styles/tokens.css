@@ -1,9 +1,13 @@
 :root {
   --color-scene-build: #e2c392;
-  --wallet-base: #214f3f;
-  --wallet-primary: #34765d;
-  --wallet-accent: #91c9ae;
-  --wallet-surface: #eaf4ed;
+  --wallet-capture-filter: hue-rotate(110deg);
+  --wallet-stage: #201a35;
+  --wallet-stage-deep: #110f1c;
+  --wallet-device: #211b31;
+  --wallet-base: #4b3e67;
+  --wallet-primary: #6f5e98;
+  --wallet-accent: #bdb6e7;
+  --wallet-surface: #f0f1fa;
   --space-section-gap: clamp(32px, 5vw, 64px);
   --space-panel-padding: clamp(28px, 5vw, 64px);
   --domain-base: #112833;
@@ -57,4 +61,35 @@
   syntax: '<color>';
   inherits: true;
   initial-value: #80b7ff;
+}
+
+:root {
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-background: #f5f7fc;
+  --color-surface: #ffffff;
+  --color-surface-raised: #e8edf7;
+  --color-accent: #245db3;
+  --color-accent-hover: #194989;
+  --color-on-accent: #ffffff;
+  --color-text-primary: #18243a;
+  --color-text-secondary: #354560;
+  --color-text-muted: #52627b;
+  --color-text-subtle: #64728a;
+  --color-border: color-mix(in srgb, var(--color-text-primary) 14%, transparent);
+  --color-glass: color-mix(in srgb, var(--color-white) 76%, transparent);
+  --color-glass-highlight: color-mix(in srgb, var(--color-white) 85%, transparent);
+  --color-glass-border: color-mix(in srgb, var(--color-text-primary) 18%, transparent);
+  --color-glass-panel: color-mix(in srgb, var(--color-white) 72%, transparent);
+  --color-glass-node: color-mix(in srgb, var(--color-white) 88%, transparent);
+  --color-glass-shadow: color-mix(in srgb, var(--color-text-primary) 12%, transparent);
+  --color-particle-hero: #4274bd;
+  --color-particle-point: #245db3;
+  --color-particle-signal: #245db3;
+  --color-scene-build: #8a651f;
+  --color-project-purple: #eae5f3;
+  --color-project-blue: #e4edf5;
+  --color-project-teal: #e1ede7;
 }

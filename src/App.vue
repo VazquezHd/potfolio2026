@@ -1,7 +1,11 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { ArrowUpRight, ArrowDown } from 'lucide-vue-next'
-import { profile, projects, process } from './data/portfolio'
+import {
+  profile as baseProfile,
+  projects as baseProjects,
+  process as baseProcess,
+} from './data/portfolio'
 import { useScrollMotion } from './composables/useScrollMotion'
 import { usePortfolioNavigation } from './composables/usePortfolioNavigation'
 import ScrollParticles from './components/ScrollParticles.vue'
@@ -10,20 +14,32 @@ import SiteHeader from './components/SiteHeader.vue'
 import ProjectCarousel from './components/ProjectCarousel.vue'
 import ProductDesignScene from './components/ProductDesignScene.vue'
 import ProductCaseStudy from './components/ProductCaseStudy.vue'
+import { localize, locale } from './composables/usePreferences'
+const profile = computed(() => localize(baseProfile))
+const projects = computed(() => localize(baseProjects))
+const process = computed(() => localize(baseProcess))
 const filter = ref('Todos')
-const filters = computed(() => ['Todos', ...new Set(projects.map((project) => project.category))])
+watch(locale, () => {
+  filter.value = 'Todos'
+})
+const filters = computed(() => [
+  'Todos',
+  ...new Set(projects.value.map((project) => project.category)),
+])
 const shown = computed(() =>
-  projects.filter((project) => filter.value === 'Todos' || project.category === filter.value),
+  projects.value.filter((project) => filter.value === 'Todos' || project.category === filter.value),
 )
-const projectCount = computed(() => String(projects.length).padStart(2, '0'))
+const projectCount = computed(() => String(projects.value.length).padStart(2, '0'))
 const { slug, active, currentSection, main } = usePortfolioNavigation()
 useScrollMotion(slug)
-const otherProjects = computed(() => projects.filter((project) => project.slug !== slug.value))
+const otherProjects = computed(() =>
+  projects.value.filter((project) => project.slug !== slug.value),
+)
 </script>
 <template>
   <ScrollParticles :scene-key="slug" />
   <div class="portfolio-shell">
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <a class="skip-link" href="#contenido">{{ $t('Saltar al contenido') }}</a>
     <SiteHeader
       :name="profile.shortName"
       :current-section="currentSection"
@@ -35,53 +51,59 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
       <template v-if="!active">
         <section id="inicio" class="hero personal-hero page-width">
           <div class="hero-top flex items-center justify-between gap-4">
-            <span class="eyebrow"><i class="status-dot"></i> {{ profile.role }}</span
-            ><span class="hero-edition">Portafolio · 2026</span>
+            <span class="eyebrow"><i class="status-dot"></i> {{ $t(profile.role) }}</span
+            ><span class="hero-edition">{{ $t('Portafolio · 2026') }}</span>
           </div>
           <div class="hero-main">
             <div class="hero-copy">
-              <span class="hero-greeting">Hola, soy</span>
+              <span class="hero-greeting">{{ $t('Hola, soy') }}</span>
               <h1 :aria-label="profile.name">
-                <span>{{ profile.shortName }}</span
-                ><span class="hero-surname">{{ profile.surname }}.</span>
+                <span>{{ $t(profile.shortName) }}</span
+                ><span class="hero-surname">{{ $t(profile.surname) }}.</span>
               </h1>
-              <p>{{ profile.hero }}</p>
+              <p>{{ $t(profile.hero) }}</p>
               <div class="hero-personal-actions">
                 <a href="#proyectos" class="button-primary"
-                  >Ver mi trabajo <ArrowDown :size="17" /></a
+                  >{{ $t('Ver mi trabajo') }} <ArrowDown :size="17" /></a
                 ><a
                   :href="profile.linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="hero-conversation"
-                  >Conversemos <ArrowUpRight :size="17"
+                  >{{ $t('Conversemos') }} <ArrowUpRight :size="17"
                 /></a>
               </div>
             </div>
             <div class="hero-art product-scene-art"><ProductDesignScene /></div>
           </div>
           <div class="hero-bottom">
-            <span>{{ profile.name }}</span
-            ><span>Necesidades <i>·</i> Flujos <i>·</i> UX/UI</span
-            ><a href="#proyectos" aria-label="Ir a proyectos"><ArrowDown :size="16" /></a>
+            <span>{{ $t(profile.name) }}</span
+            ><span
+              >{{ $t('Necesidades') }} <i>·</i> {{ $t('Flujos') }} <i>·</i> {{ $t('UX/UI') }}</span
+            ><a href="#proyectos" :aria-label="$t('Ir a proyectos')"><ArrowDown :size="16" /></a>
           </div>
         </section>
         <section id="proyectos" class="projects-section page-width section-space">
           <div class="section-heading">
             <div>
-              <span class="eyebrow muted">Proyectos seleccionados</span>
+              <span class="eyebrow muted">{{ $t('Proyectos seleccionados') }}</span>
               <h2>
                 <span class="motion-heading-mask"
                   ><span class="motion-heading-ink"
-                    >Problemas convertidos en <span class="text-accent">producto.</span></span
+                    >{{ $t('Problemas convertidos en') }}
+                    <span class="text-accent">{{ $t('producto.') }}</span></span
                   ></span
                 >
               </h2>
             </div>
-            <p>El problema, el recorrido y las decisiones.<br />Así conecto UX y UI.</p>
+            <p>
+              {{ $t('El problema, el recorrido y las decisiones.') }}<br />{{
+                $t('Así conecto UX y UI.')
+              }}
+            </p>
           </div>
           <div v-if="filters.length > 2" class="project-toolbar">
-            <div class="filters" role="group" aria-label="Filtrar proyectos">
+            <div class="filters" role="group" :aria-label="$t('Filtrar proyectos')">
               <button
                 v-for="item in filters"
                 :key="item"
@@ -89,58 +111,61 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
                 :aria-pressed="filter === item"
                 :class="{ selected: filter === item }"
               >
-                {{ item }}<span v-if="item === 'Todos'">{{ projectCount }}</span>
+                {{ $t(item) }}<span v-if="item === 'Todos'">{{ $t(projectCount) }}</span>
               </button>
             </div>
-            <span class="sample-note">Diseño UX/UI · Figma</span>
+            <span class="sample-note">{{ $t('Diseño UX/UI · Figma') }}</span>
           </div>
           <ProjectCarousel :projects="shown" />
         </section>
         <section id="sobre-mi" class="about-section page-width section-space">
           <div class="about-art" aria-hidden="true">
-            <span class="about-initials">JI<span>✳</span></span>
-            <div class="about-art-label">Diseño e ingeniería, un mismo lenguaje.</div>
+            <span class="about-initials">{{ $t('JI') }}<span>✳</span></span>
+            <div class="about-art-label">{{ $t('Diseño e ingeniería, un mismo lenguaje.') }}</div>
           </div>
           <div class="about-copy">
-            <span class="eyebrow muted">Sobre mí</span>
+            <span class="eyebrow muted">{{ $t('Sobre mí') }}</span>
             <h2>
               <span class="motion-heading-mask"
                 ><span class="motion-heading-ink"
-                  >Entiendo necesidades.<br />Diseño
-                  <span class="text-accent">soluciones.</span></span
+                  >{{ $t('Entiendo necesidades.') }}<br />{{ $t('Diseño') }}
+                  <span class="text-accent">{{ $t('soluciones.') }}</span></span
                 ></span
               >
             </h2>
-            <p class="about-intro">Soy {{ profile.shortName }}, Product Designer.</p>
-            <p>{{ profile.about }}</p>
-            <p>{{ profile.introduction }}</p>
-            <p class="value-statement">{{ profile.value }}</p>
+            <p class="about-intro">
+              {{ $t('Soy') }} {{ $t(profile.shortName) }}{{ $t(', Product Designer.') }}
+            </p>
+            <p>{{ $t(profile.about) }}</p>
+            <p>{{ $t(profile.introduction) }}</p>
+            <p class="value-statement">{{ $t(profile.value) }}</p>
             <div class="about-skills">
-              <span v-for="skill in profile.skills" :key="skill">{{ skill }}</span>
+              <span v-for="skill in profile.skills" :key="skill">{{ $t(skill) }}</span>
             </div>
-            <p class="background-note">{{ profile.background }}</p>
+            <p class="background-note">{{ $t(profile.background) }}</p>
             <a
               v-if="profile.resume"
               :href="profile.resume"
               target="_blank"
               rel="noopener noreferrer"
               class="text-link"
-              >Ver mi currículum (2024) <ArrowUpRight :size="17"
+              >{{ $t('Ver mi currículum (2024)') }} <ArrowUpRight :size="17"
             /></a>
           </div>
         </section>
         <section
           id="capacidades"
           class="expertise-section page-width"
-          aria-label="Capacidades de diseño y desarrollo"
+          :aria-label="$t('Capacidades de diseño y desarrollo')"
         >
           <div class="section-heading">
             <div>
-              <span class="eyebrow muted">De UX a UI</span>
+              <span class="eyebrow muted">{{ $t('De UX a UI') }}</span>
               <h2>
                 <span class="motion-heading-mask"
                   ><span class="motion-heading-ink"
-                    >De la necesidad a la <span class="text-accent">interfaz.</span></span
+                    >{{ $t('De la necesidad a la') }}
+                    <span class="text-accent">{{ $t('interfaz.') }}</span></span
                   ></span
                 >
               </h2>
@@ -148,24 +173,24 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           </div>
           <div class="expertise-grid">
             <article v-for="item in profile.stack" :key="item.title">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
-              <small>{{ item.tools }}</small>
+              <h3>{{ $t(item.title) }}</h3>
+              <p>{{ $t(item.description) }}</p>
+              <small>{{ $t(item.tools) }}</small>
             </article>
           </div>
           <div class="independent-work">
-            <span class="eyebrow muted">De la idea al producto</span>
-            <p>{{ profile.independent }}</p>
+            <span class="eyebrow muted">{{ $t('De la idea al producto') }}</span>
+            <p>{{ $t(profile.independent) }}</p>
           </div>
         </section>
         <section id="proceso" class="page-width section-space process-section">
           <div class="section-heading">
             <div>
-              <span class="eyebrow muted">Proceso</span>
+              <span class="eyebrow muted">{{ $t('Proceso') }}</span>
               <h2>
                 <span class="motion-heading-mask"
                   ><span class="motion-heading-ink"
-                    >Así <span class="text-accent">trabajo.</span></span
+                    >{{ $t('Así') }} <span class="text-accent">{{ $t('trabajo.') }}</span></span
                   ></span
                 >
               </h2>
@@ -173,10 +198,10 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
           </div>
           <ol class="process-compact">
             <li v-for="step in process" :key="step.number">
-              <span>{{ step.number }}</span>
+              <span>{{ $t(step.number) }}</span>
               <div>
-                <h3>{{ step.title }}</h3>
-                <p>{{ step.summary }}</p>
+                <h3>{{ $t(step.title) }}</h3>
+                <p>{{ $t(step.summary) }}</p>
               </div>
             </li>
           </ol>
@@ -186,8 +211,10 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
       <ContactSection :profile="profile" />
     </main>
     <footer class="site-footer page-width">
-      <span>© {{ new Date().getFullYear() }} {{ profile.name }}</span
-      ><a href="#" aria-label="Volver al inicio">Volver arriba <ArrowUpRight :size="14" /></a>
+      <span>© {{ $t(new Date().getFullYear()) }} {{ $t(profile.name) }}</span
+      ><a href="#" :aria-label="$t('Volver al inicio')"
+        >{{ $t('Volver arriba') }} <ArrowUpRight :size="14"
+      /></a>
     </footer>
   </div>
 </template>

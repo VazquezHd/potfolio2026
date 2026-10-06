@@ -1,3 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-createApp(App).mount('#app')
+import { initializePreferences, translate } from './composables/usePreferences'
+initializePreferences()
+const app = createApp(App)
+app.config.globalProperties.$t = translate
+app.mount('#app')

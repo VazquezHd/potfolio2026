@@ -70,8 +70,8 @@ onUnmounted(() => clearTimeout(clickTimer))
     v-if="current"
     class="project-carousel"
     role="region"
-    aria-roledescription="carrusel"
-    aria-label="Proyectos seleccionados"
+    :aria-roledescription="$t('carrusel')"
+    :aria-label="$t('Proyectos seleccionados')"
     @keydown="keyboard"
   >
     <div
@@ -92,7 +92,7 @@ onUnmounted(() => clearTimeout(clickTimer))
         <button
           type="button"
           class="carousel-select"
-          :aria-label="`Mostrar ${project.name}`"
+          :aria-label="`${$t('Mostrar')} ${project.name}`"
           :aria-pressed="selected === index"
           @click="select(index)"
         >
@@ -105,42 +105,42 @@ onUnmounted(() => clearTimeout(clickTimer))
             decoding="async"
             draggable="false"
           />
-          <span class="carousel-card-number" aria-hidden="true">{{ project.number }}</span>
+          <span class="carousel-card-number" aria-hidden="true">{{ $t(project.number) }}</span>
         </button>
         <div class="carousel-card-copy">
-          <span class="carousel-category">Caso de producto</span>
-          <h3>{{ project.name }}</h3>
+          <span class="carousel-category">{{ $t('Caso de producto') }}</span>
+          <h3>{{ $t(project.name) }}</h3>
           <div
             class="carousel-card-detail"
             :inert="selected !== index"
             :aria-hidden="selected !== index"
           >
-            <p>{{ project.subtitle }}</p>
+            <p>{{ $t(project.subtitle) }}</p>
           </div>
         </div>
       </article>
     </div>
     <div class="carousel-controls">
-      <div class="carousel-pagination" aria-label="Elegir proyecto">
+      <div class="carousel-pagination" :aria-label="$t('Elegir proyecto')">
         <button
           v-for="(project, index) in projects"
           :key="project.slug"
           type="button"
-          :aria-label="`Seleccionar ${project.name}`"
+          :aria-label="`${$t('Seleccionar')} ${project.name}`"
           :aria-current="selected === index ? 'true' : undefined"
           @click="select(index)"
         >
-          <span>{{ project.number }}</span>
+          <span>{{ $t(project.number) }}</span>
         </button>
       </div>
-      <span class="carousel-hint">Selecciona o desliza</span>
+      <span class="carousel-hint">{{ $t('Selecciona o desliza') }}</span>
       <a :href="`#proyecto/${current.slug}`" class="carousel-case-link"
-        >Explorar el caso <ArrowUpRight :size="18" aria-hidden="true"
+        >{{ $t('Explorar el caso') }} <ArrowUpRight :size="18" aria-hidden="true"
       /></a>
       <div class="carousel-arrows">
         <button
           type="button"
-          aria-label="Proyecto anterior"
+          :aria-label="$t('Proyecto anterior')"
           :disabled="projects.length < 2"
           @click="step(-1)"
         >
@@ -148,7 +148,7 @@ onUnmounted(() => clearTimeout(clickTimer))
         </button>
         <button
           type="button"
-          aria-label="Proyecto siguiente"
+          :aria-label="$t('Proyecto siguiente')"
           :disabled="projects.length < 2"
           @click="step(1)"
         >
@@ -157,7 +157,8 @@ onUnmounted(() => clearTimeout(clickTimer))
       </div>
     </div>
     <p class="sr-only" role="status" aria-live="polite">
-      Proyecto {{ selected + 1 }} de {{ projects.length }}: {{ current.name }}
+      {{ $t('Proyecto') }} {{ $t(selected + 1) }} {{ $t('de') }} {{ $t(projects.length) }}:
+      {{ $t(current.name) }}
     </p>
   </div>
 </template>

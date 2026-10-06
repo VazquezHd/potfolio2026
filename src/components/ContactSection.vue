@@ -5,15 +5,20 @@ defineProps({ profile: { type: Object, required: true } })
 <template>
   <section id="contacto" class="contact-section contact-panel page-width">
     <div class="contact-copy">
-      <span class="eyebrow muted">¿Lo hablamos?</span>
+      <span class="eyebrow muted">{{ $t('¿Lo hablamos?') }}</span>
       <h2>
         <span class="motion-heading-mask"
-          ><span class="motion-heading-ink">¿Tienes un proyecto<br />en mente?</span></span
+          ><span class="motion-heading-ink"
+            >{{ $t('¿Tienes un proyecto') }}<br />{{ $t('en mente?') }}</span
+          ></span
         >
       </h2>
       <p>
-        Si necesitas convertir una operación compleja en una experiencia clara, hablemos de tu
-        producto.
+        {{
+          $t(
+            'Si necesitas convertir una operación compleja en una experiencia clara, hablemos de tu producto.',
+          )
+        }}
       </p>
     </div>
     <div class="contact-actions">
@@ -23,12 +28,12 @@ defineProps({ profile: { type: Object, required: true } })
         target="_blank"
         rel="noopener noreferrer"
         class="button-primary"
-        >Escríbeme en LinkedIn <ArrowUpRight :size="20" aria-hidden="true"
+        >{{ $t('Escríbeme en LinkedIn') }} <ArrowUpRight :size="20" aria-hidden="true"
       /></a>
       <div class="contact-details">
-        <span>{{ profile.location }}</span>
+        <span>{{ $t(profile.location) }}</span>
         <a v-if="profile.github" :href="profile.github" target="_blank" rel="noopener noreferrer"
-          >También en GitHub <ArrowUpRight :size="16" aria-hidden="true"
+          >{{ $t('También en GitHub') }} <ArrowUpRight :size="16" aria-hidden="true"
         /></a>
       </div>
     </div>

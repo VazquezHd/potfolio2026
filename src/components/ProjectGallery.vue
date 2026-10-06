@@ -75,7 +75,7 @@ function keyboard(event) {
 watch(
   () => props.screens,
   () => {
-    index.value = 0
+    index.value = Math.min(index.value, props.screens.length - 1)
     inlineZoom.value = false
   },
 )
@@ -104,38 +104,38 @@ onUnmounted(() => {
     v-if="screen"
     class="gallery-showcase"
     role="region"
-    aria-label="Pantallas y decisiones del producto"
+    :aria-label="$t('Pantallas y decisiones del producto')"
     @keydown="keyboard"
   >
-    <div ref="thumbnails" class="gallery-thumbnails" aria-label="Elegir pantalla">
+    <div ref="thumbnails" class="gallery-thumbnails" :aria-label="$t('Elegir pantalla')">
       <button
         v-for="(item, position) in screens"
         :key="item.image"
         type="button"
-        :aria-label="`Ver pantalla: ${item.title}`"
+        :aria-label="`${$t('Ver pantalla:')} ${item.title}`"
         :aria-pressed="index === position"
         @click="select(position)"
       >
         <span class="gallery-thumb-image"
           ><img
             :src="item.image"
-            alt=""
+            :alt="$t('')"
             loading="lazy"
             decoding="async"
             :class="{ portrait: item.layout === 'mobile' }"
         /></span>
-        <span class="gallery-thumb-title">{{ item.title }}</span>
+        <span class="gallery-thumb-title">{{ $t(item.title) }}</span>
       </button>
     </div>
     <figure class="gallery-feature">
       <figcaption class="gallery-feature-caption">
         <span class="case-kicker"
-          >{{ String(index + 1).padStart(2, '0') }} /
-          {{ String(screens.length).padStart(2, '0') }} · {{ screen.skill }}</span
+          >{{ $t(String(index + 1).padStart(2, '0')) }} /
+          {{ $t(String(screens.length).padStart(2, '0')) }} · {{ $t(screen.skill) }}</span
         >
-        <h3>{{ screen.title }}</h3>
-        <p v-if="screen.problem" class="gallery-feature-problem">{{ screen.problem }}</p>
-        <p>{{ screen.description }}</p>
+        <h3>{{ $t(screen.title) }}</h3>
+        <p v-if="screen.problem" class="gallery-feature-problem">{{ $t(screen.problem) }}</p>
+        <p>{{ $t(screen.description) }}</p>
       </figcaption>
       <div v-if="mobile" class="gallery-mobile-stage">
         <div class="gallery-phone-frame">
@@ -149,29 +149,31 @@ onUnmounted(() => {
           />
         </div>
         <div v-if="screen.focus" class="gallery-focus-panel">
-          <p class="case-kicker">Detalle del recorrido</p>
-          <h4>{{ screen.focusLabel || screen.skill }}</h4>
+          <p class="case-kicker">{{ $t('Detalle del recorrido') }}</p>
+          <h4>{{ $t(screen.focusLabel || screen.skill) }}</h4>
           <div
             class="gallery-focus-crop"
             :style="focusStyle"
             role="img"
-            :aria-label="`Detalle ampliado: ${screen.focusLabel || screen.title}`"
+            :aria-label="`${$t('Detalle ampliado:')} ${screen.focusLabel || screen.title}`"
           ></div>
-          <p class="gallery-focus-note">Este detalle complementa la pantalla completa.</p>
+          <p class="gallery-focus-note">
+            {{ $t('Este detalle complementa la pantalla completa.') }}
+          </p>
         </div>
       </div>
       <div v-else class="gallery-browser-frame">
         <div class="gallery-browser-bar" aria-hidden="true">
           <span class="gallery-browser-dots"><i></i><i></i><i></i></span
-          ><span>{{ screen.skill }}</span
-          ><span>Vista del diseño</span>
+          ><span>{{ $t(screen.skill) }}</span
+          ><span>{{ $t('Vista del diseño') }}</span>
         </div>
         <div
           ref="viewport"
           class="gallery-browser-viewport"
           :class="{ 'is-zoomed': inlineZoom }"
           tabindex="0"
-          :aria-label="`Captura desplazable: ${screen.title}`"
+          :aria-label="`${$t('Captura desplazable:')} ${screen.title}`"
         >
           <img
             :key="screen.image"
@@ -186,9 +188,11 @@ onUnmounted(() => {
       <div class="gallery-feature-footer">
         <p>
           {{
-            mobile
-              ? 'Pantalla completa y detalle de la tarea.'
-              : 'Desplázate dentro de la captura para ver el resto.'
+            $t(
+              mobile
+                ? 'Pantalla completa y detalle de la tarea.'
+                : 'Desplázate dentro de la captura para ver el resto.',
+            )
           }}
         </p>
         <button
@@ -198,22 +202,23 @@ onUnmounted(() => {
           :aria-pressed="inlineZoom"
           @click="toggleInlineZoom"
         >
-          {{ inlineZoom ? 'Vista completa' : 'Acercar aquí' }}
+          {{ $t(inlineZoom ? 'Vista completa' : 'Acercar aquí') }}
         </button>
         <button type="button" class="gallery-expand" @click="openScreen">
-          Ampliar <Maximize2 :size="15" aria-hidden="true" />
+          {{ $t('Ampliar') }} <Maximize2 :size="15" aria-hidden="true" />
         </button>
         <div class="gallery-feature-arrows">
-          <button type="button" aria-label="Pantalla anterior" @click="select(index - 1)">
+          <button type="button" :aria-label="$t('Pantalla anterior')" @click="select(index - 1)">
             <ArrowLeft :size="18" /></button
-          ><button type="button" aria-label="Pantalla siguiente" @click="select(index + 1)">
+          ><button type="button" :aria-label="$t('Pantalla siguiente')" @click="select(index + 1)">
             <ArrowRight :size="18" />
           </button>
         </div>
       </div>
     </figure>
     <p class="sr-only" role="status" aria-live="polite">
-      Pantalla {{ index + 1 }} de {{ screens.length }}: {{ screen.title }}
+      {{ $t('Pantalla') }} {{ $t(index + 1) }} {{ $t('de') }} {{ $t(screens.length) }}:
+      {{ $t(screen.title) }}
     </p>
     <dialog
       ref="viewer"
@@ -223,11 +228,11 @@ onUnmounted(() => {
     >
       <template v-if="selected">
         <div class="viewer-toolbar">
-          <h2 id="viewer-title">{{ selected.title }}</h2>
+          <h2 id="viewer-title">{{ $t(selected.title) }}</h2>
           <div>
             <button type="button" @click="zoomed = !zoomed">
-              {{ zoomed ? 'Ajustar' : 'Ver detalle' }}</button
-            ><button type="button" @click="viewer.close()">Cerrar</button>
+              {{ $t(zoomed ? 'Ajustar' : 'Ver detalle') }}</button
+            ><button type="button" @click="viewer.close()">{{ $t('Cerrar') }}</button>
           </div>
         </div>
         <div class="viewer-image" :class="{ zoomed }">
@@ -239,8 +244,11 @@ onUnmounted(() => {
           />
         </div>
         <p class="viewer-hint">
-          {{ zoomed ? 'Desplázate para explorar la captura. ' : '' }}Esc para cerrar.
-          <a :href="selected.image" target="_blank" rel="noopener noreferrer">Abrir original</a>
+          {{ $t(zoomed ? 'Desplázate para explorar la captura. ' : '')
+          }}{{ $t('Esc para cerrar.') }}
+          <a :href="selected.image" target="_blank" rel="noopener noreferrer">{{
+            $t('Abrir original')
+          }}</a>
         </p>
       </template>
     </dialog>

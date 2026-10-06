@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { theme } from '../composables/usePreferences'
 import {
   WebGLRenderer,
   Scene,
@@ -207,6 +208,7 @@ watch(
   },
   { flush: 'post' },
 )
+watch(theme, measure, { flush: 'post' })
 onUnmounted(() => {
   cancelAnimationFrame(frame)
   observer?.disconnect()

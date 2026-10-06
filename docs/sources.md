@@ -113,3 +113,7 @@ El inicio presenta a Jorge Iván Vázquez Hernández por nombre, con su rol y pr
 ### Entrada progresiva y CTA móviles
 
 Los bloques de la landing se preparan fuera de pantalla y se revelan al entrar al viewport, con títulos enmascarados y movimiento por grupos para conservar alineación. El parallax aplica distintas velocidades a arte, contenido y grupos de cards, con límites y espacio reservado. Los CTA principales de inicio, carrusel y contacto usan el ancho completo de su contenedor en móvil y una altura mínima de 52 px. Se verificaron anchos de 320 y 390 px sin desbordamiento horizontal.
+
+Wallet: la presentación usa violeta/lavanda y un filtro CSS de matiz compartido por capturas, miniaturas y detalles. Los archivos originales permanecen intactos. La paleta SVG de presentación refleja los colores renderizados; no modifica el archivo de Figma. Los CTA principales móviles centran el texto y reservan el icono a la derecha.
+
+Idioma y tema: primera visita en español y oscuro. Las preferencias se guardan localmente, con alternativa funcional cuando el almacenamiento no está disponible. El catálogo inglés cubre presentación, casos y controles; las capturas originales y el CV de 2024 permanecen en su idioma original. El modo claro usa tokens propios y mantiene las paletas de los productos. Los controles funcionan con teclado y tienen etiquetas accesibles que indican la próxima acción.

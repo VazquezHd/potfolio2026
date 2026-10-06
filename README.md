@@ -1,6 +1,6 @@
 # Portafolio de Jorge Iván Vázquez Hernández
 
-Vue 3 y Tailwind CSS 4. Bun gestiona dependencias, compila y sirve el sitio. Español, tema oscuro y diseño responsive.
+Vue 3 y Tailwind CSS 4. Bun gestiona dependencias, compila y sirve el sitio. Español e inglés, temas claro y oscuro y diseño responsive. La primera visita inicia en español y oscuro; las preferencias se recuerdan localmente.
 
 ## Uso
 
@@ -58,3 +58,5 @@ La tipografía DM Sans se sirve localmente desde `dist/assets/fonts/`, junto con
 El movimiento de profundidad se gestiona en `useScrollMotion.js`: un listener pasivo, elementos cercanos al viewport y un único ciclo de actualización. Respeta `prefers-reduced-motion` y se detiene al ocultar la pestaña. Las partículas interpolan el scroll y terminan de nuevo en una esfera con puntos finos y rotación suave.
 
 Las galerías se organizan por filas con pistas compartidas para títulos y descripciones. Las miniaturas usan un encuadre uniforme; el visor conserva cada captura completa y su resolución original. El parallax se aplica por fila para mantener la alineación durante el scroll. Las cards de otros productos se calculan excluyendo el caso actual y admiten tres productos relacionados cuando el portafolio tenga cuatro casos.
+
+Las traducciones se mantienen en `src/i18n/en.json`. `usePreferences.js` centraliza idioma, tema y persistencia; la UI usa `$t` y los datos se localizan de forma reactiva. Las imágenes y el CV conservan el idioma de sus archivos originales.

@@ -4227,3 +4227,173 @@ h2,
     pointer-events: auto;
   }
 }
+
+/* Wallet presentation is recolored at render time, keeping source captures intact. */
+img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
+  filter: var(--wallet-capture-filter);
+}
+@media (max-width: 700px) {
+  .hero-personal-actions > a,
+  .carousel-controls > .carousel-case-link,
+  .contact-actions > .button-primary,
+  .contact-details > a,
+  .case-takeaway > .text-link {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    padding-inline: 44px;
+  }
+  .hero-personal-actions > a > svg,
+  .carousel-controls > .carousel-case-link > svg,
+  .contact-actions > .button-primary > svg,
+  .contact-details > a > svg,
+  .case-takeaway > .text-link > svg {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* Compact, accessible preferences live alongside the navigation. */
+.site-header.floating-header {
+  width: min(990px, calc(100% - 40px));
+}
+.header-preferences {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 8px;
+  border-left: 1px solid var(--color-glass-border);
+  flex-shrink: 0;
+}
+.preference-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+.preference-button:hover {
+  color: var(--color-text-primary);
+  background: var(--color-glass-highlight);
+}
+.preference-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.preference-theme-label {
+  display: none;
+}
+[data-theme='light'] .scroll-particles {
+  opacity: 0.48;
+}
+[data-theme='light'] .design-scene-stage {
+  --scene-accent: var(--color-accent);
+}
+[data-theme='light'] .design-scene-stage.scene-phase-1 {
+  --scene-accent: var(--wallet-primary);
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .floating-nav a {
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+  .floating-header .header-contact {
+    font-size: 12px;
+    padding-inline: 12px;
+  }
+}
+@media (max-width: 700px) {
+  .site-header.floating-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 40px 40px;
+    gap: 4px 8px;
+    top: 12px;
+    height: 106px;
+    padding: 8px 12px;
+    width: calc(100% - 24px);
+    border-radius: 26px;
+  }
+  .floating-nav {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .floating-nav a {
+    min-height: 40px;
+    padding: 8px;
+  }
+  .floating-header .header-contact {
+    grid-row: 2;
+    width: auto;
+    justify-self: start;
+    height: 40px;
+    padding: 8px 12px;
+    gap: 8px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .floating-header .header-contact span {
+    display: inline;
+  }
+  .header-preferences {
+    grid-row: 2;
+    padding-left: 0;
+    border: 0;
+    gap: 2px;
+  }
+  .preference-button {
+    min-height: 40px;
+    min-width: 40px;
+    padding: 8px;
+  }
+  .preference-theme-label {
+    display: inline;
+    font-size: 11px;
+  }
+  .nav-backdrop {
+    height: 140px;
+  }
+  .hero.personal-hero {
+    padding-top: 156px;
+  }
+  .product-case {
+    padding-top: 156px;
+  }
+  main section[id] {
+    scroll-margin-top: 140px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preference-button {
+    transition: none;
+  }
+}
+@media (max-width: 700px) {
+  .site-header.floating-header {
+    height: 110px;
+    grid-template-rows: 40px 44px;
+  }
+  .header-preferences .preference-button {
+    min-height: 44px;
+  }
+}
+@media (max-width: 360px) {
+  .header-preferences .preference-theme-label {
+    display: none;
+  }
+}

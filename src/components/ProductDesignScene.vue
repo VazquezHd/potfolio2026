@@ -157,7 +157,7 @@ onUnmounted(() => {
     ref="container"
     class="product-design-scene"
     role="region"
-    aria-label="De las necesidades a una interfaz de producto"
+    :aria-label="$t('De las necesidades a una interfaz de producto')"
     @keydown="keyboard"
     @focusin="focusIn"
     @focusout="focusOut"
@@ -170,7 +170,9 @@ onUnmounted(() => {
       @pointerleave="reset"
     >
       <span class="scene-ambient-glow" aria-hidden="true"></span>
-      <span class="scene-floating-tag scene-tag-top" aria-hidden="true">{{ current.badge }}</span>
+      <span class="scene-floating-tag scene-tag-top" aria-hidden="true">{{
+        $t(current.badge)
+      }}</span>
       <div class="scene-perspective">
         <span class="scene-back-sheet sheet-far" aria-hidden="true"></span>
         <span class="scene-back-sheet sheet-near" aria-hidden="true"></span>
@@ -179,67 +181,88 @@ onUnmounted(() => {
             <div class="scene-object-bar">
               <span class="scene-window-dots" aria-hidden="true"><i></i><i></i><i></i></span
               ><span>{{
-                index === 0
-                  ? 'Brief de producto'
-                  : index === 1
-                    ? 'Flujo de usuario'
-                    : 'Interfaz de producto'
+                $t(
+                  index === 0
+                    ? 'Brief de producto'
+                    : index === 1
+                      ? 'Flujo de usuario'
+                      : 'Interfaz de producto',
+                )
               }}</span
-              ><span class="scene-object-number">0{{ index + 1 }}</span>
+              ><span class="scene-object-number">0{{ $t(index + 1) }}</span>
             </div>
             <div v-if="index === 0" class="scene-brief">
-              <span class="scene-small-label">Ejemplo de requerimientos</span>
-              <h3>Una tarea<br />sin fricción.</h3>
+              <span class="scene-small-label">{{ $t('Ejemplo de requerimientos') }}</span>
+              <h3>{{ $t('Una tarea') }}<br />{{ $t('sin fricción.') }}</h3>
               <div class="scene-requirement">
                 <span>01</span>
-                <div><small>Persona</small><strong>Usuario de producto</strong></div>
+                <div>
+                  <small>{{ $t('Persona') }}</small
+                  ><strong>{{ $t('Usuario de producto') }}</strong>
+                </div>
               </div>
               <div class="scene-requirement">
                 <span>02</span>
-                <div><small>Necesidad</small><strong>Completar la tarea</strong></div>
+                <div>
+                  <small>{{ $t('Necesidad') }}</small
+                  ><strong>{{ $t('Completar la tarea') }}</strong>
+                </div>
               </div>
               <div class="scene-requirement">
                 <span>03</span>
-                <div><small>Problema</small><strong>Pasos y estados confusos</strong></div>
+                <div>
+                  <small>{{ $t('Problema') }}</small
+                  ><strong>{{ $t('Pasos y estados confusos') }}</strong>
+                </div>
               </div>
             </div>
             <div v-else-if="index === 1" class="scene-flow">
-              <span class="scene-small-label">Ejemplo de recorrido</span>
-              <h3>Un camino claro.</h3>
+              <span class="scene-small-label">{{ $t('Ejemplo de recorrido') }}</span>
+              <h3>{{ $t('Un camino claro.') }}</h3>
               <ol class="scene-flow-path">
                 <li>
-                  <span>01</span><strong>Identificar</strong><small>Entender el contexto</small>
+                  <span>01</span><strong>{{ $t('Identificar') }}</strong
+                  ><small>{{ $t('Entender el contexto') }}</small>
                 </li>
                 <li>
-                  <span>02</span><strong>Decidir</strong><small>Elegir la siguiente acción</small>
+                  <span>02</span><strong>{{ $t('Decidir') }}</strong
+                  ><small>{{ $t('Elegir la siguiente acción') }}</small>
                 </li>
-                <li><span>03</span><strong>Confirmar</strong><small>Estado y respuesta</small></li>
+                <li>
+                  <span>03</span><strong>{{ $t('Confirmar') }}</strong
+                  ><small>{{ $t('Estado y respuesta') }}</small>
+                </li>
               </ol>
-              <p class="scene-flow-note">Cada paso conserva el contexto.</p>
+              <p class="scene-flow-note">{{ $t('Cada paso conserva el contexto.') }}</p>
             </div>
             <div v-else class="scene-interface">
-              <span class="scene-small-label">Ejemplo de sistema</span>
-              <h3>La decisión<br />toma forma.</h3>
+              <span class="scene-small-label">{{ $t('Ejemplo de sistema') }}</span>
+              <h3>{{ $t('La decisión') }}<br />{{ $t('toma forma.') }}</h3>
               <div
                 class="scene-ui-sketch"
-                aria-label="Ejemplo ilustrativo de una interfaz con estados"
+                :aria-label="$t('Ejemplo ilustrativo de una interfaz con estados')"
               >
                 <div class="scene-ui-sidebar" aria-hidden="true"><i></i><i></i><i></i></div>
                 <div class="scene-ui-main">
-                  <div class="scene-ui-heading"><strong>Actividad</strong><span>Estado</span></div>
-                  <div class="scene-ui-row">
-                    <span class="scene-ui-line"></span><small>Por revisar</small>
+                  <div class="scene-ui-heading">
+                    <strong>{{ $t('Actividad') }}</strong
+                    ><span>{{ $t('Estado') }}</span>
                   </div>
                   <div class="scene-ui-row">
-                    <span class="scene-ui-line"></span><small>En proceso</small>
+                    <span class="scene-ui-line"></span><small>{{ $t('Por revisar') }}</small>
                   </div>
                   <div class="scene-ui-row">
-                    <span class="scene-ui-line"></span><small>Listo</small>
+                    <span class="scene-ui-line"></span><small>{{ $t('En proceso') }}</small>
+                  </div>
+                  <div class="scene-ui-row">
+                    <span class="scene-ui-line"></span><small>{{ $t('Listo') }}</small>
                   </div>
                 </div>
               </div>
               <div class="scene-component-chips">
-                <span>UI</span><span>Estados</span><span>Frontend</span>
+                <span>{{ $t('UI') }}</span
+                ><span>{{ $t('Estados') }}</span
+                ><span>{{ $t('Frontend') }}</span>
               </div>
             </div>
           </div>
@@ -249,33 +272,42 @@ onUnmounted(() => {
     </div>
     <div class="design-scene-footer">
       <div class="scene-phase-copy">
-        <span>Cómo pienso un producto</span><strong>{{ current.label }}</strong>
-        <p>{{ current.detail }}</p>
+        <span>{{ $t('Cómo pienso un producto') }}</span
+        ><strong>{{ $t(current.label) }}</strong>
+        <p>{{ $t(current.detail) }}</p>
       </div>
       <div
         class="scene-navigation"
         @pointerenter="controlsHover(true, $event)"
         @pointerleave="controlsHover(false, $event)"
       >
-        <button type="button" aria-label="Vista anterior del proceso" @click="select(index - 1)">
+        <button
+          type="button"
+          :aria-label="$t('Vista anterior del proceso')"
+          @click="select(index - 1)"
+        >
           <ArrowLeft :size="17" />
         </button>
         <button
           type="button"
-          :aria-label="automatic ? 'Detener cambio automático' : 'Activar cambio automático'"
-          :title="automatic ? 'Detener cambio automático' : 'Activar cambio automático'"
+          :aria-label="$t(automatic ? 'Detener cambio automático' : 'Activar cambio automático')"
+          :title="$t(automatic ? 'Detener cambio automático' : 'Activar cambio automático')"
           @click="toggleAutomatic"
         >
           <Pause v-if="automatic" :size="15" /><Play v-else :size="15" />
         </button>
-        <button type="button" aria-label="Vista siguiente del proceso" @click="select(index + 1)">
+        <button
+          type="button"
+          :aria-label="$t('Vista siguiente del proceso')"
+          @click="select(index + 1)"
+        >
           <ArrowRight :size="17" />
         </button>
       </div>
     </div>
     <div
       class="scene-phase-picker"
-      aria-label="Explorar mi proceso"
+      :aria-label="$t('Explorar mi proceso')"
       @pointerenter="controlsHover(true, $event)"
       @pointerleave="controlsHover(false, $event)"
     >
@@ -287,12 +319,15 @@ onUnmounted(() => {
         :class="{ 'phase-timed': index === position && timerRunning }"
         @click="select(position)"
       >
-        <span>0{{ position + 1 }}</span> {{ phase.title }}
+        <span>0{{ $t(position + 1) }}</span> {{ $t(phase.title) }}
       </button>
     </div>
     <p class="sr-only">
-      Visuales ilustrativos de requerimientos, flujos e interfaces. Puedes explorar las tres vistas
-      con los controles.
+      {{
+        $t(
+          'Visuales ilustrativos de requerimientos, flujos e interfaces. Puedes explorar las tres vistas con los controles.',
+        )
+      }}
     </p>
   </div>
 </template>

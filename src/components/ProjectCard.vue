@@ -14,25 +14,25 @@ defineProps({ project: { type: Object, required: true } })
         :src="project.image"
         :alt="project.imageAlt"
         loading="lazy"
-        decoding="async" /><span class="cover-label">{{ project.category }}</span
+        decoding="async" /><span class="cover-label">{{ $t(project.category) }}</span
       ><span class="cover-arrow"><ArrowUpRight :size="23" /></span
     ></a>
     <div class="project-meta">
       <div class="project-name">
-        <span class="project-number">{{ project.number }} /</span>
+        <span class="project-number">{{ $t(project.number) }} /</span>
         <div>
           <h3>
             <a :href="`#proyecto/${project.slug}`"
-              >{{ project.name }} <span>— {{ project.subtitle }}</span></a
+              >{{ $t(project.name) }} <span>— {{ $t(project.subtitle) }}</span></a
             >
           </h3>
           <div class="tags">
-            <span v-for="tag in project.tags" :key="tag">{{ tag }}</span>
+            <span v-for="tag in project.tags" :key="tag">{{ $t(tag) }}</span>
           </div>
         </div>
       </div>
       <a class="case-link" :href="`#proyecto/${project.slug}`"
-        >Ver caso de producto <ArrowUpRight :size="17"
+        >{{ $t('Ver caso de producto') }} <ArrowUpRight :size="17"
       /></a>
     </div>
   </article>

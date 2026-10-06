@@ -9,42 +9,42 @@ const props = defineProps({
 const study = computed(() => props.project.caseStudy)
 </script>
 <template>
-  <article class="product-case page-width">
+  <article class="product-case page-width" :data-product="project.slug">
     <header class="product-case-header">
-      <a href="#proyectos" class="text-link">← Volver a proyectos</a>
+      <a href="#proyectos" class="text-link">{{ $t('← Volver a proyectos') }}</a>
       <div class="case-intro-grid">
         <div>
-          <p class="case-kicker">Caso de producto / {{ project.domain }}</p>
-          <h1>{{ project.name }}</h1>
-          <p class="case-deck">{{ project.subtitle }}</p>
+          <p class="case-kicker">{{ $t('Caso de producto /') }} {{ $t(project.domain) }}</p>
+          <h1>{{ $t(project.name) }}</h1>
+          <p class="case-deck">{{ $t(project.subtitle) }}</p>
         </div>
         <dl class="case-facts">
           <div>
-            <dt>Contexto</dt>
-            <dd>{{ project.context }}</dd>
+            <dt>{{ $t('Contexto') }}</dt>
+            <dd>{{ $t(project.context) }}</dd>
           </div>
           <div>
-            <dt>Alcance actual</dt>
-            <dd>{{ project.status }}</dd>
+            <dt>{{ $t('Alcance actual') }}</dt>
+            <dd>{{ $t(project.status) }}</dd>
           </div>
           <div>
-            <dt>Enfoque del caso</dt>
-            <dd>Necesidades · Flujos · UX/UI</dd>
+            <dt>{{ $t('Enfoque del caso') }}</dt>
+            <dd>{{ $t('Necesidades · Flujos · UX/UI') }}</dd>
           </div>
           <div>
-            <dt>Herramienta de diseño</dt>
-            <dd>Figma</dd>
+            <dt>{{ $t('Herramienta de diseño') }}</dt>
+            <dd>{{ $t('Figma') }}</dd>
           </div>
         </dl>
       </div>
-      <p class="case-summary">{{ project.description }}</p>
-      <p v-if="project.presentationNote" class="case-caption">{{ project.presentationNote }}</p>
+      <p class="case-summary">{{ $t(project.description) }}</p>
+      <p v-if="project.presentationNote" class="case-caption">{{ $t(project.presentationNote) }}</p>
       <figure class="case-lead-screen">
         <a
           :href="project.image"
           target="_blank"
           rel="noopener noreferrer"
-          :aria-label="`Ampliar vista principal: ${project.name}`"
+          :aria-label="`${$t('Ampliar vista principal:')} ${project.name}`"
         >
           <img
             :src="project.image"
@@ -55,125 +55,131 @@ const study = computed(() => props.project.caseStudy)
           />
         </a>
         <figcaption>
-          {{ study.leadCaption }}
-          <a :href="project.image" target="_blank" rel="noopener noreferrer"
-            >Ampliar vista principal</a
-          >
+          {{ $t(study.leadCaption) }}
+          <a :href="project.image" target="_blank" rel="noopener noreferrer">{{
+            $t('Ampliar vista principal')
+          }}</a>
         </figcaption>
       </figure>
     </header>
-    <nav class="case-index" aria-label="Contenido del caso">
-      <a :href="`#proyecto/${project.slug}/caso-problema`">Problema</a>
-      <a :href="`#proyecto/${project.slug}/caso-solucion`">Solución</a>
-      <a :href="`#proyecto/${project.slug}/caso-proceso`">Proceso</a>
-      <a :href="`#proyecto/${project.slug}/caso-sistema`">Sistema visual</a>
+    <nav class="case-index" :aria-label="$t('Contenido del caso')">
+      <a :href="`#proyecto/${project.slug}/caso-problema`">{{ $t('Problema') }}</a>
+      <a :href="`#proyecto/${project.slug}/caso-solucion`">{{ $t('Solución') }}</a>
+      <a :href="`#proyecto/${project.slug}/caso-proceso`">{{ $t('Proceso') }}</a>
+      <a :href="`#proyecto/${project.slug}/caso-sistema`">{{ $t('Sistema visual') }}</a>
     </nav>
     <div class="case-editorial">
       <section id="caso-problema" class="case-chapter">
-        <p class="case-kicker">01 / Problema y propuesta</p>
+        <p class="case-kicker">{{ $t('01 / Problema y propuesta') }}</p>
         <h2>
           <span class="motion-heading-mask"
-            ><span class="motion-heading-ink">{{ study.challenge }}</span></span
+            ><span class="motion-heading-ink">{{ $t(study.challenge) }}</span></span
           >
         </h2>
-        <p class="case-reading">{{ study.scenario }} {{ study.hypothesis }}</p>
-        <p class="case-evidence-label">{{ study.problemLabel }}</p>
+        <p class="case-reading">{{ $t(study.scenario) }} {{ $t(study.hypothesis) }}</p>
+        <p class="case-evidence-label">{{ $t(study.problemLabel) }}</p>
         <div class="case-three-grid">
           <article v-for="item in study.opportunities" :key="item.title" class="case-note">
-            <h3>{{ item.title }}</h3>
+            <h3>{{ $t(item.title) }}</h3>
             <p v-if="item.need" class="case-note-need">
-              <strong>Necesidad.</strong> {{ item.need }}
+              <strong>{{ $t('Necesidad.') }}</strong> {{ $t(item.need) }}
             </p>
-            <p><strong>Decisión.</strong> {{ item.text }}</p>
+            <p>
+              <strong>{{ $t('Decisión.') }}</strong> {{ $t(item.text) }}
+            </p>
           </article>
         </div>
         <div v-if="study.flow" class="case-flow-panel">
-          <p class="case-kicker">Flujo clave · Resumen del diseño</p>
-          <h3>{{ study.flowTitle }}</h3>
+          <p class="case-kicker">{{ $t('Flujo clave · Resumen del diseño') }}</p>
+          <h3>{{ $t(study.flowTitle) }}</h3>
           <ol class="case-flow">
             <li v-for="(step, index) in study.flow" :key="step.label">
-              <span class="case-flow-number">0{{ index + 1 }}</span>
-              <strong>{{ step.label }}</strong>
-              <small>{{ step.detail }}</small>
+              <span class="case-flow-number">0{{ $t(index + 1) }}</span>
+              <strong>{{ $t(step.label) }}</strong>
+              <small>{{ $t(step.detail) }}</small>
             </li>
           </ol>
         </div>
       </section>
       <section id="caso-solucion" class="case-chapter">
-        <p class="case-kicker">02 / De la decisión a la interfaz</p>
+        <p class="case-kicker">{{ $t('02 / De la decisión a la interfaz') }}</p>
         <h2>
           <span class="motion-heading-mask"
-            ><span class="motion-heading-ink"
-              >Así se traduce el problema en una solución.</span
-            ></span
+            ><span class="motion-heading-ink">{{
+              $t('Así se traduce el problema en una solución.')
+            }}</span></span
           >
         </h2>
         <p class="case-caption">
-          Diseño en Figma · Contenido de demostración · Capturas ampliables
+          {{ $t('Diseño en Figma · Contenido de demostración · Capturas ampliables') }}
         </p>
         <ProjectGallery :screens="project.gallery" />
       </section>
       <section id="caso-proceso" class="case-chapter">
-        <p class="case-kicker">03 / Cómo estructuré la solución</p>
+        <p class="case-kicker">{{ $t('03 / Cómo estructuré la solución') }}</p>
         <h2>
           <span class="motion-heading-mask"
-            ><span class="motion-heading-ink">{{ study.processTitle }}</span></span
+            ><span class="motion-heading-ink">{{ $t(study.processTitle) }}</span></span
           >
         </h2>
         <p class="case-caption">
           {{
-            study.processCaption ||
-            'Resumen de decisiones visibles en el diseño. Validación con usuarios pendiente.'
+            $t(
+              study.processCaption ||
+                'Resumen de decisiones visibles en el diseño. Validación con usuarios pendiente.',
+            )
           }}
         </p>
         <ol class="case-process">
           <li v-for="(step, index) in study.steps" :key="step.title">
-            <span class="case-number">0{{ index + 1 }}</span>
-            <h3>{{ step.title }}</h3>
-            <p>{{ step.text }}</p>
+            <span class="case-number">0{{ $t(index + 1) }}</span>
+            <h3>{{ $t(step.title) }}</h3>
+            <p>{{ $t(step.text) }}</p>
           </li>
         </ol>
         <details class="case-research-details">
-          <summary>Ver research propuesto y proto-personas</summary>
+          <summary>{{ $t('Ver research propuesto y proto-personas') }}</summary>
           <div class="research-details-content">
             <p class="case-caption">
               {{
-                study.researchCaption ||
-                'Hipótesis de trabajo, sin entrevistas ni pruebas realizadas.'
+                $t(
+                  study.researchCaption ||
+                    'Hipótesis de trabajo, sin entrevistas ni pruebas realizadas.',
+                )
               }}
             </p>
             <div class="case-two-grid">
               <article v-for="person in study.personas" :key="person.name" class="case-note">
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.job }}</p>
+                <h3>{{ $t(person.name) }}</h3>
+                <p>{{ $t(person.job) }}</p>
               </article>
             </div>
             <div class="case-three-grid">
               <article v-for="method in study.research" :key="method.title">
-                <h3>{{ method.title }}</h3>
-                <p>{{ method.text }}</p>
+                <h3>{{ $t(method.title) }}</h3>
+                <p>{{ $t(method.text) }}</p>
               </article>
             </div>
           </div>
         </details>
       </section>
       <section id="caso-sistema" class="case-chapter">
-        <p class="case-kicker">04 / Sistema visual</p>
+        <p class="case-kicker">{{ $t('04 / Sistema visual') }}</p>
         <h2>
           <span class="motion-heading-mask"
-            ><span class="motion-heading-ink"
-              >Un lenguaje que se mantiene entre módulos.</span
-            ></span
+            ><span class="motion-heading-ink">{{
+              $t('Un lenguaje que se mantiene entre módulos.')
+            }}</span></span
           >
         </h2>
         <div class="case-system-grid">
           <div>
-            <h3>{{ study.paletteLabel || 'Paleta original' }}</h3>
+            <h3>{{ $t(study.paletteLabel || 'Paleta original') }}</h3>
             <ul class="case-swatches">
               <li v-for="color in study.palette" :key="color.token">
                 <span :style="{ background: `var(${color.token})` }"></span
-                ><strong>{{ color.label }}</strong
-                ><small>{{ color.value }}</small>
+                ><strong>{{ $t(color.label) }}</strong
+                ><small>{{ $t(color.value) }}</small>
               </li>
             </ul>
             <a
@@ -181,34 +187,34 @@ const study = computed(() => props.project.caseStudy)
               :href="study.paletteImage"
               target="_blank"
               rel="noopener noreferrer"
-              >{{ study.paletteLinkLabel || 'Ver assets originales ↗' }}</a
+              >{{ $t(study.paletteLinkLabel || 'Ver assets originales ↗') }}</a
             >
           </div>
           <div class="case-type-specimen">
-            <p class="case-kicker">Tipografía / {{ study.fontName }}</p>
+            <p class="case-kicker">{{ $t('Tipografía /') }} {{ $t(study.fontName) }}</p>
             <p class="type-sample" :style="{ fontFamily: `var(${study.fontToken})` }">
-              Información clara.<br />Decisiones simples.
+              {{ $t('Información clara.') }}<br />{{ $t('Decisiones simples.') }}
             </p>
-            <p>Una familia y una jerarquía compartida.</p>
+            <p>{{ $t('Una familia y una jerarquía compartida.') }}</p>
             <a
               v-if="study.typeImage"
               class="text-link"
               :href="study.typeImage"
               target="_blank"
               rel="noopener noreferrer"
-              >Ver tipografía original ↗</a
+              >{{ $t('Ver tipografía original ↗') }}</a
             >
           </div>
         </div>
         <div class="case-takeaway">
-          <p>{{ study.conclusion }}</p>
+          <p>{{ $t(study.conclusion) }}</p>
           <a
             v-if="project.source"
             :href="project.source"
             target="_blank"
             rel="noopener noreferrer"
             class="text-link"
-            >Explorar el diseño en Figma ↗</a
+            >{{ $t('Explorar el diseño en Figma ↗') }}</a
           >
         </div>
       </section>
