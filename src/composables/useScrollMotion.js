@@ -15,7 +15,7 @@ export function useScrollMotion(route) {
   const animations = new Set()
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value))
   const targets = [
-    ['.hero-art', 0.24, 56, '--scroll-shift'],
+    ['.hero-art', 0.18, 32, '--scroll-shift'],
     ['.about-art', 0.14, 20, '--scroll-shift'],
     [
       '.project-carousel, .related-products-grid, .gallery-showcase, .case-lead-screen',

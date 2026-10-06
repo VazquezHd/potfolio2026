@@ -105,3 +105,7 @@ Se revisó https://dmejia.vercel.app: combina parallax decorativo en el inicio, 
 - Proyectos: carrusel expansible con selección, teclado, flechas y arrastre, inspirado en el video proporcionado por el usuario. Acceso al caso fuera del área que cambia de tamaño. Sin reproducción automática.
 - Proceso: cuatro pasos en una fila de escritorio y una vista breve en móvil; detalle dentro de los casos.
 - Las galerías de los cuatro casos usan miniaturas y una captura grande. Vistas web desplazables dentro de un marco de navegador. Móviles completos con ampliaciones de áreas funcionales tomadas de la misma captura; no alteran sus contenidos. La vista ampliada es opcional.
+
+### Inicio personal y escena de diseño de producto
+
+El inicio presenta a Jorge Iván Vázquez Hernández por nombre, con su rol y propuesta de valor. Se retira el mapa de Atomic Design, conservado en `docs/archive/AtomicMap.vue`. La nueva escena usa visuales ilustrativos de requerimientos, un flujo genérico y una interfaz construida en HTML/CSS; no consume capturas ni datos de proyectos. El cambio de vistas es automático cada 6,2 segundos, con control manual, detención por foco y suspensión fuera de pantalla, con la pestaña oculta o con movimiento reducido. La esfera de partículas conserva su geometría y cierre; el movimiento de la escena se aplica en una capa separada.

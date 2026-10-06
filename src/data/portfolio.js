@@ -7,6 +7,7 @@ export const profile = {
   name: 'Jorge Iván Vázquez Hernández',
   initials: 'JI',
   shortName: 'Jorge Iván',
+  surname: 'Vázquez Hernández',
   role: 'Product Designer',
   introduction:
     'Diseño la experiencia desde la arquitectura de información hasta los componentes, estados e interfaces en Figma. Trabajo con ingeniería desde el inicio y puedo implementar las vistas en Vue.js, Nuxt 3 y Tailwind CSS.',

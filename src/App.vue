@@ -8,7 +8,7 @@ import ScrollParticles from './components/ScrollParticles.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteHeader from './components/SiteHeader.vue'
 import ProjectCarousel from './components/ProjectCarousel.vue'
-import AtomicMap from './components/AtomicMap.vue'
+import ProductDesignScene from './components/ProductDesignScene.vue'
 import ProductCaseStudy from './components/ProductCaseStudy.vue'
 const filter = ref('Todos')
 const filters = computed(() => ['Todos', ...new Set(projects.map((project) => project.category))])
@@ -33,20 +33,32 @@ const otherProjects = computed(() => projects.filter((project) => project.slug !
     />
     <main id="contenido" ref="main" tabindex="-1">
       <template v-if="!active">
-        <section id="inicio" class="hero page-width">
+        <section id="inicio" class="hero personal-hero page-width">
           <div class="hero-top flex items-center justify-between gap-4">
             <span class="eyebrow"><i class="status-dot"></i> {{ profile.role }}</span
             ><span class="hero-edition">Portafolio · 2026</span>
           </div>
           <div class="hero-main">
             <div class="hero-copy">
-              <h1>Del problema<br />al <span class="text-accent">producto.</span></h1>
+              <span class="hero-greeting">Hola, soy</span>
+              <h1 :aria-label="profile.name">
+                <span>{{ profile.shortName }}</span
+                ><span class="hero-surname">{{ profile.surname }}.</span>
+              </h1>
               <p>{{ profile.hero }}</p>
-              <a href="#proyectos" class="button-primary"
-                >Explorar proyectos <ArrowDown :size="17"
-              /></a>
+              <div class="hero-personal-actions">
+                <a href="#proyectos" class="button-primary"
+                  >Ver mi trabajo <ArrowDown :size="17" /></a
+                ><a
+                  :href="profile.linkedin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hero-conversation"
+                  >Conversemos <ArrowUpRight :size="17"
+                /></a>
+              </div>
             </div>
-            <div class="hero-art atomic-panel"><AtomicMap /></div>
+            <div class="hero-art product-scene-art"><ProductDesignScene /></div>
           </div>
           <div class="hero-bottom">
             <span>{{ profile.name }}</span
