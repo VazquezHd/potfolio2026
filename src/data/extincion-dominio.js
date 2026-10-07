@@ -108,7 +108,7 @@ export const domainProject = {
       'Diseñé un recorrido por etapas con información compartida, responsables y seguimiento documental.',
     problemLabel: 'Problema de producto · Alcance descrito por Jorge Iván',
     leadCaption: 'Pendientes, faltantes y vencimientos antes de entrar al detalle.',
-    processTitle: 'Dos fases, un recorrido conectado.',
+    processTitle: 'Continuidad entre fases y perfiles.',
     opportunities: [
       {
         title: 'Guiar la preparación',

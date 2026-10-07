@@ -75,7 +75,7 @@ const otherProjects = computed(() =>
                   target="_blank"
                   rel="noopener noreferrer"
                   class="hero-conversation"
-                  >{{ $t('Conversemos') }} <ArrowUpRight :size="17"
+                  >{{ $t('Contactar') }} <ArrowUpRight :size="17"
                 /></a>
               </div>
             </div>
@@ -95,15 +95,15 @@ const otherProjects = computed(() =>
               <h2>
                 <span class="motion-heading-mask"
                   ><span class="motion-heading-ink"
-                    >{{ $t('Problemas convertidos en') }}
-                    <span class="text-accent">{{ $t('producto.') }}</span></span
+                    >{{ $t('Casos de') }}
+                    <span class="text-accent">{{ $t('diseño de producto.') }}</span></span
                   ></span
                 >
               </h2>
             </div>
             <p>
-              {{ $t('El problema, el recorrido y las decisiones.') }}<br />{{
-                $t('Así conecto UX y UI.')
+              {{ $t('Contexto, decisiones de diseño y alcance de la solución.') }}<br />{{
+                $t('De los requerimientos a la interfaz.')
               }}
             </p>
           </div>
@@ -143,14 +143,11 @@ const otherProjects = computed(() =>
             <h2>
               <span class="motion-heading-mask"
                 ><span class="motion-heading-ink"
-                  >{{ $t('Entiendo necesidades.') }}<br />{{ $t('Diseño') }}
-                  <span class="text-accent">{{ $t('soluciones.') }}</span></span
+                  >{{ $t('Diseño de producto') }}<br />
+                  <span class="text-accent">{{ $t('con criterio técnico.') }}</span></span
                 ></span
               >
             </h2>
-            <p class="about-intro">
-              {{ $t('Soy') }} {{ $t(profile.shortName) }}{{ $t(', Product Designer.') }}
-            </p>
             <p>{{ $t(profile.about) }}</p>
             <p class="value-statement">{{ $t(profile.value) }}</p>
             <div class="about-skills">

@@ -22,8 +22,8 @@ const props = defineProps({
 })
 const navigation = [
   { id: 'inicio', label: 'Inicio', icon: Home },
-  { id: 'sobre-mi', label: 'Sobre mí', icon: UserRound },
   { id: 'proyectos', label: 'Proyectos', icon: Layers },
+  { id: 'sobre-mi', label: 'Sobre mí', icon: UserRound },
   { id: 'proceso', label: 'Proceso', icon: Workflow },
   { id: 'contacto', label: 'Contacto', icon: Mail },
 ]
@@ -34,7 +34,7 @@ const isCurrent = (id) =>
     ? id === 'contacto'
     : props.isCase
       ? id === 'proyectos'
-      : props.currentSection === id
+      : (props.currentSection === 'capacidades' ? 'sobre-mi' : props.currentSection) === id
 function updateProgress() {
   scrolled.value = window.scrollY > 24
   const limit = document.documentElement.scrollHeight - window.innerHeight

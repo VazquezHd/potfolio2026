@@ -5,18 +5,18 @@ defineProps({ profile: { type: Object, required: true } })
 <template>
   <section id="contacto" class="contact-section contact-panel page-width">
     <div class="contact-copy">
-      <span class="eyebrow muted">{{ $t('¿Lo hablamos?') }}</span>
+      <span class="eyebrow muted">{{ $t('Contacto') }}</span>
       <h2>
         <span class="motion-heading-mask"
           ><span class="motion-heading-ink"
-            >{{ $t('¿Tienes un proyecto') }}<br />{{ $t('en mente?') }}</span
+            >{{ $t('Conversemos sobre') }}<br />{{ $t('tu proyecto.') }}</span
           ></span
         >
       </h2>
       <p>
         {{
           $t(
-            'Si necesitas convertir una operación compleja en una experiencia clara, hablemos de tu producto.',
+            'Disponible para conversar sobre oportunidades profesionales y proyectos de producto digital.',
           )
         }}
       </p>
@@ -28,15 +28,15 @@ defineProps({ profile: { type: Object, required: true } })
         target="_blank"
         rel="noopener noreferrer"
         class="button-primary"
-        >{{ $t('Escríbeme en LinkedIn') }} <ArrowUpRight :size="20" aria-hidden="true"
+        >{{ $t('Contactar por LinkedIn') }} <ArrowUpRight :size="20" aria-hidden="true"
       /></a>
       <div class="contact-details">
         <span>{{ $t(profile.location) }}</span>
         <a v-if="profile.github" :href="profile.github" target="_blank" rel="noopener noreferrer"
-          >{{ $t('También en GitHub') }} <ArrowUpRight :size="16" aria-hidden="true"
+          >{{ $t('GitHub') }} <ArrowUpRight :size="16" aria-hidden="true"
         /></a>
         <a v-if="profile.gitlab" :href="profile.gitlab" target="_blank" rel="noopener noreferrer"
-          >{{ $t('También en GitLab') }} <ArrowUpRight :size="16" aria-hidden="true"
+          >{{ $t('GitLab') }} <ArrowUpRight :size="16" aria-hidden="true"
         /></a>
       </div>
     </div>

@@ -117,7 +117,7 @@ export const walletProject = {
       'La propuesta reúne consulta, organización y salida de documentos en un recorrido compartido entre web y móvil.',
     problemLabel: 'Necesidades y alcance documentados en Figma y confirmados por Jorge Iván',
     leadCaption: 'Documentos, carpetas y avisos reunidos antes de entrar a una tarea.',
-    processTitle: 'De los requerimientos a un recorrido de uso.',
+    processTitle: 'Requerimientos y recorrido de uso.',
     processCaption:
       'Síntesis de objetivos, requerimientos y perfiles del archivo. Validación con usuarios pendiente.',
     researchCaption:

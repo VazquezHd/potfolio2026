@@ -1366,12 +1366,7 @@ h2 {
   z-index: 2;
 }
 .case-content {
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--color-background) 98.04%, transparent) 0%,
-    color-mix(in srgb, var(--color-background) 94.12%, transparent) 63%,
-    color-mix(in srgb, var(--color-background) 78.82%, transparent) 100%
-  );
+  background: var(--color-glass-panel);
 }
 .case-hero {
   background: linear-gradient(
@@ -1887,45 +1882,19 @@ h2 {
 
 @media (min-width: 701px) {
   .projects-section {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--color-background) 96.86%, transparent) 0%,
-      color-mix(in srgb, var(--color-background) 87.84%, transparent) 55%,
-      color-mix(in srgb, var(--color-background) 25.1%, transparent) 100%
-    );
+    background: var(--color-glass-panel);
   }
   .expertise-section {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--color-background) 96.86%, transparent) 0%,
-      color-mix(in srgb, var(--color-background) 87.84%, transparent) 55%,
-      color-mix(in srgb, var(--color-background) 25.1%, transparent) 100%
-    );
+    background: var(--color-glass-panel);
   }
   .process-section {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--color-background) 96.86%, transparent) 0%,
-      color-mix(in srgb, var(--color-background) 87.84%, transparent) 55%,
-      color-mix(in srgb, var(--color-background) 25.1%, transparent) 100%
-    );
+    background: var(--color-glass-panel);
   }
   .contact-section {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--color-background) 96.86%, transparent) 0%,
-      color-mix(in srgb, var(--color-background) 87.84%, transparent) 55%,
-      color-mix(in srgb, var(--color-background) 25.1%, transparent) 100%
-    );
+    background: var(--color-glass-panel);
   }
   .about-section {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      color-mix(in srgb, var(--color-background) 18.82%, transparent) 35%,
-      color-mix(in srgb, var(--color-background) 94.9%, transparent) 48%,
-      color-mix(in srgb, var(--color-background) 98.04%, transparent) 100%
-    );
+    background: var(--color-glass-panel);
   }
   .about-art {
     background: none;
@@ -1988,11 +1957,7 @@ h2 {
   opacity: 1;
 }
 .hero-copy {
-  background: radial-gradient(
-    ellipse at left,
-    color-mix(in srgb, var(--color-background) 86.67%, transparent),
-    transparent 90%
-  );
+  background: transparent;
 }
 .projects-section {
   background: color-mix(in srgb, var(--color-background) 25.1%, transparent);
@@ -2074,12 +2039,9 @@ h2 {
 .next-case,
 .case-overview,
 .atomic-node {
-  background:
-    linear-gradient(135deg, var(--color-glass-highlight), transparent 65%), var(--color-glass);
+  background: var(--color-glass);
   border: 1px solid var(--color-glass-border);
-  box-shadow:
-    inset 0 1px 0 var(--color-glass-highlight),
-    0 16px 40px var(--color-glass-shadow);
+  box-shadow: 0 4px 16px var(--color-glass-shadow);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
@@ -2089,7 +2051,7 @@ h2 {
 .process-section,
 .contact-section,
 .case-content {
-  background: linear-gradient(120deg, var(--color-glass-highlight), transparent 70%);
+  background: var(--color-glass-panel);
   border-top: 1px solid var(--color-glass-border);
   border-radius: 20px;
   padding-inline: 28px;
@@ -2404,25 +2366,19 @@ h2 {
   padding: 26px;
   border-radius: 26px;
   border: 1px solid var(--color-glass-border);
-  background:
-    linear-gradient(135deg, var(--color-glass-highlight), transparent 55%), var(--color-glass-panel);
+  background: var(--color-glass-panel);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
   backdrop-filter: blur(var(--glass-blur)) saturate(150%);
-  box-shadow:
-    inset 0 1px 0 var(--color-glass-highlight),
-    0 24px 64px var(--color-glass-shadow);
+  box-shadow: 0 4px 16px var(--color-glass-shadow);
 }
 .atomic-panel .atomic-map {
   min-height: 0;
 }
 .atomic-panel .atomic-node {
-  background:
-    linear-gradient(140deg, var(--color-glass-highlight), transparent 65%), var(--color-glass-node);
+  background: var(--color-glass);
   -webkit-backdrop-filter: blur(var(--glass-node-blur)) saturate(140%);
   backdrop-filter: blur(var(--glass-node-blur)) saturate(140%);
-  box-shadow:
-    inset 0 1px 0 var(--color-glass-highlight),
-    0 8px 24px var(--color-glass-shadow);
+  box-shadow: 0 4px 16px var(--color-glass-shadow);
 }
 .atomic-panel .atomic-connections {
   overflow: hidden;
@@ -2462,14 +2418,11 @@ h2 {
 .process-section,
 .contact-section,
 .case-content {
-  background:
-    linear-gradient(120deg, var(--color-glass-highlight), transparent 70%), var(--color-glass-panel);
+  background: var(--color-glass-panel);
   border: 1px solid var(--color-glass-border);
   -webkit-backdrop-filter: blur(var(--glass-section-blur)) saturate(140%);
   backdrop-filter: blur(var(--glass-section-blur)) saturate(140%);
-  box-shadow:
-    inset 0 1px 0 var(--color-glass-highlight),
-    0 16px 40px var(--color-glass-shadow);
+  box-shadow: 0 4px 16px var(--color-glass-shadow);
 }
 .project-card,
 .about-copy,
@@ -2678,11 +2631,7 @@ h2,
 }
 
 .contact-section.contact-panel {
-  background: linear-gradient(
-    120deg,
-    color-mix(in srgb, var(--color-surface-raised) 88%, transparent),
-    color-mix(in srgb, var(--color-background) 82%, transparent)
-  );
+  background: var(--color-glass-panel);
 }
 .site-footer {
   font-size: 13px;
@@ -3427,6 +3376,7 @@ h2,
   );
   transition: background 700ms;
   pointer-events: none;
+  display: none;
 }
 .scene-perspective {
   position: absolute;
@@ -3463,9 +3413,7 @@ h2,
   border-radius: 22px;
   overflow: hidden;
   color: var(--color-text-primary);
-  background:
-    linear-gradient(145deg, var(--color-glass-highlight), transparent 55%),
-    color-mix(in srgb, var(--color-surface) 94%, transparent);
+  background: var(--color-surface);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   box-shadow:
@@ -4299,7 +4247,7 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
   display: none;
 }
 [data-theme='light'] .scroll-particles {
-  opacity: 0.48;
+  opacity: 0.64;
 }
 [data-theme='light'] .design-scene-stage {
   --scene-accent: var(--color-accent);
@@ -4542,10 +4490,7 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
 
 /* Muted mineral surfaces soften the light theme without changing product artwork. */
 [data-theme='light'] body {
-  background:
-    radial-gradient(ellipse at 8% 0%, var(--color-light-ambient), transparent 48%),
-    radial-gradient(ellipse at 95% 20%, var(--color-light-cool), transparent 45%),
-    var(--color-background);
+  background: var(--color-background);
   background-attachment: fixed;
 }
 [data-theme='light'] .design-object {
@@ -4662,10 +4607,8 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
   border: 1px solid color-mix(in srgb, var(--color-action-end) 75%, transparent);
   border-radius: 14px;
   color: var(--color-action-ink);
-  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
-  box-shadow:
-    0 7px 22px var(--color-action-glow),
-    inset 0 1px 0 var(--color-action-sheen);
+  background: var(--color-action-start);
+  box-shadow: 0 3px 10px var(--color-glass-shadow);
   font-weight: 650;
   text-decoration: none;
   transform: none;
@@ -4693,12 +4636,10 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
   :focus-visible
 ) {
   color: var(--color-action-ink);
-  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  background: var(--color-action-start);
   transform: none;
   translate: 0 -3px;
-  box-shadow:
-    0 12px 30px var(--color-action-glow),
-    inset 0 1px 0 var(--color-action-sheen);
+  box-shadow: 0 6px 18px var(--color-action-glow);
 }
 :is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link):is(
     :hover,
@@ -4741,7 +4682,7 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
 ):is(:hover, :focus-visible) {
   translate: 0 -2px;
   border-color: var(--color-action-start);
-  box-shadow: 0 8px 24px var(--color-action-glow);
+  box-shadow: 0 6px 18px var(--color-action-glow);
 }
 :is(
   .button-primary,
@@ -4807,7 +4748,7 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
   :focus-visible
 ) {
   translate: 0 -2px;
-  box-shadow: 0 5px 16px var(--color-action-glow);
+  box-shadow: 0 6px 18px var(--color-action-glow);
 }
 @media (max-width: 700px) {
   :is(.button-primary, .carousel-case-link, .career-cv, .case-takeaway > .text-link) {
@@ -4861,10 +4802,10 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
     scale 180ms ease;
 }
 :is(.scene-phase-picker, .carousel-pagination) button[aria-pressed='true'] {
-  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  background: var(--color-action-start);
   color: var(--color-action-ink);
   border-color: var(--color-action-start);
-  box-shadow: 0 4px 14px var(--color-action-glow);
+  box-shadow: 0 3px 10px var(--color-glass-shadow);
 }
 .gallery-thumbnails button[aria-pressed='true'] {
   border-color: var(--color-action-start);
@@ -4888,7 +4829,7 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
   inset: -1px;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  background: var(--color-action-start);
   transform: translateX(-115%) skewX(-18deg);
   transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -4910,10 +4851,10 @@ img[src*='/projects/wallet-ciudadana/']:not([src$='paleta.svg']) {
   transform: translateX(0) skewX(0);
 }
 .carousel-pagination button[aria-current='true'] {
-  background: linear-gradient(125deg, var(--color-action-start), var(--color-action-end));
+  background: var(--color-action-start);
   color: var(--color-action-ink);
   border-color: var(--color-action-start);
-  box-shadow: 0 4px 14px var(--color-action-glow);
+  box-shadow: 0 3px 10px var(--color-glass-shadow);
 }
 @media (min-width: 701px) and (hover: hover) and (pointer: fine) {
   .floating-header .header-contact {

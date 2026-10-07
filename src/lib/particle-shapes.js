@@ -57,3 +57,9 @@ export function createParticleShapes(projectCount) {
   }
   return shapes
 }
+
+// Sample the full shape on compact screens instead of keeping only its upper half.
+export function createParticleIndices(compact = false) {
+  const stride = compact ? 2 : 1
+  return Uint16Array.from({ length: COUNT / stride }, (_, i) => i * stride)
+}

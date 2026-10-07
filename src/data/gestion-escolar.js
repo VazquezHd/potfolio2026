@@ -9,7 +9,7 @@ export const schoolCase = {
   ],
   problemLabel: 'Hipótesis de problema por validar',
   leadCaption: 'Diseñé una visión general para conectar indicadores y actividad.',
-  processTitle: 'Un MVP centrado en administración.',
+  processTitle: 'Alcance y organización del MVP.',
   paletteImage: '/assets/images/projects/gestion-escolar/paleta.png',
   fontName: 'DM Sans',
   fontToken: '--font-sans',

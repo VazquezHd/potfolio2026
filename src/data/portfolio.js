@@ -14,7 +14,7 @@ export const profile = {
   introduction:
     'Diseño la experiencia desde la arquitectura de información hasta los componentes, estados e interfaces en Figma. Trabajo con ingeniería desde el inicio y puedo implementar las vistas en Vue.js, Nuxt 3 y Tailwind CSS.',
   about:
-    'Soy Product Designer y Lead UX/UI Designer. Conecto necesidades de usuario, reglas de negocio y viabilidad técnica para definir el producto.',
+    'Actualmente lidero el diseño de plataformas multirol. Mi trabajo comprende el levantamiento de requerimientos, la arquitectura de información y la definición de flujos de usuario.',
   email: '',
   linkedin: 'https://www.linkedin.com/in/vazquezhd/',
   github: 'https://github.com/VazquezHd',
@@ -32,6 +32,9 @@ export const profile = {
     'Sistemas de diseño',
     'Diseño UX/UI',
     'Desarrollo frontend',
+    'Git',
+    'GitHub',
+    'GitLab',
     'Liderazgo de producto',
   ],
   experience: [
@@ -45,8 +48,6 @@ export const profile = {
     {
       company: 'BUNTL',
       role: 'Product Designer',
-      photo: '/assets/images/profile/ivan-vazq.jpeg',
-      photoAlt: 'Retrato de Jorge Iván Vázquez Hernández',
       period: 'Febrero 2024 — Mayo 2025',
       summary:
         'Diseñé productos SaaS, B2B y B2C para clientes internacionales, desde requerimientos y recorridos hasta prototipos y documentación para desarrollo.',
@@ -85,30 +86,30 @@ export const profile = {
       kind: 'Idiomas',
     },
   ],
-  hero: 'Levanto necesidades, defino flujos y diseño interfaces que simplifican operaciones complejas.',
+  hero: 'Diseño productos digitales que integran experiencia de usuario, objetivos de negocio y viabilidad técnica.',
   value:
-    'Acelero la entrega al conectar diseño y desarrollo: documento reglas y estados, construyo componentes en Figma y puedo implementar las vistas en Vue, Nuxt y Tailwind.',
+    'Desarrollo sistemas de diseño en Figma y colaboro con ingeniería para asegurar una implementación consistente. Puedo construir interfaces en Vue, Nuxt y Tailwind, con control de versiones mediante Git, GitHub y GitLab.',
   background: 'Mi formación en diseño evolucionó hacia la arquitectura de producto y el código.',
   independent:
-    'También lidero proyectos independientes de software: defino el MVP, estructuro la propuesta web y la identidad del producto, y coordino la ejecución con ingenieros de software.',
+    'En proyectos independientes, defino el alcance del MVP y coordino el desarrollo con equipos de ingeniería.',
   stack: [
     {
       title: 'Necesidades y requerimientos',
       tools: 'Levantamiento · Reglas de negocio · Alcance del MVP',
       description:
-        'Entiendo quién necesita hacer qué, identifico restricciones y convierto la operación en requerimientos claros.',
+        'Documento necesidades, restricciones y reglas de negocio para delimitar el alcance del producto.',
     },
     {
       title: 'Flujos y experiencia',
       tools: 'Arquitectura de información · Perfiles · Estados',
       description:
-        'Organizo información, acciones y recorridos para que cada persona pueda completar su tarea con contexto.',
+        'Estructuro información, perfiles y recorridos de acuerdo con las tareas y responsabilidades de cada usuario.',
     },
     {
       title: 'UI y desarrollo',
-      tools: 'Figma · Sistemas de diseño · Vue · Nuxt · Tailwind',
+      tools: 'Figma · Vue · Nuxt · Tailwind · Git · GitHub · GitLab',
       description:
-        'Llevo los flujos a interfaces consistentes y componentes que diseño y desarrollo pueden compartir.',
+        'Diseño componentes y estados reutilizables, y colaboro en su implementación y mantenimiento.',
     },
   ],
 }

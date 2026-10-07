@@ -113,7 +113,7 @@ export const detentionProject = {
       'Diseñé una estructura que conecta el expediente con su inventario, su historial y la comunicación entre áreas.',
     problemLabel: 'Problema de producto · Alcance descrito por Jorge Iván',
     leadCaption: 'Concentré el registro, los indicadores y las alertas en el punto de entrada.',
-    processTitle: 'Un sistema conectado, con responsabilidades distintas.',
+    processTitle: 'Estructura de navegación y responsabilidades.',
     opportunities: [
       {
         title: 'Conservar el contexto',

@@ -106,7 +106,7 @@ const study = computed(() => props.project.caseStudy)
         <h2>
           <span class="motion-heading-mask"
             ><span class="motion-heading-ink">{{
-              $t('Cómo resolví las tareas clave.')
+              $t('Solución y criterios de diseño.')
             }}</span></span
           >
         </h2>

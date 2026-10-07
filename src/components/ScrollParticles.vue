@@ -10,20 +10,21 @@ import {
   Points,
   PointsMaterial,
   AdditiveBlending,
+  NormalBlending,
   Color,
   CanvasTexture,
 } from 'three'
 import { projects } from '../data/portfolio'
-import { createParticleShapes } from '../lib/particle-shapes'
+import { createParticleShapes, createParticleIndices } from '../lib/particle-shapes'
 const props = defineProps({ sceneKey: { type: String, default: '' } })
 const container = ref(null)
 const stages = [
-  { id: 'inicio', shape: 'sphere', depth: 0, opacity: 0.8 },
-  { id: 'proyectos', shape: 'clusters', depth: 0, opacity: 0.65 },
-  { id: 'sobre-mi', shape: 'organic', depth: -3.5, opacity: 0.5 },
-  { id: 'capacidades', shape: 'wave', depth: -3.5, opacity: 0.35 },
-  { id: 'proceso', shape: 'tunnel', depth: -3.5, opacity: 0.35 },
-  { id: 'contacto', shape: 'sphere', depth: 0, opacity: 0.65 },
+  { id: 'inicio', shape: 'sphere', depth: 0, opacity: 0.88 },
+  { id: 'proyectos', shape: 'clusters', depth: 0, opacity: 0.72 },
+  { id: 'sobre-mi', shape: 'organic', depth: -3.5, opacity: 0.56 },
+  { id: 'capacidades', shape: 'wave', depth: -3.5, opacity: 0.4 },
+  { id: 'proceso', shape: 'tunnel', depth: -3.5, opacity: 0.4 },
+  { id: 'contacto', shape: 'sphere', depth: 0, opacity: 0.72 },
 ]
 let renderer, scene, camera, geometry, material, cloud, shapes, positions, sprite
 let observer,
@@ -48,7 +49,11 @@ function measure() {
   renderer.setSize(width, height)
   camera.aspect = width / height
   camera.updateProjectionMatrix()
-  geometry.setDrawRange(0, width / height < 1.05 ? 1800 : 4000)
+  const indices = createParticleIndices(width / height < 1.05)
+  geometry.setIndex(new BufferAttribute(indices, 1))
+  geometry.setDrawRange(0, indices.length)
+  material.blending = theme.value === 'light' ? NormalBlending : AdditiveBlending
+  material.needsUpdate = true
   const styles = getComputedStyle(document.documentElement)
   heroColor = new Color(styles.getPropertyValue('--color-particle-hero').trim())
   blueColor = new Color(styles.getPropertyValue('--color-particle-point').trim())
@@ -115,7 +120,7 @@ function render(timestamp) {
   const scale = viewportWidth < 7 ? 0.72 : viewportWidth < 10 ? 0.88 : 1
   const organic = from.shape === 'organic' || to.shape === 'organic'
   const organicWeight = from.shape === 'organic' ? 1 - blend : blend
-  for (let i = 0; i < geometry.drawRange.count; i++) {
+  for (let i = 0; i < positions.length / 3; i++) {
     const offset = i * 3
     let x = a[offset] + (b[offset] - a[offset]) * blend
     if (organic && !reduced.matches) x += Math.sin(time + i) * 0.02 * organicWeight * intensity
@@ -125,7 +130,7 @@ function render(timestamp) {
       (a[offset + 2] + (b[offset + 2] - a[offset + 2]) * blend + depth) * scale
   }
   geometry.attributes.position.needsUpdate = true
-  if (!reduced.matches) rotation += delta * 0.05 * intensity
+  if (!reduced.matches) rotation += delta * 0.07 * (0.35 + 0.65 * intensity)
   cloud.rotation.y = rotation
   cloud.rotation.z = 0
   const targetColor =
@@ -133,7 +138,7 @@ function render(timestamp) {
   if (to.shape === 'sphere') targetColor.lerp(heroColor, blend)
   material.color.lerp(targetColor, reduced.matches ? 1 : 1 - Math.exp(-3.1 * delta))
   material.opacity = reduced.matches ? 0.8 : opacity
-  material.size = 0.04
+  material.size = width < 700 ? 0.046 : 0.048
   renderer.render(scene, camera)
   container.value.dataset.shape = blend > 0.5 ? to.shape : from.shape
   container.value.dataset.motion = reduced.matches ? 'static' : 'scroll'
